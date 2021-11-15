@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Analyzing Twitter users' emotions towards Elon Musk "
+author: "Anni Chen, Zehui Wu, Senqi Zhang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
