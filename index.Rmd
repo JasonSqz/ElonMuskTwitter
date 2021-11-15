@@ -1,5 +1,5 @@
 --- 
-title: "Analyzing users' emotions towards Elon Musk on Twitter "
+title: "Analyzing emotions towards Elon Musk on Twitter "
 author: "Anni Chen, Zehui Wu, Senqi Zhang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
