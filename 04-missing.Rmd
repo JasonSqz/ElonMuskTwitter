@@ -6,7 +6,142 @@ By using Tweepy API, we collected tweets data using keywords: “Elon Musk”, �
 
 Here we use the data collected on 10/28/2021. There are a total of 65,965 tweets. Of all the 8 features we selected, 3 of the them have missing values. They are `tweet_loc`, `user_loc`, `full_text`. The following is a missing value graph presenting missing value distributions and patterns.
 
-![](mv_plot.png)
+```{r}
+library(tidyverse)
+library(patchwork)
+library(ggplot2)
+```
+
+
+```{r}
+mvgraph <- function(df,mode="count",abbr=waiver()){
+  missing_patterns <- data.frame(is.na(df)) %>%
+    group_by_all() %>%
+    count(name = "count", sort = TRUE) %>%
+    ungroup()
+  
+  #Create dataframe to draw the top graph
+  na_count = data.frame(colSums(is.na(df))) 
+  colnames(na_count) <- "count"
+  
+  na_count <- na_count %>%
+    rownames_to_column("variable") %>%
+    mutate(variable=as.factor(variable)) 
+  
+  #factor level for the missing graph to follow
+  mlevel = levels(fct_reorder(na_count$variable,desc(na_count$count)))
+  
+  #Missing count 
+  if(mode == "count"){
+    #Top graph
+    p1 <- ggplot(na_count,aes(x=fct_reorder(variable,desc(count)),y=count)) +
+      geom_bar(stat="identity",fill="skyblue",alpha=0.7) +
+      xlab("") +
+      ylab("# rows missing") + 
+      ggtitle("Missing value patterns") +
+      scale_y_continuous(n.breaks = 3) +
+      theme_linedraw() +
+      theme(panel.grid.major.x = element_blank()) +
+      scale_x_discrete(label=abbr)
+  }else if(mode == "percent"){
+    na_count_p <- na_count %>% 
+      mutate(percentage = count *100 / nrow(df))
+    
+    p1 <- ggplot(na_count_p,aes(x=fct_reorder(variable,desc(percentage)),y=percentage)) +
+      geom_bar(stat="identity",fill="skyblue",alpha=0.7) +
+      xlab("") +
+      ylab("% rows missing") + 
+      ggtitle("Missing value patterns") +
+      scale_y_continuous(limits=c(0,100)) +
+      theme_linedraw() +
+      theme(panel.grid.major.x = element_blank()) +
+      scale_x_discrete(label=abbr)}
+  
+  #Add index
+  missing_patterns$id <- factor(1:nrow(missing_patterns))
+  row_num = nrow(missing_patterns)
+  col_num = ncol(df)
+
+  mp_main <- missing_patterns %>%
+    select(-count) %>%
+    pivot_longer(cols=!id, names_to="variable", values_to="value")
+
+  text_pos_x = (col_num + 1) / 2 #x-value to place the annotation
+
+  text_pos_y <-  missing_patterns %>%
+    filter_all(all_vars(.!="TRUE"))
+
+  text_pos_y <- as.numeric(text_pos_y$id)
+  text_pos_y <-  row_num + 1 - text_pos_y #y-value to place the annotation
+
+
+  #Missing patterns that are not complete
+  row_alpha <- missing_patterns %>%
+    filter_all(any_vars(.=="TRUE")) %>%
+    select(id)
+
+  #Parameters to change alpha value in the graph
+  row_alpha <- row_alpha$id #Rows that do not need to highlight
+  alpha_seq <- seq(0.7,0.7,length.out=length(row_alpha)) #A sequence of alpha values
+
+  #Missing pattern main graph
+  p2 <- ggplot(mp_main,aes(x=fct_relevel(variable,mlevel),y=fct_rev(id), fill=value)) +
+    geom_tile(aes(alpha=id),color="white") + 
+    xlab("variable") +
+    ylab("missing pattern") +
+    scale_fill_manual(values = c("grey","skyblue")) +
+    annotate("text",x=text_pos_x,y=text_pos_y,label="Complete case") + 
+    scale_alpha_manual(values=alpha_seq,limits = row_alpha) +
+    theme_classic() +
+    scale_x_discrete(label=abbr) +
+    theme(legend.position = "none")
+  
+  if(mode == "count"){
+    #Missing pattern side graph
+    p3 <- ggplot(missing_patterns,aes(x=fct_rev(id),y=count)) +
+      geom_bar(aes(alpha=id),stat="identity",fill="skyblue") +
+      xlab("") +
+      ylab("row count") +
+      coord_flip() + 
+      scale_alpha_manual(values=alpha_seq,limits = row_alpha) +
+      theme_linedraw() +
+      theme(panel.grid.major.y = element_blank()) +
+      theme(legend.position = "none")
+  } else if(mode == "percent"){
+    missing_patterns_p <- missing_patterns %>%
+      mutate(percentage= 100*count / sum(count))
+
+    p3 <- ggplot(missing_patterns_p,aes(x=fct_rev(id),y=percentage)) +
+      geom_bar(aes(alpha=id),stat="identity",fill="skyblue") +
+      xlab("") +
+      ylab("% rows") +
+      coord_flip() + 
+      scale_alpha_manual(values=alpha_seq,limits = row_alpha) +
+      scale_y_continuous(limits = c(0,100)) +
+      theme_linedraw() +
+      theme(panel.grid.major.y = element_blank())+
+      theme(legend.position = "none")}
+  
+  p1 + plot_spacer() + p2 + p3 +
+    plot_layout(widths = c(4,1),heights = c(1,4))
+}
+```
+
+```{r}
+df <- read_csv("1028.csv")
+df <- df %>%
+  select(-...1)
+```
+
+```{r}
+colnames(df)[1] <- "time"
+colnames(df)[4] <- "tweet_loc"
+colnames(df)[5] <- "user_loc"
+colnames(df)[6] <- "full_text"
+colnames(df)[7] <- "user_id"
+colnames(df)[8] <- "followers"
+mvgraph(df,mode="percent")
+```
 
 As shown in the graph, the `tweet_loc` column has the most missing values which only contains 4 valid values in total. By data description, it indicates that Twitter users seldom specify details about the location tagged in the Tweet. Another largely missing data column is `user_loc` with 683 valid values. `user_loc` is a self-identified location by the user, and is has the format like 'Manhattan, NY'. We think the result is intuitive as users tend not to share private geological information. The missing value in `text` is interesting. `text` can only holds up to 140 character and if a tweet exceeds the limit, `full_text` is the feature that will capture the complete contents. We see that around half of the users write short text when post tweets related to Elon Musk.
 
