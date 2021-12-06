@@ -1,6 +1,10 @@
 introduction
 data-sources
 data-transformation
+select-important-variables-from-data
+extract-words
+extract-sentiments
+dataset-variables-summary
 missing-values
 twitter-dataset
 results

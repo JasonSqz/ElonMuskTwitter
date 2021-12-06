@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-11-19" />
+<meta name="date" content="2021-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="data-sources.html"/>
 <link rel="next" href="missing-values.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -75,7 +75,13 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#select-important-variables-from-data"><i class="fa fa-check"></i><b>3.1</b> select important variables from data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#extract-words"><i class="fa fa-check"></i><b>3.2</b> extract words</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#extract-sentiments"><i class="fa fa-check"></i><b>3.3</b> extract sentiments</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#dataset-variables-summary"><i class="fa fa-check"></i><b>3.4</b> dataset variables summary</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#twitter-dataset"><i class="fa fa-check"></i><b>4.1</b> Twitter Dataset</a></li>
@@ -104,7 +110,370 @@
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation</h1>
+<div id="select-important-variables-from-data" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> select important variables from data</h2>
+<p>There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">all variable of the raw data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">created_at</td>
+</tr>
+<tr class="even">
+<td align="left">id</td>
+</tr>
+<tr class="odd">
+<td align="left">id_str</td>
+</tr>
+<tr class="even">
+<td align="left">text</td>
+</tr>
+<tr class="odd">
+<td align="left">display_text_range</td>
+</tr>
+<tr class="even">
+<td align="left">source</td>
+</tr>
+<tr class="odd">
+<td align="left">truncated</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_status_id</td>
+</tr>
+<tr class="odd">
+<td align="left">in_reply_to_status_id_str</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_user_id</td>
+</tr>
+<tr class="odd">
+<td align="left">in_reply_to_user_id_str</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_screen_name</td>
+</tr>
+<tr class="odd">
+<td align="left">user</td>
+</tr>
+<tr class="even">
+<td align="left">geo</td>
+</tr>
+<tr class="odd">
+<td align="left">coordinates</td>
+</tr>
+<tr class="even">
+<td align="left">place</td>
+</tr>
+<tr class="odd">
+<td align="left">contributors</td>
+</tr>
+<tr class="even">
+<td align="left">is_quote_status</td>
+</tr>
+<tr class="odd">
+<td align="left">extended_tweet</td>
+</tr>
+<tr class="even">
+<td align="left">quote_count</td>
+</tr>
+<tr class="odd">
+<td align="left">reply_count</td>
+</tr>
+<tr class="even">
+<td align="left">retweet_count</td>
+</tr>
+<tr class="odd">
+<td align="left">favorite_count</td>
+</tr>
+<tr class="even">
+<td align="left">entities</td>
+</tr>
+<tr class="odd">
+<td align="left">favorited</td>
+</tr>
+<tr class="even">
+<td align="left">retweeted</td>
+</tr>
+<tr class="odd">
+<td align="left">possibly_sensitive</td>
+</tr>
+<tr class="even">
+<td align="left">filter_level</td>
+</tr>
+<tr class="odd">
+<td align="left">lang</td>
+</tr>
+<tr class="even">
+<td align="left">timestamp_ms</td>
+</tr>
+<tr class="odd">
+<td align="left">extended_entities</td>
+</tr>
+<tr class="even">
+<td align="left">quoted_status_id</td>
+</tr>
+<tr class="odd">
+<td align="left">quoted_status_id_str</td>
+</tr>
+<tr class="even">
+<td align="left">quoted_status</td>
+</tr>
+<tr class="odd">
+<td align="left">quoted_status_permalink</td>
+</tr>
+</tbody>
+</table>
+<p>After careful selection, 7 columns are left in the data. Below is a table of the variable names.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Selected variables from the raw data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">created_at</td>
+</tr>
+<tr class="even">
+<td align="left">id_str</td>
+</tr>
+<tr class="odd">
+<td align="left">text</td>
+</tr>
+<tr class="even">
+<td align="left">geo</td>
+</tr>
+<tr class="odd">
+<td align="left">user</td>
+</tr>
+<tr class="even">
+<td align="left">place</td>
+</tr>
+<tr class="odd">
+<td align="left">extended_tweet</td>
+</tr>
+</tbody>
+</table>
+<p>The variables “geo”, “user”, “place” and “extented_tweet” contain a dataframe for each tweet, and each of the dataframe contains more specific information of the variable. For example, each tweet has a user variable, which is a dataframe that contains 40 columns of information of the user, including id, name, location, number of followers and so on.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variables of user</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+</tr>
+<tr class="even">
+<td align="left">id_str</td>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+</tr>
+<tr class="even">
+<td align="left">screen_name</td>
+</tr>
+<tr class="odd">
+<td align="left">location</td>
+</tr>
+<tr class="even">
+<td align="left">url</td>
+</tr>
+<tr class="odd">
+<td align="left">description</td>
+</tr>
+<tr class="even">
+<td align="left">translator_type</td>
+</tr>
+<tr class="odd">
+<td align="left">protected</td>
+</tr>
+<tr class="even">
+<td align="left">verified</td>
+</tr>
+<tr class="odd">
+<td align="left">followers_count</td>
+</tr>
+<tr class="even">
+<td align="left">friends_count</td>
+</tr>
+<tr class="odd">
+<td align="left">listed_count</td>
+</tr>
+<tr class="even">
+<td align="left">favourites_count</td>
+</tr>
+<tr class="odd">
+<td align="left">statuses_count</td>
+</tr>
+<tr class="even">
+<td align="left">created_at</td>
+</tr>
+<tr class="odd">
+<td align="left">utc_offset</td>
+</tr>
+<tr class="even">
+<td align="left">time_zone</td>
+</tr>
+<tr class="odd">
+<td align="left">geo_enabled</td>
+</tr>
+<tr class="even">
+<td align="left">lang</td>
+</tr>
+<tr class="odd">
+<td align="left">contributors_enabled</td>
+</tr>
+<tr class="even">
+<td align="left">is_translator</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_background_color</td>
+</tr>
+<tr class="even">
+<td align="left">profile_background_image_url</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_background_image_url_https</td>
+</tr>
+<tr class="even">
+<td align="left">profile_background_tile</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_link_color</td>
+</tr>
+<tr class="even">
+<td align="left">profile_sidebar_border_color</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_sidebar_fill_color</td>
+</tr>
+<tr class="even">
+<td align="left">profile_text_color</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_use_background_image</td>
+</tr>
+<tr class="even">
+<td align="left">profile_image_url</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_image_url_https</td>
+</tr>
+<tr class="even">
+<td align="left">default_profile</td>
+</tr>
+<tr class="odd">
+<td align="left">default_profile_image</td>
+</tr>
+<tr class="even">
+<td align="left">following</td>
+</tr>
+<tr class="odd">
+<td align="left">follow_request_sent</td>
+</tr>
+<tr class="even">
+<td align="left">notifications</td>
+</tr>
+<tr class="odd">
+<td align="left">profile_banner_url</td>
+</tr>
+</tbody>
+</table>
+<p>We select “id_str” and “followers_count” from the “user” variable. And for other variables that contain one dataframe per tweet, we only choose one variable from each of them: select “full_name” from “place”, “full_text” from “extended_tweet”.</p>
+<p>If the tweet is longer than 140 characters, the tweet would be truncated to put into the “text” variable, and the original tweet would be put into the “full_text” variable. We add a new variable called “original_text” to restore the tweet and make constructing analysis more convenient.</p>
+</div>
+<div id="extract-words" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> extract words</h2>
+<p>Next, we need to tokenize the word to make analysis related to property of words in each tweet.For this task, we use the tokenize_tweets() function from the tokenizers library, since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer. Below is an example for how it tokenizes one of the tweets.</p>
+<pre><code>## [1] &quot;@cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk&quot;</code></pre>
+<pre><code>## [[1]]
+##  [1] &quot;@cryptocevo&quot;             &quot;why&quot;                     &quot;#KISHU&quot;                  &quot;$kishu&quot;                  &quot;use&quot;                     &quot;for&quot;                     &quot;payments&quot;                &quot;in&quot;                      &quot;websites&quot;               
+## [10] &quot;like&quot;                    &quot;travala&quot;                 &quot;and&quot;                     &quot;nowpayments&quot;             &quot;team&quot;                    &quot;accept&quot;                  &quot;it&lt;U+0001F525&gt;&quot;          &quot;streamers&quot;               &quot;can&quot;                    
+## [19] &quot;get&quot;                     &quot;$kishu&quot;                  &quot;donations&quot;               &quot;for&quot;                     &quot;their&quot;                   &quot;twitch&quot;                  &quot;streams&quot;                 &quot;and&quot;                     &quot;bloggers&quot;               
+## [28] &quot;for&quot;                     &quot;youtube&quot;                 &quot;@elonmusk&quot;               &quot;@czbinance&quot;              &quot;@binance&quot;                &quot;@HuobiGlobal&quot;            &quot;@InuKishu&quot;               &quot;@VitalikButerin&quot;         &quot;@chinapumpwxc&quot;          
+## [37] &quot;https://t.co/2b8bGNgoAk&quot;</code></pre>
+</div>
+<div id="extract-sentiments" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> extract sentiments</h2>
+<p>Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, @, website links, etc. In order to make our sentiment scores accurate, we need to make sure these special characters are not included.</p>
+<p>Below is a comparison between original text and the cleaned text.</p>
+<pre><code>## [1] &quot;@cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk&quot;</code></pre>
+<pre><code>## [1] &quot;cryptocevo Why KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\nelonmusk cz_binance binance HuobiGlobal InuKishu VitalikButerin\nchinapumpwxc &quot;</code></pre>
+<p>We get the sentiment score for each tweet using the “syuzhet” method, which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each sentence as neutral if the score =0, positive if score&gt;0, and negative if score&lt;0.</p>
+</div>
+<div id="dataset-variables-summary" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> dataset variables summary</h2>
+<p>Below is a table decribing all the variables we have for each tweet after data processing.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variables</th>
+<th align="left">descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">created_at</td>
+<td align="left">creation time of tweet</td>
+</tr>
+<tr class="even">
+<td align="left">id_str</td>
+<td align="left">tweet id</td>
+</tr>
+<tr class="odd">
+<td align="left">text</td>
+<td align="left">truncated tweet of length&lt;140</td>
+</tr>
+<tr class="even">
+<td align="left">geo</td>
+<td align="left">coordinate of tweet</td>
+</tr>
+<tr class="odd">
+<td align="left">user_id</td>
+<td align="left">user id</td>
+</tr>
+<tr class="even">
+<td align="left">user_follower_count</td>
+<td align="left">number of followers of user</td>
+</tr>
+<tr class="odd">
+<td align="left">location</td>
+<td align="left">location of tweet</td>
+</tr>
+<tr class="even">
+<td align="left">full_text</td>
+<td align="left">full text of tweet</td>
+</tr>
+<tr class="odd">
+<td align="left">original_text</td>
+<td align="left">original text</td>
+</tr>
+<tr class="even">
+<td align="left">word_tokens</td>
+<td align="left">a list of word tokens</td>
+</tr>
+<tr class="odd">
+<td align="left">cleaned_text</td>
+<td align="left">text after removing special characters</td>
+</tr>
+<tr class="even">
+<td align="left">sentiment_score</td>
+<td align="left">sentiment scores</td>
+</tr>
+<tr class="odd">
+<td align="left">sentiment</td>
+<td align="left">sentiment of tweet: positive, neutral or negative</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
             </section>
 
