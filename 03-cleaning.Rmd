@@ -1,1 +1,193 @@
 # Data transformation
+```{r, message=FALSE, warning=FALSE}
+library(jsonlite)
+library(dplyr)
+library(knitr)
+library(tokenizers)
+library(syuzhet)
+```
+
+
+```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
+json_data <- stream_in(file("C:/Users/KingO/Documents/edav_final_project/data/1028.json"))
+```
+
+
+
+## select important variables from data
+There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it. 
+```{r}
+col_names_raw <- colnames(json_data) %>% as.data.frame()
+knitr::kable(col_names_raw,col.names = c("all variable of the raw data"))
+```
+
+
+After careful selection, 7 columns are left in the data. Below is a table of the variable names.
+```{r}
+df <- json_data[,c("created_at","id_str","text","geo","user","place","extended_tweet")]
+col_names <- colnames(df) %>% as.data.frame()
+knitr::kable(col_names, col.names = c("Selected variables from the raw data"))
+```
+
+The variables "geo", "user", "place" and "extented_tweet" contain a dataframe for each tweet, and each of the dataframe contains more specific information of the variable. For example, each tweet has a user variable, which is a dataframe that contains 40 columns of information of the user, including id, name, location, number of followers and so on.
+
+```{r}
+user <- df[,"user"] %>% subset(select = -c(withheld_in_countries) )
+col_names_user <- colnames(user) %>% as.data.frame()
+knitr::kable(col_names_user, col.names = c("variables of user"))
+```
+
+We select "id_str" and "followers_count" from the "user" variable. And for other variables that contain one dataframe per tweet, we only choose one variable from each of them: select "full_name" from "place", "full_text" from "extended_tweet".
+
+```{r}
+# extract new variables and replace the old ones
+user_new <- user[, c("id_str", "followers_count")]
+colnames(user_new) <- c("user_id", "user_follower_count")
+
+place_new <- df[,c("place")] %>% subset(select = c(full_name))
+colnames(place_new) <- c("location")
+
+full_text <- df[,c("extended_tweet")] %>% subset(select = c(full_text))
+colnames(full_text) <- c("full_text")
+
+df_new <- df %>% subset(select = -c(user, place, extended_tweet)) %>% cbind(user_new) %>% cbind(place_new) %>% cbind(full_text)
+```
+
+If the tweet is longer than 140 characters, the tweet would be truncated to put into the "text" variable, and the original tweet would be put into the "full_text" variable. We add a new variable called "original_text" to restore the tweet and make constructing analysis more convenient.
+
+```{r}
+df_new <- df_new %>%
+  mutate(original_text = case_when(
+    is.na(df_new$full_text)==TRUE ~ df_new$text,
+    is.na(df_new$full_text)==FALSE ~ df_new$full_text
+    ))
+```
+
+## extract words
+Next, we need to tokenize the word to make analysis related to property of words in each tweet.For this task, we use the tokenize_tweets() function from the tokenizers library, since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer. Below is an example for how it tokenizes one of the tweets.
+```{r}
+print(df_new$original_text[1])
+print(tokenizers::tokenize_tweets(df_new$original_text[1]))
+```
+```{r}
+df_new <- df_new %>%
+  mutate(word_tokens = tokenizers::tokenize_tweets(df_new$original_text)
+         )
+   
+```
+
+
+
+## extract sentiments
+Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, @, website links, etc. In order to make our sentiment scores accurate, we need to make sure these special characters are not included.
+```{r}
+cleaned_text <- gsub('http\\S+\\s*',"",df_new$original_text)
+cleaned_text <- gsub('https\\S+\\s*',"",cleaned_text)
+cleaned_text <- gsub("#","",cleaned_text)
+cleaned_text <- gsub("@","",cleaned_text)
+```
+
+```{r}
+cleaned_text <- cleaned_text %>% as.data.frame()
+colnames(cleaned_text) <- c("cleaned_text")
+df_new <- cbind(df_new, cleaned_text)
+```
+
+
+Below is a comparison between original text and the cleaned text.
+```{r}
+print(df_new$original_text[1])
+print(df_new$cleaned_text[1])
+```
+
+```{r}
+# too slow, abandon for now
+# We then extract the number of words related to each emotion using the NCR lexicon.
+# df_new$emotion_word_counts <- syuzhet::get_nrc_sentiment(df_new$cleaned_text)
+```
+
+We get the sentiment score for each tweet using the "syuzhet" method, which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each sentence as neutral if the score =0, positive if score>0, and negative if score<0.
+```{r}
+df_new$sentiment_score <- syuzhet::get_sentiment(df_new$cleaned_text)
+```
+
+```{r}
+df_new <- df_new %>%
+  mutate(sentiment = case_when(
+    df_new$sentiment_score>0 ~ "positive",
+    df_new$sentiment_score<0 ~ "negative",
+    df_new$sentiment_score==0 ~ "neutral")
+         )
+```
+
+## dataset variables summary
+Below is a table decribing all the variables we have for each tweet after data processing. 
+```{r}
+col_names <- colnames(df_new)
+description <- c("creation time of tweet", "tweet id", "truncated tweet of length<140", "coordinate of tweet", "user id", "number of followers of user", "location of tweet", "full text of tweet", "original text", "a list of word tokens", "text after removing special characters", "sentiment scores", "sentiment of tweet: positive, neutral or negative")
+
+knitr::kable(cbind(col_names,description), col.names = c("variables", "descriptions"))
+```
+
+```{r}
+# function to transform .json file raw data given file path
+data_tranform <- function(filepath){
+  #load data from path
+  json_data <- stream_in(file(filepath))
+  df <- json_data[,c("created_at","id_str","text","geo","user","place","extended_tweet")]
+  
+  
+  # extract new variables and replace the old ones
+  user <- df[,"user"] %>% subset(select = -c(withheld_in_countries) )
+  user_new <- user[, c("id_str", "followers_count")]
+  colnames(user_new) <- c("user_id", "user_follower_count")
+
+  place_new <- df[,c("place")] %>% subset(select = c(full_name))
+  colnames(place_new) <- c("location")
+
+  full_text <- df[,c("extended_tweet")] %>% subset(select = c(full_text))
+  colnames(full_text) <- c("full_text")
+
+  df_new <- df %>% subset(select = -c(user, place, extended_tweet)) %>% cbind(user_new) %>% cbind(place_new) %>% cbind(full_text)
+  
+  # add original_text column
+  df_new <- df_new %>%
+  mutate(original_text = case_when(
+    is.na(df_new$full_text)==TRUE ~ df_new$text,
+    is.na(df_new$full_text)==FALSE ~ df_new$full_text
+    ))
+  
+  # tokenize words
+  df_new$word_tokens <- tokenizers::tokenize_tweets(df_new$original_text)
+  #df_new$word_tokens <- tokenizers::tokenize_words(df_new$original_text)
+  
+  # add clean_text column
+  cleaned_text <- gsub('http\\S+\\s*',"",df_new$original_text)
+  cleaned_text <- gsub('https\\S+\\s*',"",cleaned_text)
+  cleaned_text <- gsub("#","",cleaned_text)
+  cleaned_text <- gsub("@","",cleaned_text)
+  
+  cleaned_text <- cleaned_text %>% as.data.frame()
+  colnames(cleaned_text) <- c("cleaned_text")
+  df_new <- cbind(df_new, cleaned_text)
+
+  #extract sentiment
+  df_new$sentiment_score <- syuzhet::get_sentiment(df_new$cleaned_text)
+  df_new <- df_new %>%
+  mutate(sentiment = case_when(
+    df_new$sentiment_score>0 ~ "positive",
+    df_new$sentiment_score<0 ~ "negative",
+    df_new$sentiment_score==0 ~ "neutral",
+    is.na(df_new$sentiment_score) ~ "neutral"
+         ))
+  
+  return(df_new)
+}
+```
+
+
+
+```{r}
+# df_1025 <- data_tranform("C:/Users/KingO/Documents/edav_final_project/data/1025.json")
+# write.csv(df_1025,"C:/Users/KingO/Documents/edav_final_project/csv_data/1025.csv", row.names = FALSE)
+```
