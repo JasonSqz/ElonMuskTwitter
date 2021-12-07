@@ -1,4 +1,5 @@
 # Data transformation
+
 ```{r, message=FALSE, warning=FALSE}
 library(jsonlite)
 library(dplyr)
@@ -8,25 +9,25 @@ library(syuzhet)
 library(rjson)
 ```
 
-
 ```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
-json_data <- stream_in(file("C:/Users/KingO/Documents/edav_final_project/data/1028.json"))
+json_data <- stream_in(file("data/demo_df.json"))
 ```
+
 ```{r}
 head(json_data)
 ```
 
-
-
 ## select important variables from data
-There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it. 
+
+There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it.
+
 ```{r}
 col_names_raw <- colnames(json_data) %>% as.data.frame()
 knitr::kable(col_names_raw,col.names = c("all variable of the raw data"))
 ```
 
-
 After careful selection, 8 columns are left in the data. Below is a table of the variable names.
+
 ```{r}
 df <- json_data[,c("created_at","id_str","text","geo","user","place","extended_tweet")]
 col_names <- colnames(df) %>% as.data.frame()
@@ -68,11 +69,14 @@ df_new <- df_new %>%
 ```
 
 ## extract words
+
 Next, we need to tokenize the word to make analysis related to property of words in each tweet.For this task, we use the tokenize_tweets() function from the tokenizers library, since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer. Below is an example for how it tokenizes one of the tweets.
+
 ```{r}
 print(df_new$original_text[1])
 print(tokenizers::tokenize_tweets(df_new$original_text[1]))
 ```
+
 ```{r}
 df_new <- df_new %>%
   mutate(word_tokens = tokenizers::tokenize_tweets(df_new$original_text)
@@ -80,10 +84,10 @@ df_new <- df_new %>%
    
 ```
 
-
-
 ## extract sentiments
-Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, @, website links, etc. In order to make our sentiment scores accurate, we need to make sure these special characters are not included.
+
+Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, \@, website links, etc. In order to make our sentiment scores accurate, we need to make sure these special characters are not included.
+
 ```{r}
 cleaned_text <- gsub('http\\S+\\s*',"",df_new$original_text)
 cleaned_text <- gsub('https\\S+\\s*',"",cleaned_text)
@@ -97,8 +101,8 @@ colnames(cleaned_text) <- c("cleaned_text")
 df_new <- cbind(df_new, cleaned_text)
 ```
 
-
 Below is a comparison between original text and the cleaned text.
+
 ```{r}
 print(df_new$original_text[1])
 print(df_new$cleaned_text[1])
@@ -110,7 +114,8 @@ print(df_new$cleaned_text[1])
 # df_new$emotion_word_counts <- syuzhet::get_nrc_sentiment(df_new$cleaned_text)
 ```
 
-We get the sentiment score for each tweet using the "syuzhet" method, which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each sentence as neutral if the score =0, positive if score>0, and negative if score<0.
+We get the sentiment score for each tweet using the "syuzhet" method, which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each sentence as neutral if the score =0, positive if score>0, and negative if score\<0.
+
 ```{r}
 df_new$sentiment_score <- syuzhet::get_sentiment(df_new$cleaned_text)
 ```
@@ -125,7 +130,9 @@ df_new <- df_new %>%
 ```
 
 ## dataset variables summary
-Below is a table decribing all the variables we have for each tweet after data processing. 
+
+Below is a table decribing all the variables we have for each tweet after data processing.
+
 ```{r}
 col_names <- colnames(df_new)
 description <- c("creation time of tweet", "tweet id", "truncated tweet of length<140", "coordinate of tweet", "user id", "number of followers of user", "location of tweet", "full text of tweet", "original text", "a list of word tokens", "text after removing special characters", "sentiment scores", "sentiment of tweet: positive, neutral or negative")
@@ -190,9 +197,4 @@ data_tranform <- function(filepath){
 }
 ```
 
-
-
 We have one week of tweet data from 10.28 to 11.03. From combining these data set, we have a total of 484678 of data.
-
-
-

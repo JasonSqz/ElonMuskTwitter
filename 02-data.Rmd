@@ -7,8 +7,7 @@ Our data was collected from Twitter using Tweepy API. The keywords we used are "
 After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 37 features.
 
 ```{r}
-df <- unzip("csv_data/EM_df.zip")
-EM_df <- read.csv(df)
+EM_df <- read.csv("data/EM_df.csv")
 ```
 
 ```{r}
@@ -17,7 +16,7 @@ head(EM_df)
 ```
 
 ```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
-knitr::kable(colnames(df),col.names = c("All variable of the raw data"))
+knitr::kable(colnames(EM_df),col.names = c("All variable of the raw data"))
 ```
 
 

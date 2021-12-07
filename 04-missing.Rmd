@@ -128,15 +128,11 @@ mvgraph <- function(df,mode="count",abbr=waiver()){
 ```
 
 ```{r}
-df <- unzip("csv_data/EM_df.zip")
-EM_df <- read.csv(df)
+EM_df <- read.csv("data/EM_df.csv")
 EM_df <- EM_df %>%
   select(-X)
 ```
 
-```{r}
-EM_df
-```
 
 ```{r}
 mvgraph(EM_df,mode="percent",abbr=abbreviate)
