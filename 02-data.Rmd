@@ -1,23 +1,31 @@
 # Data sources
 
-Our data was collected from Twitter using Tweepy API. The keywords we used are "Elon Musk","elonmusk","@elonmusk","tesla","Tesla". From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3th, which is a 7-day period. The data we collected were tweet objects. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. A tweet object contain not only the text of the tweet, but other valuable information worth exploring. 
+Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk. We chose the keyword set of "Elon Musk","elonmusk","@elonmusk","tesla","Tesla". From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3th, which is a 7-day period. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. The data is collected in the form of a tweet object, and it contains not only the text of the tweet, but other valuable information worth exploring. 
 
 ## Dataset overview
 
-After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 37 features.
-
-```{r}
-EM_df <- read.csv("data/EM_df.csv")
-```
+After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 35 features. Below is a table of the features. 
 
 ```{r}
 library(dplyr)
-head(EM_df)
+library(jsonlite)
 ```
 
-```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
-knitr::kable(colnames(EM_df),col.names = c("All variable of the raw data"))
+```{r,message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
+json_data <- stream_in(file("data/demo_df.json"))
 ```
+
+```{r}
+col_names_raw <- colnames(json_data) %>% as.data.frame()
+knitr::kable(col_names_raw,col.names = c("all variable of the raw data"))
+```
+
+One thing worth mentioning is that some of features are actually dictionaries. For example, in `User`, there are actually 40 more sub features including `username`,`location`,`description`, etc. Counting those sub features, there are over 150 features in a tweet object and we have to choose carefully from them. Details of selected features and descriptions will be elaborated in the data transformation section.  
+
+## Limitations
+
+Since we do not have the resource to a cloud server, we were not able to run the program 24 hours every day in the period. Moreover, the start and end time for each date is different. We will need to find a overlapping period when conducting analysis relating to time. Another limitation is about a feature called "conversation_id". It builds up a conversation by capturing replies to a specific tweet. However, it has to be configured during the data collection phase and our dataset does not have it. We will try some other methods to construct a conversation. 
+
 
 
 

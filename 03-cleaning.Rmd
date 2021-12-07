@@ -13,10 +13,6 @@ library(rjson)
 json_data <- stream_in(file("data/demo_df.json"))
 ```
 
-```{r}
-head(json_data)
-```
-
 ## select important variables from data
 
 There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it.

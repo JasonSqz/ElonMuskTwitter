@@ -77,6 +77,7 @@
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#dataset-overview"><i class="fa fa-check"></i><b>2.1</b> Dataset overview</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#limitations"><i class="fa fa-check"></i><b>2.2</b> Limitations</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
 <ul>
@@ -113,59 +114,129 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
-<p>Our data was collected from Twitter using Tweepy API. The keywords we used are “Elon Musk”,“elonmusk”,“<span class="citation">@elonmusk</span>”,“tesla”,“Tesla”. From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3th, which is a 7-day period. The data we collected were tweet objects. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. A tweet object contain not only the text of the tweet, but other valuable information worth exploring.</p>
+<p>Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk. We chose the keyword set of “Elon Musk”,“elonmusk”,“<span class="citation">@elonmusk</span>”,“tesla”,“Tesla”. From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3th, which is a 7-day period. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. The data is collected in the form of a tweet object, and it contains not only the text of the tweet, but other valuable information worth exploring.</p>
 <div id="dataset-overview" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Dataset overview</h2>
-<p>After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 37 features.</p>
-<pre><code>##   X                     created_at      id_str
-## 1 1 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18
-## 2 2 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18
-## 3 3 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18
-## 4 4 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18
-## 5 5 Thu Oct 28 15:06:24 +0000 2021 1.45374e+18
-## 6 6 Thu Oct 28 15:06:25 +0000 2021 1.45374e+18
-##                                                                                                                                                                                                           text
-## 1                                                 @cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamer\x85 https://t.co/nFKXaJFlTE
-## 2                                                                                                    @mmasnick Team up with @elonmusk to make orbiting satellite LED screens that show basic truths and facts.
-## 3                                                            @thisisbitcoin @BTCGandalf @jack and @elonmusk \n\nBOTH have created more than 1 multi billion $ companies in differe\x85 https://t.co/eZT0vgpF4S
-## 4 as a gift for all the baby shib woke up&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;@catgirlcoinfans\n@shibworld @willearl09 @BillyM2k @TheBinanceNFT\x85 https://t.co/w92jSU5iuI
-## 5                                                                                                                              @RafikovMuhammad @Dirty_Worka @elonmusk How do you know gta6 is in development?
-## 6                                                                                                          @seanmmitchell @dictionaryhill @Tesla This the part where you tweet &quot;walking to work hit different&quot;
-##   geo.type geo.coordinates             user_id user_follower_count location
-## 1     &lt;NA&gt;            NULL 1398683805305671688                  10     &lt;NA&gt;
-## 2     &lt;NA&gt;            NULL            37844102                 622     &lt;NA&gt;
-## 3     &lt;NA&gt;            NULL 1188602849204326400                4668     &lt;NA&gt;
-## 4     &lt;NA&gt;            NULL 1422318730919432197                  87     &lt;NA&gt;
-## 5     &lt;NA&gt;            NULL          3065695510                   4     &lt;NA&gt;
-## 6     &lt;NA&gt;            NULL 1206690814052753408                 208     &lt;NA&gt;
-##                                                                                                                                                                                                                                                                                                                                               full_text
-## 1                         @cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk
-## 2                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
-## 3 @thisisbitcoin @BTCGandalf @jack and @elonmusk \n\nBOTH have created more than 1 multi billion $ companies in different industries, have sounded the alarm on inflation and debt/gdp in 1 week. \n\nThe journalists + economists are like\x85.\n\n\x93These guys don\x92t have a clue about economics and how money works\x94 https://t.co/u8wgAa3qVv
-## 4                     as a gift for all the baby shib woke up&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;@catgirlcoinfans\n@shibworld @willearl09 @BillyM2k @TheBinanceNFT @army_shiba @ShibainuCoin @ShibDefender @BinancePT @elonmusk @cz_binance https://t.co/WVHCtW2CAY https://t.co/RzyTKMragn https://t.co/5J8LoUDbyD
-## 5                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
-## 6                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
-##                                                                                                                                                                                                                                                                                                                                           original_text
-## 1                         @cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk
-## 2                                                                                                                                                                                                                                             @mmasnick Team up with @elonmusk to make orbiting satellite LED screens that show basic truths and facts.
-## 3 @thisisbitcoin @BTCGandalf @jack and @elonmusk \n\nBOTH have created more than 1 multi billion $ companies in different industries, have sounded the alarm on inflation and debt/gdp in 1 week. \n\nThe journalists + economists are like\x85.\n\n\x93These guys don\x92t have a clue about economics and how money works\x94 https://t.co/u8wgAa3qVv
-## 4                     as a gift for all the baby shib woke up&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;@catgirlcoinfans\n@shibworld @willearl09 @BillyM2k @TheBinanceNFT @army_shiba @ShibainuCoin @ShibDefender @BinancePT @elonmusk @cz_binance https://t.co/WVHCtW2CAY https://t.co/RzyTKMragn https://t.co/5J8LoUDbyD
-## 5                                                                                                                                                                                                                                                                       @RafikovMuhammad @Dirty_Worka @elonmusk How do you know gta6 is in development?
-## 6                                                                                                                                                                                                                                                   @seanmmitchell @dictionaryhill @Tesla This the part where you tweet &quot;walking to work hit different&quot;
-##                                                                                                                                                                                                                                                                                                                 cleaned_text
-## 1                              cryptocevo Why KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it&lt;U+0001F525&gt;\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\nelonmusk cz_binance binance HuobiGlobal InuKishu VitalikButerin\nchinapumpwxc 
-## 2                                                                                                                                                                                                                    mmasnick Team up with elonmusk to make orbiting satellite LED screens that show basic truths and facts.
-## 3 thisisbitcoin BTCGandalf jack and elonmusk \n\nBOTH have created more than 1 multi billion $ companies in different industries, have sounded the alarm on inflation and debt/gdp in 1 week. \n\nThe journalists + economists are like\x85.\n\n\x93These guys don\x92t have a clue about economics and how money works\x94 
-## 4                                                                            as a gift for all the baby shib woke up&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;&lt;U+0001F680&gt;catgirlcoinfans\nshibworld willearl09 BillyM2k TheBinanceNFT army_shiba ShibainuCoin ShibDefender BinancePT elonmusk cz_binance 
-## 5                                                                                                                                                                                                                                               RafikovMuhammad Dirty_Worka elonmusk How do you know gta6 is in development?
-## 6                                                                                                                                                                                                                           seanmmitchell dictionaryhill Tesla This the part where you tweet &quot;walking to work hit different&quot;
-##   sentiment_score sentiment
-## 1             0.9  positive
-## 2             0.8  positive
-## 3              -1  negative
-## 4             1.1  positive
-## 5           -0.75  negative
-## 6               0   neutral</code></pre>
+<p>After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 35 features. Below is a table of the features.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">all variable of the raw data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">created_at</td>
+</tr>
+<tr class="even">
+<td align="left">id</td>
+</tr>
+<tr class="odd">
+<td align="left">id_str</td>
+</tr>
+<tr class="even">
+<td align="left">text</td>
+</tr>
+<tr class="odd">
+<td align="left">display_text_range</td>
+</tr>
+<tr class="even">
+<td align="left">source</td>
+</tr>
+<tr class="odd">
+<td align="left">truncated</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_status_id</td>
+</tr>
+<tr class="odd">
+<td align="left">in_reply_to_status_id_str</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_user_id</td>
+</tr>
+<tr class="odd">
+<td align="left">in_reply_to_user_id_str</td>
+</tr>
+<tr class="even">
+<td align="left">in_reply_to_screen_name</td>
+</tr>
+<tr class="odd">
+<td align="left">user</td>
+</tr>
+<tr class="even">
+<td align="left">geo</td>
+</tr>
+<tr class="odd">
+<td align="left">coordinates</td>
+</tr>
+<tr class="even">
+<td align="left">place</td>
+</tr>
+<tr class="odd">
+<td align="left">contributors</td>
+</tr>
+<tr class="even">
+<td align="left">is_quote_status</td>
+</tr>
+<tr class="odd">
+<td align="left">extended_tweet</td>
+</tr>
+<tr class="even">
+<td align="left">quote_count</td>
+</tr>
+<tr class="odd">
+<td align="left">reply_count</td>
+</tr>
+<tr class="even">
+<td align="left">retweet_count</td>
+</tr>
+<tr class="odd">
+<td align="left">favorite_count</td>
+</tr>
+<tr class="even">
+<td align="left">entities</td>
+</tr>
+<tr class="odd">
+<td align="left">favorited</td>
+</tr>
+<tr class="even">
+<td align="left">retweeted</td>
+</tr>
+<tr class="odd">
+<td align="left">filter_level</td>
+</tr>
+<tr class="even">
+<td align="left">lang</td>
+</tr>
+<tr class="odd">
+<td align="left">timestamp_ms</td>
+</tr>
+<tr class="even">
+<td align="left">quoted_status_id</td>
+</tr>
+<tr class="odd">
+<td align="left">quoted_status_id_str</td>
+</tr>
+<tr class="even">
+<td align="left">quoted_status</td>
+</tr>
+<tr class="odd">
+<td align="left">quoted_status_permalink</td>
+</tr>
+<tr class="even">
+<td align="left">possibly_sensitive</td>
+</tr>
+<tr class="odd">
+<td align="left">extended_entities</td>
+</tr>
+</tbody>
+</table>
+<p>One thing worth mentioning is that some of features are actually dictionaries. For example, in <code>User</code>, there are actually 40 more sub features including <code>username</code>,<code>location</code>,<code>description</code>, etc. Counting those sub features, there are over 150 features in a tweet object and we have to choose carefully from them. Details of selected features and descriptions will be elaborated in the data transformation section.</p>
+</div>
+<div id="limitations" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Limitations</h2>
+<p>Since we do not have the resource to a cloud server, we were not able to run the program 24 hours every day in the period. Moreover, the start and end time for each date is different. We will need to find a overlapping period when conducting analysis relating to time. Another limitation is about a feature called “conversation_id”. It builds up a conversation by capturing replies to a specific tweet. However, it has to be configured during the data collection phase and our dataset does not have it. We will try some other methods to construct a conversation.</p>
 
 </div>
 </div>
