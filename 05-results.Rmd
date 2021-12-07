@@ -1,1 +1,95 @@
 # Results
+```{r, message=FALSE, warning=FALSE}
+library(jsonlite)
+library(dplyr)
+library(knitr)
+library(tokenizers)
+library(syuzhet)
+library(ggplot2)
+library(tm)
+library(tidytext)
+library(wordcloud)
+```
+
+```{r}
+df <- read.csv("data/EM_df.csv")
+```
+
+```{r}
+# fix sentiment column
+for (i in 1:length(df$sentiment)){
+  if(!(df$sentiment[i] %in% c("neutral","negative","positive"))){
+    if(df$sentiment[i]>0){
+      df$sentiment[i]="positive"
+    }
+    if(df$sentiment[i]==0){
+      df$sentiment[i]="neutral"
+    }
+    if(df$sentiment[i]<0){
+      df$sentiment[i]="negative"
+    }
+  }
+}
+```
+
+
+```{r}
+# tokenize words
+#df$word_tokens <- tokenizers::tokenize_words(df$original_text)
+```
+
+
+```{r}
+# create corpus
+#df$cleaned_text = tolower(df$cleaned_text)
+text <- removeWords(df$cleaned_text, words = stopwords(kind = "en"))
+text <- tibble(txt=text)
+tweets_words <-  text %>%
+ unnest_tokens(word, txt)
+words <- tweets_words %>% count(word, sort=TRUE)
+```
+
+```{r}
+#word frequency histogram
+words %>%
+  top_n(15) %>%
+ggplot()+
+  geom_bar(aes(x=word,y=n),stat="identity")+
+  ggtitle("top 15 words of all tweets") +
+  xlab("count")+
+  ylab("word")
+```
+
+```{r}
+#word cloud
+wordcloud(words = words$word, freq = words$n, min.freq = 1,max.words=200, random.order=FALSE, rot.per=0.35, colors=brewer.pal(8, "Dark2"))
+```
+
+```{r}
+#length of tweet histogram
+#df <- df %>% mutate(length =nchar(original_text))
+#ggplot(df)+
+  #geom_histogram(aes(length),stat="count")+
+  #xlim(0,1000)+
+  #ggtitle("Distribution of length of all tweets")
+```
+
+
+```{r}
+#sentiment frequency histogram
+df %>%
+ggplot(aes(x=as.double(sentiment_score))) + 
+  geom_histogram(binwidth = 1, fill = "steelblue")+ 
+  ylab("Frequency") + 
+  xlab("sentiment score") +
+  ggtitle("Distribution of Sentiment scores of all tweets")+
+  scale_x_continuous(limits=c(-5,5))
+```
+
+```{r}
+df %>%
+ggplot()+
+  geom_bar(aes(x=as.factor(sentiment),fill = sentiment),stat = "count")+
+  ggtitle("Sentiments of all tweets")
+```
+

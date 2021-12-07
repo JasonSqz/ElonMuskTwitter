@@ -113,223 +113,216 @@
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation</h1>
-<pre><code>##                       created_at          id              id_str
-## 1 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18 1453739929423552515
-## 2 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18 1453739931256307712
-## 3 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18 1453739930367127561
-## 4 Thu Oct 28 15:06:23 +0000 2021 1.45374e+18 1453739931659116544
-## 5 Thu Oct 28 15:06:24 +0000 2021 1.45374e+18 1453739935811342339
-## 6 Thu Oct 28 15:06:25 +0000 2021 1.45374e+18 1453739937879179264
-##                                                                                                                                              text
-## 1 @cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it🔥\nStreamer… https://t.co/nFKXaJFlTE
-## 2                                       @mmasnick Team up with @elonmusk to make orbiting satellite LED screens that show basic truths and facts.
-## 3  @thisisbitcoin @BTCGandalf @jack and @elonmusk \n\nBOTH have created more than 1 multi billion $ companies in differe… https://t.co/eZT0vgpF4S
-## 4   as a gift for all the baby shib woke up🚀🚀🚀🚀🚀🚀@catgirlcoinfans\n@shibworld @willearl09 @BillyM2k @TheBinanceNFT… https://t.co/w92jSU5iuI
-## 5                                                                 @RafikovMuhammad @Dirty_Worka @elonmusk How do you know gta6 is in development?
-## 6                                             @seanmmitchell @dictionaryhill @Tesla This the part where you tweet &quot;walking to work hit different&quot;
+<pre><code>##                       created_at           id              id_str
+## 1 Tue Nov 02 15:41:25 +0000 2021 1.455561e+18 1455560688257179659
+## 2 Tue Nov 02 15:41:25 +0000 2021 1.455561e+18 1455560688856752134
+## 3 Tue Nov 02 15:41:27 +0000 2021 1.455561e+18 1455560693747310594
+## 4 Tue Nov 02 15:41:27 +0000 2021 1.455561e+18 1455560695022489602
+## 5 Tue Nov 02 15:41:27 +0000 2021 1.455561e+18 1455560697681793039
+## 6 Tue Nov 02 15:41:30 +0000 2021 1.455561e+18 1455560706414235649
+##                                                                                                                                           text
+## 1 @AGlobalCitizen @AlexanderBruyns @PPathole @elonmusk @SpaceX We would also somehow need to create some sort of arti… https://t.co/ZqSAw5f16z
+## 2                                                                           Because they printed money to bail out banks! #Bitcoin fixes this.
+## 3                                                                                             hello sir @elonmusk hope you check this project.
+## 4 @elonmusk @flcnhvy @adamhoov @Forbes You&#39;re jealous politicians like Biden can be trusted in office. Your limited d… https://t.co/lj0C9wRrFD
+## 5 @elonmusk  is it true you said if the UN proves u and show u how 6B$ can eradicate poverty in the world u will help… https://t.co/SizFOctYBQ
+## 6          @Gielompik2 @Trade_At_Ease @elonmusk The bean is a metaphor bro.  His translation is correct that is the actual meaning of the poem
 ##   display_text_range
-## 1            12, 140
-## 2            10, 105
-## 3            27, 140
-## 4             0, 140
-## 5             40, 79
-## 6             38, 99
+## 1            61, 140
+## 2               NULL
+## 3               NULL
+## 4            37, 140
+## 5               NULL
+## 6            37, 131
 ##                                                                                 source
 ## 1 &lt;a href=&quot;http://twitter.com/download/android&quot; rel=&quot;nofollow&quot;&gt;Twitter for Android&lt;/a&gt;
-## 2              &lt;a href=&quot;https://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Twitter Web App&lt;/a&gt;
-## 3   &lt;a href=&quot;http://twitter.com/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;
-## 4 &lt;a href=&quot;http://twitter.com/download/android&quot; rel=&quot;nofollow&quot;&gt;Twitter for Android&lt;/a&gt;
-## 5 &lt;a href=&quot;http://twitter.com/download/android&quot; rel=&quot;nofollow&quot;&gt;Twitter for Android&lt;/a&gt;
-## 6 &lt;a href=&quot;http://twitter.com/download/android&quot; rel=&quot;nofollow&quot;&gt;Twitter for Android&lt;/a&gt;
+## 2   &lt;a href=&quot;http://twitter.com/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;
+## 3 &lt;a href=&quot;http://twitter.com/download/android&quot; rel=&quot;nofollow&quot;&gt;Twitter for Android&lt;/a&gt;
+## 4              &lt;a href=&quot;https://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Twitter Web App&lt;/a&gt;
+## 5   &lt;a href=&quot;http://twitter.com/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;
+## 6   &lt;a href=&quot;http://twitter.com/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;
 ##   truncated in_reply_to_status_id in_reply_to_status_id_str in_reply_to_user_id
-## 1      TRUE          1.453728e+18       1453727854491955200        1.962291e+09
-## 2     FALSE          1.453738e+18       1453737620895252491        1.270191e+06
-## 3      TRUE          1.453737e+18       1453737316636192780        1.294375e+09
-## 4      TRUE                    NA                      &lt;NA&gt;                  NA
-## 5     FALSE          1.453579e+18       1453578715095605248        1.266199e+18
-## 6     FALSE          1.453727e+18       1453727251900493824        1.720608e+07
+## 1      TRUE          1.455378e+18       1455377756921991169        8.533954e+07
+## 2     FALSE                    NA                      &lt;NA&gt;                  NA
+## 3     FALSE                    NA                      &lt;NA&gt;                  NA
+## 4      TRUE          1.455234e+18       1455233931880587267        4.419640e+07
+## 5      TRUE                    NA                      &lt;NA&gt;        4.419640e+07
+## 6     FALSE          1.455328e+18       1455328357730635777        1.414468e+18
 ##   in_reply_to_user_id_str in_reply_to_screen_name      user.id
-## 1              1962290894              cryptocevo 1.398684e+18
-## 2                 1270191                mmasnick 3.784410e+07
-## 3              1294374996           thisisbitcoin 1.188603e+18
-## 4                    &lt;NA&gt;                    &lt;NA&gt; 1.422319e+18
-## 5     1266199342177759235         RafikovMuhammad 3.065696e+09
-## 6                17206078           seanmmitchell 1.206691e+18
-##           user.id_str           user.name user.screen_name
-## 1 1398683805305671688 Alireza_Golmohammad  alireza74687227
-## 2            37844102      John Stillwell   the_jstillwell
-## 3 1188602849204326400         Pi Prime Pi        PiPrimePi
-## 4 1422318730919432197                 Mia        Mialunas2
-## 5          3065695510               Yoshi   SuperBabyYoshi
-## 6 1206690814052753408            Vamp NFT          ev_vamp
-##                    user.location
-## 1                           &lt;NA&gt;
-## 2 Loc: other side of your screen
-## 3                           &lt;NA&gt;
-## 4                           &lt;NA&gt;
-## 5                           &lt;NA&gt;
-## 6                           &lt;NA&gt;
-##                                                    user.url
-## 1                                                      &lt;NA&gt;
-## 2                                                      &lt;NA&gt;
-## 3                                                      &lt;NA&gt;
-## 4  https://accounts.binance.com/pt-BR/register?ref=26156826
-## 5                                                      &lt;NA&gt;
-## 6 https://www.youtube.com/channel/UCEKKe68hzp0GmQWscjZeZAQ/
-##                                                                                                                                                user.description
-## 1                                                                                                                                                          &lt;NA&gt;
-## 2                                                                                     Filling in your profile information will help people find you on Twitter.
-## 3                                        The best ideas I have ever heard came from people I disagreed with at the time. They were ahead of me. Plus   #bitcoin
-## 4 please send it to me if you win any cryptocurrency or you can donate it to me as i need it thank you very much...\n0x76feE48fb3aA75cF1475Dd9b1552C88FdD00Ad4A
-## 5                                                                                                                                                          &lt;NA&gt;
-## 6       Tesla/ EV YouTuber that doesn&#39;t upload and Model 3 Tesla Owner. Working my dream job. NFT enthusiasts | Junior NFT Strategist\nhttp://ts.la/jacobi95231
+## 1                85339539          AGlobalCitizen 2.447291e+08
+## 2                    &lt;NA&gt;                    &lt;NA&gt; 1.365330e+08
+## 3                    &lt;NA&gt;                    &lt;NA&gt; 1.180839e+18
+## 4                44196397                elonmusk 2.625212e+08
+## 5                44196397                elonmusk 1.257064e+18
+## 6     1414467591444307968              Gielompik2 1.377484e+18
+##           user.id_str         user.name user.screen_name user.location
+## 1           244729063           Phil 🇵🇸         pfil1312        he/him
+## 2           136532968   Pratiwi Gunawan        pretcieux     Indonesia
+## 3 1180838738013802497        アチャ. 🍀         loeyacha       she/her
+## 4           262521203 🔅Circes Circle🔅    AsylsaSyndare   Mount Circe
+## 5 1257063701837946888    hussein chehab  husseinchehab13 Côte d&#39;Ivoire
+## 6 1377484114744475648    Mywarmsunshine  Mywarmsunshine2          &lt;NA&gt;
+##                                               user.url
+## 1   https://www.amazon.de/hz/wishlist/ls/2VM20CFYSF30E
+## 2 https://youtube.com/channel/UCHPszYL1EStzAY1C1Uc7_Jg
+## 3                                                 &lt;NA&gt;
+## 4                                                 &lt;NA&gt;
+## 5                                                 &lt;NA&gt;
+## 6                                                 &lt;NA&gt;
+##                                                                                                                           user.description
+## 1                                                                                                27 | arm, aber sexy | gay space communist
+## 2                                                                                                             Better, not bitter. #bitcoin
+## 3                                                                                                                         • 𝔅𝔏 𝔢𝔫𝔱𝔥𝔲! ✨🍀
+## 4           &quot;That is one thing gods and mortals share. When we are young, we think ourselves the first to have each feeling in the world.”
+## 5 Entrepreneur ……………………………………………. « The Game is won in the mind ». #LifeGoal : want to create an association to help the poverty in Africa
+## 6                                                                                                                                     &lt;NA&gt;
 ##   user.translator_type user.protected user.verified user.followers_count
-## 1                 none          FALSE         FALSE                   10
-## 2                 none          FALSE         FALSE                  622
-## 3                 none          FALSE         FALSE                 4668
-## 4                 none          FALSE         FALSE                   87
-## 5                 none          FALSE         FALSE                    4
-## 6                 none          FALSE         FALSE                  208
+## 1                 none          FALSE         FALSE                  742
+## 2                 none          FALSE         FALSE                  498
+## 3                 none          FALSE         FALSE                 1962
+## 4                 none          FALSE         FALSE                   11
+## 5                 none          FALSE         FALSE                   11
+## 6                 none          FALSE         FALSE                    2
 ##   user.friends_count user.listed_count user.favourites_count
-## 1                 73                 1                  1561
-## 2               1476                 0                 67662
-## 3                358                83                  5627
-## 4                918                 4                    70
-## 5                  2                 0                    21
-## 6                695                 2                  4878
+## 1               1529                30                 96280
+## 2                319                 5                  3301
+## 3               2894                 4                107377
+## 4                204                 0                   722
+## 5                203                 0                   921
+## 6                 11                 0                    16
 ##   user.statuses_count                user.created_at user.utc_offset
-## 1                3249 Sat May 29 16:53:27 +0000 2021              NA
-## 2               28560 Tue May 05 03:17:51 +0000 2009              NA
-## 3               10232 Sun Oct 27 23:46:26 +0000 2019              NA
-## 4                 184 Mon Aug 02 22:09:59 +0000 2021              NA
-## 5                 331 Sun Mar 01 13:45:13 +0000 2015              NA
-## 6                3803 Mon Dec 16 21:41:45 +0000 2019              NA
+## 1              249888 Sun Jan 30 00:40:06 +0000 2011              NA
+## 2                7985 Sat Apr 24 06:04:33 +0000 2010              NA
+## 3               30221 Sun Oct 06 13:34:55 +0000 2019              NA
+## 4                1101 Tue Mar 08 05:59:47 +0000 2011              NA
+## 5                  36 Sun May 03 21:45:25 +0000 2020              NA
+## 6                  14 Thu Apr 01 04:53:08 +0000 2021              NA
 ##   user.time_zone user.geo_enabled user.lang user.contributors_enabled
-## 1             NA            FALSE        NA                     FALSE
-## 2             NA            FALSE        NA                     FALSE
+## 1             NA             TRUE        NA                     FALSE
+## 2             NA             TRUE        NA                     FALSE
 ## 3             NA            FALSE        NA                     FALSE
 ## 4             NA            FALSE        NA                     FALSE
 ## 5             NA            FALSE        NA                     FALSE
 ## 6             NA            FALSE        NA                     FALSE
 ##   user.is_translator user.profile_background_color
-## 1              FALSE                        F5F8FA
-## 2              FALSE                        BADFCD
+## 1              FALSE                        1A1B1F
+## 2              FALSE                        C0DEED
 ## 3              FALSE                        F5F8FA
-## 4              FALSE                        F5F8FA
-## 5              FALSE                        C0DEED
+## 4              FALSE                        C0DEED
+## 5              FALSE                        F5F8FA
 ## 6              FALSE                        F5F8FA
-##                   user.profile_background_image_url
-## 1                                                  
-## 2 http://abs.twimg.com/images/themes/theme12/bg.gif
+##                  user.profile_background_image_url
+## 1 http://abs.twimg.com/images/themes/theme9/bg.gif
+## 2 http://abs.twimg.com/images/themes/theme1/bg.png
+## 3                                                 
+## 4 http://abs.twimg.com/images/themes/theme1/bg.png
+## 5                                                 
+## 6                                                 
+##             user.profile_background_image_url_https
+## 1 https://abs.twimg.com/images/themes/theme9/bg.gif
+## 2 https://abs.twimg.com/images/themes/theme1/bg.png
 ## 3                                                  
-## 4                                                  
-## 5  http://abs.twimg.com/images/themes/theme1/bg.png
+## 4 https://abs.twimg.com/images/themes/theme1/bg.png
+## 5                                                  
 ## 6                                                  
-##              user.profile_background_image_url_https
-## 1                                                   
-## 2 https://abs.twimg.com/images/themes/theme12/bg.gif
-## 3                                                   
-## 4                                                   
-## 5  https://abs.twimg.com/images/themes/theme1/bg.png
-## 6                                                   
 ##   user.profile_background_tile user.profile_link_color
-## 1                        FALSE                  1DA1F2
-## 2                        FALSE                  FF0000
+## 1                        FALSE                  CC5500
+## 2                        FALSE                  0084B4
 ## 3                        FALSE                  1DA1F2
 ## 4                        FALSE                  1DA1F2
 ## 5                        FALSE                  1DA1F2
 ## 6                        FALSE                  1DA1F2
 ##   user.profile_sidebar_border_color user.profile_sidebar_fill_color
-## 1                            C0DEED                          DDEEF6
-## 2                            000000                          FFF7CC
+## 1                            000000                          252429
+## 2                            C0DEED                          DDEEF6
 ## 3                            C0DEED                          DDEEF6
 ## 4                            C0DEED                          DDEEF6
 ## 5                            C0DEED                          DDEEF6
 ## 6                            C0DEED                          DDEEF6
 ##   user.profile_text_color user.profile_use_background_image
-## 1                  333333                              TRUE
-## 2                  0C3E53                              TRUE
+## 1                  666666                              TRUE
+## 2                  333333                              TRUE
 ## 3                  333333                              TRUE
 ## 4                  333333                              TRUE
 ## 5                  333333                              TRUE
 ## 6                  333333                              TRUE
 ##                                                        user.profile_image_url
-## 1 http://pbs.twimg.com/profile_images/1438550946955595777/764qeZur_normal.jpg
-## 2 http://pbs.twimg.com/profile_images/1152152333901553664/uZkMRx76_normal.jpg
-## 3 http://pbs.twimg.com/profile_images/1255855036531453953/Mrz2Q8GN_normal.jpg
-## 4 http://pbs.twimg.com/profile_images/1429115662354558978/-HSXplfN_normal.jpg
-## 5 http://pbs.twimg.com/profile_images/572030586080854016/6BYnpq5S_normal.jpeg
-## 6 http://pbs.twimg.com/profile_images/1451021524438237185/7rvu1C8h_normal.jpg
+## 1 http://pbs.twimg.com/profile_images/1445029804542238727/l6X9Rj05_normal.jpg
+## 2 http://pbs.twimg.com/profile_images/1442460451774758929/WNlPA2cj_normal.jpg
+## 3 http://pbs.twimg.com/profile_images/1447604799885635587/6Acy-DmH_normal.jpg
+## 4 http://pbs.twimg.com/profile_images/1445599816549949446/lAsOtmBe_normal.jpg
+## 5 http://pbs.twimg.com/profile_images/1455541328838897668/-o-7DmEu_normal.jpg
+## 6 http://pbs.twimg.com/profile_images/1377484200513789952/CIwFgBo3_normal.jpg
 ##                                                   user.profile_image_url_https
-## 1 https://pbs.twimg.com/profile_images/1438550946955595777/764qeZur_normal.jpg
-## 2 https://pbs.twimg.com/profile_images/1152152333901553664/uZkMRx76_normal.jpg
-## 3 https://pbs.twimg.com/profile_images/1255855036531453953/Mrz2Q8GN_normal.jpg
-## 4 https://pbs.twimg.com/profile_images/1429115662354558978/-HSXplfN_normal.jpg
-## 5 https://pbs.twimg.com/profile_images/572030586080854016/6BYnpq5S_normal.jpeg
-## 6 https://pbs.twimg.com/profile_images/1451021524438237185/7rvu1C8h_normal.jpg
+## 1 https://pbs.twimg.com/profile_images/1445029804542238727/l6X9Rj05_normal.jpg
+## 2 https://pbs.twimg.com/profile_images/1442460451774758929/WNlPA2cj_normal.jpg
+## 3 https://pbs.twimg.com/profile_images/1447604799885635587/6Acy-DmH_normal.jpg
+## 4 https://pbs.twimg.com/profile_images/1445599816549949446/lAsOtmBe_normal.jpg
+## 5 https://pbs.twimg.com/profile_images/1455541328838897668/-o-7DmEu_normal.jpg
+## 6 https://pbs.twimg.com/profile_images/1377484200513789952/CIwFgBo3_normal.jpg
+##                                                user.profile_banner_url
+## 1           https://pbs.twimg.com/profile_banners/244729063/1628936214
+## 2           https://pbs.twimg.com/profile_banners/136532968/1634745121
+## 3 https://pbs.twimg.com/profile_banners/1180838738013802497/1633970911
+## 4           https://pbs.twimg.com/profile_banners/262521203/1628479934
+## 5 https://pbs.twimg.com/profile_banners/1257063701837946888/1629646368
+## 6                                                                 &lt;NA&gt;
 ##   user.default_profile user.default_profile_image user.following
-## 1                 TRUE                      FALSE             NA
+## 1                FALSE                      FALSE             NA
 ## 2                FALSE                      FALSE             NA
 ## 3                 TRUE                      FALSE             NA
 ## 4                 TRUE                      FALSE             NA
 ## 5                 TRUE                      FALSE             NA
 ## 6                 TRUE                      FALSE             NA
-##   user.follow_request_sent user.notifications user.withheld_in_countries
-## 1                       NA                 NA                       NULL
-## 2                       NA                 NA                       NULL
-## 3                       NA                 NA                       NULL
-## 4                       NA                 NA                       NULL
-## 5                       NA                 NA                       NULL
-## 6                       NA                 NA                       NULL
-##                                                user.profile_banner_url geo.type
-## 1                                                                 &lt;NA&gt;     &lt;NA&gt;
-## 2                                                                 &lt;NA&gt;     &lt;NA&gt;
-## 3 https://pbs.twimg.com/profile_banners/1188602849204326400/1611929068     &lt;NA&gt;
-## 4 https://pbs.twimg.com/profile_banners/1422318730919432197/1631331011     &lt;NA&gt;
-## 5                                                                 &lt;NA&gt;     &lt;NA&gt;
-## 6 https://pbs.twimg.com/profile_banners/1206690814052753408/1634519158     &lt;NA&gt;
-##   geo.coordinates coordinates.type coordinates.coordinates place.id place.url
-## 1            NULL             &lt;NA&gt;                    NULL     &lt;NA&gt;      &lt;NA&gt;
-## 2            NULL             &lt;NA&gt;                    NULL     &lt;NA&gt;      &lt;NA&gt;
-## 3            NULL             &lt;NA&gt;                    NULL     &lt;NA&gt;      &lt;NA&gt;
-## 4            NULL             &lt;NA&gt;                    NULL     &lt;NA&gt;      &lt;NA&gt;
-## 5            NULL             &lt;NA&gt;                    NULL     &lt;NA&gt;      &lt;NA&gt;
-## 6            NULL             &lt;NA&gt;                    NULL     &lt;NA&gt;      &lt;NA&gt;
-##   place.place_type place.name place.full_name place.country_code place.country
-## 1             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;               &lt;NA&gt;          &lt;NA&gt;
-## 2             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;               &lt;NA&gt;          &lt;NA&gt;
-## 3             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;               &lt;NA&gt;          &lt;NA&gt;
-## 4             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;               &lt;NA&gt;          &lt;NA&gt;
-## 5             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;               &lt;NA&gt;          &lt;NA&gt;
-## 6             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;               &lt;NA&gt;          &lt;NA&gt;
-##   place.bounding_box.type place.bounding_box.coordinates contributors
-## 1                    &lt;NA&gt;                           NULL           NA
-## 2                    &lt;NA&gt;                           NULL           NA
-## 3                    &lt;NA&gt;                           NULL           NA
-## 4                    &lt;NA&gt;                           NULL           NA
-## 5                    &lt;NA&gt;                           NULL           NA
-## 6                    &lt;NA&gt;                           NULL           NA
-##   is_quote_status
-## 1           FALSE
-## 2           FALSE
-## 3           FALSE
-## 4           FALSE
-## 5           FALSE
-## 6           FALSE
-##                                                                                                                                                                                                                                                                                                                    extended_tweet.full_text
-## 1                       @cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it🔥\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk
-## 2                                                                                                                                                                                                                                                                                                                                      &lt;NA&gt;
-## 3 @thisisbitcoin @BTCGandalf @jack and @elonmusk \n\nBOTH have created more than 1 multi billion $ companies in different industries, have sounded the alarm on inflation and debt/gdp in 1 week. \n\nThe journalists + economists are like….\n\n“These guys don’t have a clue about economics and how money works” https://t.co/u8wgAa3qVv
-## 4                                                                     as a gift for all the baby shib woke up🚀🚀🚀🚀🚀🚀@catgirlcoinfans\n@shibworld @willearl09 @BillyM2k @TheBinanceNFT @army_shiba @ShibainuCoin @ShibDefender @BinancePT @elonmusk @cz_binance https://t.co/WVHCtW2CAY https://t.co/RzyTKMragn https://t.co/5J8LoUDbyD
-## 5                                                                                                                                                                                                                                                                                                                                      &lt;NA&gt;
-## 6                                                                                                                                                                                                                                                                                                                                      &lt;NA&gt;
-##   extended_tweet.display_text_range extended_tweet.entities.hashtags
-## 1                           12, 277                    KISHU, 16, 22
-## 2                              NULL                             NULL
-## 3                           27, 299                             NULL
-## 4                            0, 230                             NULL
-## 5                              NULL                             NULL
-## 6                              NULL                             NULL
+##   user.follow_request_sent user.notifications user.withheld_in_countries geo
+## 1                       NA                 NA                       NULL  NA
+## 2                       NA                 NA                       NULL  NA
+## 3                       NA                 NA                       NULL  NA
+## 4                       NA                 NA                       NULL  NA
+## 5                       NA                 NA                       NULL  NA
+## 6                       NA                 NA                       NULL  NA
+##   coordinates place.id place.url place.place_type place.name place.full_name
+## 1          NA     &lt;NA&gt;      &lt;NA&gt;             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;
+## 2          NA     &lt;NA&gt;      &lt;NA&gt;             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;
+## 3          NA     &lt;NA&gt;      &lt;NA&gt;             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;
+## 4          NA     &lt;NA&gt;      &lt;NA&gt;             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;
+## 5          NA     &lt;NA&gt;      &lt;NA&gt;             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;
+## 6          NA     &lt;NA&gt;      &lt;NA&gt;             &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;
+##   place.country_code place.country place.bounding_box.type
+## 1               &lt;NA&gt;          &lt;NA&gt;                    &lt;NA&gt;
+## 2               &lt;NA&gt;          &lt;NA&gt;                    &lt;NA&gt;
+## 3               &lt;NA&gt;          &lt;NA&gt;                    &lt;NA&gt;
+## 4               &lt;NA&gt;          &lt;NA&gt;                    &lt;NA&gt;
+## 5               &lt;NA&gt;          &lt;NA&gt;                    &lt;NA&gt;
+## 6               &lt;NA&gt;          &lt;NA&gt;                    &lt;NA&gt;
+##   place.bounding_box.coordinates contributors is_quote_status
+## 1                           NULL           NA           FALSE
+## 2                           NULL           NA            TRUE
+## 3                           NULL           NA            TRUE
+## 4                           NULL           NA           FALSE
+## 5                           NULL           NA           FALSE
+## 6                           NULL           NA           FALSE
+##                                                                                                                                                                                                                                        extended_tweet.full_text
+## 1 @AGlobalCitizen @AlexanderBruyns @PPathole @elonmusk @SpaceX We would also somehow need to create some sort of artificial magnetic field around the entire planet to make sure that any biomass we take there isn&#39;t immediately destroyed by cosmic radiation
+## 2                                                                                                                                                                                                                                                          &lt;NA&gt;
+## 3                                                                                                                                                                                                                                                          &lt;NA&gt;
+## 4                                 @elonmusk @flcnhvy @adamhoov @Forbes You&#39;re jealous politicians like Biden can be trusted in office. Your limited decision making is murky, who programmed your shitty tree? Oh that&#39;s right, your dad was a weird dominator.
+## 5                                                                                                  @elonmusk  is it true you said if the UN proves u and show u how 6B$ can eradicate poverty in the world u will help them ? #goat #Tesla #Spacex #GodBlessYou
+## 6                                                                                                                                                                                                                                                          &lt;NA&gt;
+##   extended_tweet.display_text_range
+## 1                           61, 253
+## 2                              NULL
+## 3                              NULL
+## 4                           37, 221
+## 5                            0, 156
+## 6                              NULL
+##                                           extended_tweet.entities.hashtags
+## 1                                                                     NULL
+## 2                                                                     NULL
+## 3                                                                     NULL
+## 4                                                                     NULL
+## 5 goat, Tesla, Spacex, GodBlessYou, 123, 128, 129, 135, 136, 143, 144, 156
+## 6                                                                     NULL
 ##   extended_tweet.entities.urls
 ## 1                         NULL
 ## 2                         NULL
@@ -337,87 +330,94 @@
 ## 4                         NULL
 ## 5                         NULL
 ## 6                         NULL
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    extended_tweet.entities.user_mentions
-## 1                                                                                                                                                                                                                                                                                                    cryptocevo, elonmusk, cz_binance, binance, HuobiGlobal, InuKishu, VitalikButerin, ChinaPumpWXC, cevo, Elon Musk, CZ 🔶 Binance, Binance, Huobi, Kishu Inu, vitalik.eth, 中國密碼鯨公司WHALE CHINESE 🇨🇳🐳🚀🌖, 1962290894, 44196397, 902926941413453824, 877807935493033984, 914029581610377216, 1333281524930781184, 295218901, 331968891, 1962290894, 44196397, 902926941413453824, 877807935493033984, 914029581610377217, 1333281524930781192, 295218901, 331968891, 0, 11, 194, 203, 204, 215, 216, 224, 225, 237, 238, 247, 248, 263, 264, 277
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   NULL
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            thisisbitcoin, BTCGandalf, jack, elonmusk, this is bitcoin, Bitcoin Gandalf, jack⚡️, Elon Musk, 1294374996, 1359483955695681536, 12, 44196397, 1294374996, 1359483955695681538, 12, 44196397, 0, 14, 15, 26, 27, 32, 37, 46
-## 4 catgirlcoinfans, shibworld, willearl09, BillyM2k, TheBinanceNFT, army_shiba, ShibainuCoin, ShibDefender, BinancePT, elonmusk, cz_binance, Catgirlcoin To The Moon 🚀, Shiba World, SHIB COIN, Shibetoshi Nakamoto, Binance NFT, $SHIB KNIGHT, Shiba Inu, ShibDefender, Binance Português, Elon Musk, CZ 🔶 Binance, 1412675734229880832, 1401406260000460800, 1371413596496752640, 30699048, 1400391752368992256, 1383802058625609728, 1355918864509509632, 1.397304562395e+18, 1249598767617019904, 44196397, 902926941413453824, 1412675734229880832, 1401406260000460800, 1371413596496752640, 30699048, 1400391752368992260, 1383802058625609740, 1355918864509509637, 1397304562395004928, 1249598767617019904, 44196397, 902926941413453824, 45, 61, 62, 72, 73, 84, 85, 94, 95, 109, 110, 121, 122, 135, 136, 149, 150, 160, 161, 170, 171, 182
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   NULL
-## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   NULL
-##   extended_tweet.entities.symbols
-## 1  KISHU, KISHU, 25, 31, 125, 131
-## 2                            NULL
-## 3                            NULL
-## 4                            NULL
-## 5                            NULL
-## 6                            NULL
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  extended_tweet.entities.media
-## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     1453739915854843904, 1453739915854843919, 278, 301, http://pbs.twimg.com/media/FCy4wFBVkA8laNP.jpg, https://pbs.twimg.com/media/FCy4wFBVkA8laNP.jpg, https://t.co/2b8bGNgoAk, pic.twitter.com/2b8bGNgoAk, https://twitter.com/alireza74687227/status/1453739929423552515/photo/1, photo, 150, 150, crop, 680, 680, fit, 1080, 1080, fit, 1080, 1080, fit
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         NULL
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1453739924977594368, 1453739924977594372, 300, 323, Bye Clown GIF, http://pbs.twimg.com/tweet_video_thumb/FCy4wnAXsAQjQOi.jpg, https://pbs.twimg.com/tweet_video_thumb/FCy4wnAXsAQjQOi.jpg, https://t.co/u8wgAa3qVv, pic.twitter.com/u8wgAa3qVv, https://twitter.com/PiPrimePi/status/1453739930367127561/photo/1, animated_gif, 249, 143, 0, video/mp4, https://video.twimg.com/tweet_video/FCy4wnAXsAQjQOi.mp4, 150, 150, crop, 498, 286, fit, 498, 286, fit, 498, 286, fit
-## 4 1453739928097939456, 1452614632271712256, 1452637901125296128, 1453739928097939456, 1452614632271712265, 1452637901125296129, 231, 254, 183, 206, 207, 230, http://pbs.twimg.com/media/FCy4wyoUYAA7ATI.jpg, http://pbs.twimg.com/media/FCi5T9AXEAk8hRN.jpg, http://pbs.twimg.com/media/FCjOeYPXoAEb8rR.jpg, https://pbs.twimg.com/media/FCy4wyoUYAA7ATI.jpg, https://pbs.twimg.com/media/FCi5T9AXEAk8hRN.jpg, https://pbs.twimg.com/media/FCjOeYPXoAEb8rR.jpg, https://t.co/5J8LoUDbyD, https://t.co/WVHCtW2CAY, https://t.co/RzyTKMragn, pic.twitter.com/5J8LoUDbyD, pic.twitter.com/WVHCtW2CAY, pic.twitter.com/RzyTKMragn, https://twitter.com/Mialunas2/status/1453739931659116544/photo/1, https://twitter.com/Mialunas2/status/1452614640484196365/photo/1, https://twitter.com/Mialunas2/status/1452637910323318792/photo/1, photo, photo, photo, 150, 150, 150, 150, 150, 150, crop, crop, crop, 337, 322, 337, 680, 680, 680, fit, fit, fit, 720, 720, 709, 1452, 1520, 1431, fit, fit, fit, 595, 568, 595, 1200, 1200, 1200, fit, fit, fit, NA, 1452614640484196352, 1452637910323318784, NA, 1452614640484196365, 1452637910323318792, NA, 1422318730919432192, 1422318730919432192, NA, 1422318730919432197, 1422318730919432197
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         NULL
-## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         NULL
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           extended_tweet.media
-## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     1453739915854843904, 1453739915854843919, 278, 301, http://pbs.twimg.com/media/FCy4wFBVkA8laNP.jpg, https://pbs.twimg.com/media/FCy4wFBVkA8laNP.jpg, https://t.co/2b8bGNgoAk, pic.twitter.com/2b8bGNgoAk, https://twitter.com/alireza74687227/status/1453739929423552515/photo/1, photo, 150, 150, crop, 680, 680, fit, 1080, 1080, fit, 1080, 1080, fit
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         NULL
-## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1453739924977594368, 1453739924977594372, 300, 323, Bye Clown GIF, http://pbs.twimg.com/tweet_video_thumb/FCy4wnAXsAQjQOi.jpg, https://pbs.twimg.com/tweet_video_thumb/FCy4wnAXsAQjQOi.jpg, https://t.co/u8wgAa3qVv, pic.twitter.com/u8wgAa3qVv, https://twitter.com/PiPrimePi/status/1453739930367127561/photo/1, animated_gif, 249, 143, 0, video/mp4, https://video.twimg.com/tweet_video/FCy4wnAXsAQjQOi.mp4, 150, 150, crop, 498, 286, fit, 498, 286, fit, 498, 286, fit
-## 4 1453739928097939456, 1452614632271712256, 1452637901125296128, 1453739928097939456, 1452614632271712265, 1452637901125296129, 231, 254, 183, 206, 207, 230, http://pbs.twimg.com/media/FCy4wyoUYAA7ATI.jpg, http://pbs.twimg.com/media/FCi5T9AXEAk8hRN.jpg, http://pbs.twimg.com/media/FCjOeYPXoAEb8rR.jpg, https://pbs.twimg.com/media/FCy4wyoUYAA7ATI.jpg, https://pbs.twimg.com/media/FCi5T9AXEAk8hRN.jpg, https://pbs.twimg.com/media/FCjOeYPXoAEb8rR.jpg, https://t.co/5J8LoUDbyD, https://t.co/WVHCtW2CAY, https://t.co/RzyTKMragn, pic.twitter.com/5J8LoUDbyD, pic.twitter.com/WVHCtW2CAY, pic.twitter.com/RzyTKMragn, https://twitter.com/Mialunas2/status/1453739931659116544/photo/1, https://twitter.com/Mialunas2/status/1452614640484196365/photo/1, https://twitter.com/Mialunas2/status/1452637910323318792/photo/1, photo, photo, photo, 150, 150, 150, 150, 150, 150, crop, crop, crop, 337, 322, 337, 680, 680, 680, fit, fit, fit, 720, 720, 709, 1452, 1520, 1431, fit, fit, fit, 595, 568, 595, 1200, 1200, 1200, fit, fit, fit, NA, 1452614640484196352, 1452637910323318784, NA, 1452614640484196365, 1452637910323318792, NA, 1422318730919432192, 1422318730919432192, NA, 1422318730919432197, 1422318730919432197
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         NULL
-## 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         NULL
-##   quote_count reply_count retweet_count favorite_count entities.hashtags
-## 1           0           0             0              0     KISHU, 16, 22
-## 2           0           0             0              0              NULL
-## 3           0           0             0              0              NULL
-## 4           0           0             0              0              NULL
-## 5           0           0             0              0              NULL
-## 6           0           0             0              0              NULL
+##                                                                                                                                                                                                                                                         extended_tweet.entities.user_mentions
+## 1 AGlobalCitizen, AlexanderBruyns, PPathole, elonmusk, SpaceX, Michael Scott Gary, Espy, Pranay Pathole, Elon Musk, SpaceX, 85339539, 957292025879154688, 1291945442, 44196397, 34743251, 85339539, 957292025879154689, 1291945442, 44196397, 34743251, 0, 15, 16, 32, 33, 42, 43, 52, 53, 60
+## 2                                                                                                                                                                                                                                                                                        NULL
+## 3                                                                                                                                                                                                                                                                                        NULL
+## 4                                                     elonmusk, flcnhvy, adamhoov, Forbes, Elon Musk, Viv ✶, mcsplittsville, Forbes, 44196397, 1060180551544528896, 1395182397256200192, 91478624, 44196397, 1060180551544528897, 1395182397256200193, 91478624, 0, 9, 10, 18, 19, 28, 29, 36
+## 5                                                                                                                                                                                                                                               elonmusk, Elon Musk, 44196397, 44196397, 0, 9
+## 6                                                                                                                                                                                                                                                                                        NULL
+##   extended_tweet.entities.symbols extended_tweet.entities.media
+## 1                            NULL                          NULL
+## 2                            NULL                          NULL
+## 3                            NULL                          NULL
+## 4                            NULL                          NULL
+## 5                            NULL                          NULL
+## 6                            NULL                          NULL
+##   extended_tweet.media quote_count reply_count retweet_count favorite_count
+## 1                 NULL           0           0             0              0
+## 2                 NULL           0           0             0              0
+## 3                 NULL           0           0             0              0
+## 4                 NULL           0           0             0              0
+## 5                 NULL           0           0             0              0
+## 6                 NULL           0           0             0              0
+##   entities.hashtags
+## 1              NULL
+## 2   Bitcoin, 46, 54
+## 3              NULL
+## 4              NULL
+## 5              NULL
+## 6              NULL
 ##                                                                                                          entities.urls
-## 1 https://t.co/nFKXaJFlTE, https://twitter.com/i/web/status/1453739929423552515, twitter.com/i/web/status/1…, 117, 140
+## 1 https://t.co/ZqSAw5f16z, https://twitter.com/i/web/status/1455560688257179659, twitter.com/i/web/status/1…, 117, 140
 ## 2                                                                                                                 NULL
-## 3 https://t.co/eZT0vgpF4S, https://twitter.com/i/web/status/1453739930367127561, twitter.com/i/web/status/1…, 117, 140
-## 4 https://t.co/w92jSU5iuI, https://twitter.com/i/web/status/1453739931659116544, twitter.com/i/web/status/1…, 111, 134
-## 5                                                                                                                 NULL
+## 3                                                                                                                 NULL
+## 4 https://t.co/lj0C9wRrFD, https://twitter.com/i/web/status/1455560695022489602, twitter.com/i/web/status/1…, 117, 140
+## 5 https://t.co/SizFOctYBQ, https://twitter.com/i/web/status/1455560697681793039, twitter.com/i/web/status/1…, 117, 140
 ## 6                                                                                                                 NULL
-##                                                                                                                                                                                                                                                                                                                                                                       entities.user_mentions
-## 1                                                                                                                                                                                                                                                                                                                                            cryptocevo, cevo, 1962290894, 1962290894, 0, 11
-## 2                                                                                                                                                                                                                                                                                            mmasnick, elonmusk, Mike Masnick, Elon Musk, 1270191, 44196397, 1270191, 44196397, 0, 9, 23, 32
-## 3                                                                                                                                                                thisisbitcoin, BTCGandalf, jack, elonmusk, this is bitcoin, Bitcoin Gandalf, jack⚡️, Elon Musk, 1294374996, 1359483955695681536, 12, 44196397, 1294374996, 1359483955695681538, 12, 44196397, 0, 14, 15, 26, 27, 32, 37, 46
-## 4 catgirlcoinfans, shibworld, willearl09, BillyM2k, TheBinanceNFT, Catgirlcoin To The Moon 🚀, Shiba World, SHIB COIN, Shibetoshi Nakamoto, Binance NFT, 1412675734229880832, 1401406260000460800, 1371413596496752640, 30699048, 1400391752368992256, 1412675734229880832, 1401406260000460800, 1371413596496752640, 30699048, 1400391752368992260, 45, 61, 62, 72, 73, 84, 85, 94, 95, 109
-## 5                                                                                                                                                                                           RafikovMuhammad, Dirty_Worka, elonmusk, Muhammad Rafikov, Dirty_Worka 💀, Elon Musk, 1266199342177759232, 2616338419, 44196397, 1266199342177759235, 2616338419, 44196397, 0, 16, 17, 29, 30, 39
-## 6                                                                                                                                                                                                             seanmmitchell, dictionaryhill, Tesla, Seán Mitchell, Meccanica, Tesla, 17206078, 1368396448505634816, 13298072, 17206078, 1368396448505634818, 13298072, 0, 14, 15, 30, 31, 37
-##   entities.symbols entities.media favorited retweeted possibly_sensitive
-## 1    KISHU, 25, 31           NULL     FALSE     FALSE              FALSE
-## 2             NULL           NULL     FALSE     FALSE                 NA
-## 3             NULL           NULL     FALSE     FALSE              FALSE
-## 4             NULL           NULL     FALSE     FALSE              FALSE
-## 5             NULL           NULL     FALSE     FALSE                 NA
-## 6             NULL           NULL     FALSE     FALSE                 NA
-##   filter_level lang  timestamp_ms media quoted_status_id quoted_status_id_str
-## 1          low   en 1635433583013  NULL               NA                 &lt;NA&gt;
-## 2          low   en 1635433583450  NULL               NA                 &lt;NA&gt;
-## 3          low   en 1635433583238  NULL               NA                 &lt;NA&gt;
-## 4          low   en 1635433583546  NULL               NA                 &lt;NA&gt;
-## 5          low   en 1635433584536  NULL               NA                 &lt;NA&gt;
-## 6          low   en 1635433585029  NULL               NA                 &lt;NA&gt;
-##   quoted_status.created_at quoted_status.id quoted_status.id_str
-## 1                     &lt;NA&gt;               NA                 &lt;NA&gt;
-## 2                     &lt;NA&gt;               NA                 &lt;NA&gt;
-## 3                     &lt;NA&gt;               NA                 &lt;NA&gt;
-## 4                     &lt;NA&gt;               NA                 &lt;NA&gt;
-## 5                     &lt;NA&gt;               NA                 &lt;NA&gt;
-## 6                     &lt;NA&gt;               NA                 &lt;NA&gt;
-##   quoted_status.text quoted_status.display_text_range quoted_status.source
-## 1               &lt;NA&gt;                             NULL                 &lt;NA&gt;
-## 2               &lt;NA&gt;                             NULL                 &lt;NA&gt;
-## 3               &lt;NA&gt;                             NULL                 &lt;NA&gt;
-## 4               &lt;NA&gt;                             NULL                 &lt;NA&gt;
-## 5               &lt;NA&gt;                             NULL                 &lt;NA&gt;
-## 6               &lt;NA&gt;                             NULL                 &lt;NA&gt;
+##                                                                                                                                                                                                                                                                        entities.user_mentions
+## 1 AGlobalCitizen, AlexanderBruyns, PPathole, elonmusk, SpaceX, Michael Scott Gary, Espy, Pranay Pathole, Elon Musk, SpaceX, 85339539, 957292025879154688, 1291945442, 44196397, 34743251, 85339539, 957292025879154689, 1291945442, 44196397, 34743251, 0, 15, 16, 32, 33, 42, 43, 52, 53, 60
+## 2                                                                                                                                                                                                                                                                                        NULL
+## 3                                                                                                                                                                                                                                             elonmusk, Elon Musk, 44196397, 44196397, 10, 19
+## 4                                                     elonmusk, flcnhvy, adamhoov, Forbes, Elon Musk, Viv ✶, mcsplittsville, Forbes, 44196397, 1060180551544528896, 1395182397256200192, 91478624, 44196397, 1060180551544528897, 1395182397256200193, 91478624, 0, 9, 10, 18, 19, 28, 29, 36
+## 5                                                                                                                                                                                                                                               elonmusk, Elon Musk, 44196397, 44196397, 0, 9
+## 6                                                                                Gielompik2, Trade_At_Ease, elonmusk, Gielompik, GALAXY HEROES COIN, Elon Musk, 1414467591444307968, 1315467654161989632, 44196397, 1414467591444307968, 1315467654161989633, 44196397, 0, 11, 12, 26, 27, 36
+##   entities.symbols entities.media favorited retweeted filter_level lang
+## 1             NULL           NULL     FALSE     FALSE          low   en
+## 2             NULL           NULL     FALSE     FALSE          low   en
+## 3             NULL           NULL     FALSE     FALSE          low   en
+## 4             NULL           NULL     FALSE     FALSE          low   en
+## 5             NULL           NULL     FALSE     FALSE          low   en
+## 6             NULL           NULL     FALSE     FALSE          low   en
+##    timestamp_ms quoted_status_id quoted_status_id_str
+## 1 1635867685747               NA                 &lt;NA&gt;
+## 2 1635867685890     1.455549e+18  1455548587811639296
+## 3 1635867687056     1.455538e+18  1455537674538868752
+## 4 1635867687360               NA                 &lt;NA&gt;
+## 5 1635867687994               NA                 &lt;NA&gt;
+## 6 1635867690076               NA                 &lt;NA&gt;
+##         quoted_status.created_at quoted_status.id quoted_status.id_str
+## 1                           &lt;NA&gt;               NA                 &lt;NA&gt;
+## 2 Tue Nov 02 14:53:20 +0000 2021     1.455549e+18  1455548587811639296
+## 3 Tue Nov 02 14:09:58 +0000 2021     1.455538e+18  1455537674538868752
+## 4                           &lt;NA&gt;               NA                 &lt;NA&gt;
+## 5                           &lt;NA&gt;               NA                 &lt;NA&gt;
+## 6                           &lt;NA&gt;               NA                 &lt;NA&gt;
+##                                                                                                                               quoted_status.text
+## 1                                                                                                                                           &lt;NA&gt;
+## 2                              The US government printed $3T dollars in 2020. @elonmusk, Why is world hunger not solved? https://t.co/NKW30cHkpw
+## 3 Hi @ElonMusk\n\nWe hope you are well and your lil one? 😍 this is your people back home. DBA is a crypto project from… https://t.co/XCNEw09UjJ
+## 4                                                                                                                                           &lt;NA&gt;
+## 5                                                                                                                                           &lt;NA&gt;
+## 6                                                                                                                                           &lt;NA&gt;
+##   quoted_status.display_text_range
+## 1                             NULL
+## 2                            0, 89
+## 3                             NULL
+## 4                             NULL
+## 5                             NULL
+## 6                             NULL
+##                                                                   quoted_status.source
+## 1                                                                                 &lt;NA&gt;
+## 2              &lt;a href=&quot;https://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Twitter Web App&lt;/a&gt;
+## 3 &lt;a href=&quot;http://twitter.com/download/android&quot; rel=&quot;nofollow&quot;&gt;Twitter for Android&lt;/a&gt;
+## 4                                                                                 &lt;NA&gt;
+## 5                                                                                 &lt;NA&gt;
+## 6                                                                                 &lt;NA&gt;
 ##   quoted_status.truncated quoted_status.in_reply_to_status_id
 ## 1                      NA                                  NA
-## 2                      NA                                  NA
-## 3                      NA                                  NA
+## 2                   FALSE                                  NA
+## 3                    TRUE                                  NA
 ## 4                      NA                                  NA
 ## 5                      NA                                  NA
 ## 6                      NA                                  NA
@@ -435,209 +435,223 @@
 ## 4                                  &lt;NA&gt;                                  &lt;NA&gt;
 ## 5                                  &lt;NA&gt;                                  &lt;NA&gt;
 ## 6                                  &lt;NA&gt;                                  &lt;NA&gt;
-##   quoted_status.user.id quoted_status.user.id_str quoted_status.user.name
-## 1                    NA                      &lt;NA&gt;                    &lt;NA&gt;
-## 2                    NA                      &lt;NA&gt;                    &lt;NA&gt;
-## 3                    NA                      &lt;NA&gt;                    &lt;NA&gt;
-## 4                    NA                      &lt;NA&gt;                    &lt;NA&gt;
-## 5                    NA                      &lt;NA&gt;                    &lt;NA&gt;
-## 6                    NA                      &lt;NA&gt;                    &lt;NA&gt;
+##   quoted_status.user.id quoted_status.user.id_str      quoted_status.user.name
+## 1                    NA                      &lt;NA&gt;                         &lt;NA&gt;
+## 2          3.573121e+08                 357312062                      Bitcoin
+## 3          1.289298e+18       1289298342128824320 Digital Bank of Africa (DBA)
+## 4                    NA                      &lt;NA&gt;                         &lt;NA&gt;
+## 5                    NA                      &lt;NA&gt;                         &lt;NA&gt;
+## 6                    NA                      &lt;NA&gt;                         &lt;NA&gt;
 ##   quoted_status.user.screen_name quoted_status.user.location
 ## 1                           &lt;NA&gt;                        &lt;NA&gt;
-## 2                           &lt;NA&gt;                        &lt;NA&gt;
-## 3                           &lt;NA&gt;                        &lt;NA&gt;
+## 2                        Bitcoin                   Worldwide
+## 3                    DBACurrency                South Africa
 ## 4                           &lt;NA&gt;                        &lt;NA&gt;
 ## 5                           &lt;NA&gt;                        &lt;NA&gt;
 ## 6                           &lt;NA&gt;                        &lt;NA&gt;
-##   quoted_status.user.url quoted_status.user.description
-## 1                   &lt;NA&gt;                           &lt;NA&gt;
-## 2                   &lt;NA&gt;                           &lt;NA&gt;
-## 3                   &lt;NA&gt;                           &lt;NA&gt;
-## 4                   &lt;NA&gt;                           &lt;NA&gt;
-## 5                   &lt;NA&gt;                           &lt;NA&gt;
-## 6                   &lt;NA&gt;                           &lt;NA&gt;
+##                    quoted_status.user.url
+## 1                                    &lt;NA&gt;
+## 2         https://bitcoin.org/bitcoin.pdf
+## 3 https://www.dafrixchange.com/trade/spot
+## 4                                    &lt;NA&gt;
+## 5                                    &lt;NA&gt;
+## 6                                    &lt;NA&gt;
+##                                                                                                                               quoted_status.user.description
+## 1                                                                                                                                                       &lt;NA&gt;
+## 2 Bitcoin is an open source censorship-resistant peer-to-peer immutable network. Trackable digital gold. Don&#39;t trust; verify. Not your keys; not your coins.
+## 3                              $DBA is a digital share of central bank licensed @DafriBank Digital LTD and a native token for @DafriXchange Pro. BuyDBA 👇🏻
+## 4                                                                                                                                                       &lt;NA&gt;
+## 5                                                                                                                                                       &lt;NA&gt;
+## 6                                                                                                                                                       &lt;NA&gt;
 ##   quoted_status.user.translator_type quoted_status.user.protected
 ## 1                               &lt;NA&gt;                           NA
-## 2                               &lt;NA&gt;                           NA
-## 3                               &lt;NA&gt;                           NA
+## 2                            regular                        FALSE
+## 3                               none                        FALSE
 ## 4                               &lt;NA&gt;                           NA
 ## 5                               &lt;NA&gt;                           NA
 ## 6                               &lt;NA&gt;                           NA
 ##   quoted_status.user.verified quoted_status.user.followers_count
 ## 1                          NA                                 NA
-## 2                          NA                                 NA
-## 3                          NA                                 NA
+## 2                       FALSE                            3592486
+## 3                       FALSE                              22046
 ## 4                          NA                                 NA
 ## 5                          NA                                 NA
 ## 6                          NA                                 NA
 ##   quoted_status.user.friends_count quoted_status.user.listed_count
 ## 1                               NA                              NA
-## 2                               NA                              NA
-## 3                               NA                              NA
+## 2                               30                           14641
+## 3                              338                               8
 ## 4                               NA                              NA
 ## 5                               NA                              NA
 ## 6                               NA                              NA
 ##   quoted_status.user.favourites_count quoted_status.user.statuses_count
 ## 1                                  NA                                NA
-## 2                                  NA                                NA
-## 3                                  NA                                NA
+## 2                                3030                             23475
+## 3                                1114                               519
 ## 4                                  NA                                NA
 ## 5                                  NA                                NA
 ## 6                                  NA                                NA
-##   quoted_status.user.created_at quoted_status.user.utc_offset
-## 1                          &lt;NA&gt;                            NA
-## 2                          &lt;NA&gt;                            NA
-## 3                          &lt;NA&gt;                            NA
-## 4                          &lt;NA&gt;                            NA
-## 5                          &lt;NA&gt;                            NA
-## 6                          &lt;NA&gt;                            NA
+##    quoted_status.user.created_at quoted_status.user.utc_offset
+## 1                           &lt;NA&gt;                            NA
+## 2 Thu Aug 18 05:06:08 +0000 2011                            NA
+## 3 Fri Jul 31 20:34:39 +0000 2020                            NA
+## 4                           &lt;NA&gt;                            NA
+## 5                           &lt;NA&gt;                            NA
+## 6                           &lt;NA&gt;                            NA
 ##   quoted_status.user.time_zone quoted_status.user.geo_enabled
 ## 1                           NA                             NA
-## 2                           NA                             NA
-## 3                           NA                             NA
+## 2                           NA                          FALSE
+## 3                           NA                          FALSE
 ## 4                           NA                             NA
 ## 5                           NA                             NA
 ## 6                           NA                             NA
 ##   quoted_status.user.lang quoted_status.user.contributors_enabled
 ## 1                      NA                                      NA
-## 2                      NA                                      NA
-## 3                      NA                                      NA
+## 2                      NA                                   FALSE
+## 3                      NA                                   FALSE
 ## 4                      NA                                      NA
 ## 5                      NA                                      NA
 ## 6                      NA                                      NA
 ##   quoted_status.user.is_translator quoted_status.user.profile_background_color
 ## 1                               NA                                        &lt;NA&gt;
-## 2                               NA                                        &lt;NA&gt;
-## 3                               NA                                        &lt;NA&gt;
+## 2                            FALSE                                      131516
+## 3                            FALSE                                      F5F8FA
 ## 4                               NA                                        &lt;NA&gt;
 ## 5                               NA                                        &lt;NA&gt;
 ## 6                               NA                                        &lt;NA&gt;
-##   quoted_status.user.profile_background_image_url
-## 1                                            &lt;NA&gt;
-## 2                                            &lt;NA&gt;
-## 3                                            &lt;NA&gt;
-## 4                                            &lt;NA&gt;
-## 5                                            &lt;NA&gt;
-## 6                                            &lt;NA&gt;
+##     quoted_status.user.profile_background_image_url
+## 1                                              &lt;NA&gt;
+## 2 http://abs.twimg.com/images/themes/theme14/bg.gif
+## 3                                                  
+## 4                                              &lt;NA&gt;
+## 5                                              &lt;NA&gt;
+## 6                                              &lt;NA&gt;
 ##   quoted_status.user.profile_background_image_url_https
 ## 1                                                  &lt;NA&gt;
-## 2                                                  &lt;NA&gt;
-## 3                                                  &lt;NA&gt;
+## 2    https://abs.twimg.com/images/themes/theme14/bg.gif
+## 3                                                      
 ## 4                                                  &lt;NA&gt;
 ## 5                                                  &lt;NA&gt;
 ## 6                                                  &lt;NA&gt;
 ##   quoted_status.user.profile_background_tile
 ## 1                                         NA
-## 2                                         NA
-## 3                                         NA
+## 2                                       TRUE
+## 3                                      FALSE
 ## 4                                         NA
 ## 5                                         NA
 ## 6                                         NA
 ##   quoted_status.user.profile_link_color
 ## 1                                  &lt;NA&gt;
-## 2                                  &lt;NA&gt;
-## 3                                  &lt;NA&gt;
+## 2                                009999
+## 3                                1DA1F2
 ## 4                                  &lt;NA&gt;
 ## 5                                  &lt;NA&gt;
 ## 6                                  &lt;NA&gt;
 ##   quoted_status.user.profile_sidebar_border_color
 ## 1                                            &lt;NA&gt;
-## 2                                            &lt;NA&gt;
-## 3                                            &lt;NA&gt;
+## 2                                          EEEEEE
+## 3                                          C0DEED
 ## 4                                            &lt;NA&gt;
 ## 5                                            &lt;NA&gt;
 ## 6                                            &lt;NA&gt;
 ##   quoted_status.user.profile_sidebar_fill_color
 ## 1                                          &lt;NA&gt;
-## 2                                          &lt;NA&gt;
-## 3                                          &lt;NA&gt;
+## 2                                        EFEFEF
+## 3                                        DDEEF6
 ## 4                                          &lt;NA&gt;
 ## 5                                          &lt;NA&gt;
 ## 6                                          &lt;NA&gt;
 ##   quoted_status.user.profile_text_color
+## 1                                  &lt;NA&gt;
+## 2                                333333
+## 3                                333333
+## 4                                  &lt;NA&gt;
+## 5                                  &lt;NA&gt;
+## 6                                  &lt;NA&gt;
+##   quoted_status.user.profile_use_background_image
+## 1                                              NA
+## 2                                            TRUE
+## 3                                            TRUE
+## 4                                              NA
+## 5                                              NA
+## 6                                              NA
+##                                          quoted_status.user.profile_image_url
+## 1                                                                        &lt;NA&gt;
+## 2 http://pbs.twimg.com/profile_images/421692600446619648/dWAbC2wg_normal.jpeg
+## 3 http://pbs.twimg.com/profile_images/1453311480514891782/1sWEVxUu_normal.jpg
+## 4                                                                        &lt;NA&gt;
+## 5                                                                        &lt;NA&gt;
+## 6                                                                        &lt;NA&gt;
+##                                     quoted_status.user.profile_image_url_https
+## 1                                                                         &lt;NA&gt;
+## 2 https://pbs.twimg.com/profile_images/421692600446619648/dWAbC2wg_normal.jpeg
+## 3 https://pbs.twimg.com/profile_images/1453311480514891782/1sWEVxUu_normal.jpg
+## 4                                                                         &lt;NA&gt;
+## 5                                                                         &lt;NA&gt;
+## 6                                                                         &lt;NA&gt;
+##                                  quoted_status.user.profile_banner_url
+## 1                                                                 &lt;NA&gt;
+## 2           https://pbs.twimg.com/profile_banners/357312062/1566845268
+## 3 https://pbs.twimg.com/profile_banners/1289298342128824320/1635332134
+## 4                                                                 &lt;NA&gt;
+## 5                                                                 &lt;NA&gt;
+## 6                                                                 &lt;NA&gt;
+##   quoted_status.user.default_profile quoted_status.user.default_profile_image
+## 1                                 NA                                       NA
+## 2                              FALSE                                    FALSE
+## 3                               TRUE                                    FALSE
+## 4                                 NA                                       NA
+## 5                                 NA                                       NA
+## 6                                 NA                                       NA
+##   quoted_status.user.following quoted_status.user.follow_request_sent
+## 1                           NA                                     NA
+## 2                           NA                                     NA
+## 3                           NA                                     NA
+## 4                           NA                                     NA
+## 5                           NA                                     NA
+## 6                           NA                                     NA
+##   quoted_status.user.notifications quoted_status.user.withheld_in_countries
+## 1                               NA                                     NULL
+## 2                               NA                                     NULL
+## 3                               NA                                     NULL
+## 4                               NA                                     NULL
+## 5                               NA                                     NULL
+## 6                               NA                                     NULL
+##   quoted_status.geo quoted_status.coordinates quoted_status.place.id
+## 1                NA                        NA                   &lt;NA&gt;
+## 2                NA                        NA                   &lt;NA&gt;
+## 3                NA                        NA                   &lt;NA&gt;
+## 4                NA                        NA                   &lt;NA&gt;
+## 5                NA                        NA                   &lt;NA&gt;
+## 6                NA                        NA                   &lt;NA&gt;
+##   quoted_status.place.url quoted_status.place.place_type
+## 1                    &lt;NA&gt;                           &lt;NA&gt;
+## 2                    &lt;NA&gt;                           &lt;NA&gt;
+## 3                    &lt;NA&gt;                           &lt;NA&gt;
+## 4                    &lt;NA&gt;                           &lt;NA&gt;
+## 5                    &lt;NA&gt;                           &lt;NA&gt;
+## 6                    &lt;NA&gt;                           &lt;NA&gt;
+##   quoted_status.place.name quoted_status.place.full_name
+## 1                     &lt;NA&gt;                          &lt;NA&gt;
+## 2                     &lt;NA&gt;                          &lt;NA&gt;
+## 3                     &lt;NA&gt;                          &lt;NA&gt;
+## 4                     &lt;NA&gt;                          &lt;NA&gt;
+## 5                     &lt;NA&gt;                          &lt;NA&gt;
+## 6                     &lt;NA&gt;                          &lt;NA&gt;
+##   quoted_status.place.country_code quoted_status.place.country
+## 1                             &lt;NA&gt;                        &lt;NA&gt;
+## 2                             &lt;NA&gt;                        &lt;NA&gt;
+## 3                             &lt;NA&gt;                        &lt;NA&gt;
+## 4                             &lt;NA&gt;                        &lt;NA&gt;
+## 5                             &lt;NA&gt;                        &lt;NA&gt;
+## 6                             &lt;NA&gt;                        &lt;NA&gt;
+##   quoted_status.place.bounding_box.type
 ## 1                                  &lt;NA&gt;
 ## 2                                  &lt;NA&gt;
 ## 3                                  &lt;NA&gt;
 ## 4                                  &lt;NA&gt;
 ## 5                                  &lt;NA&gt;
 ## 6                                  &lt;NA&gt;
-##   quoted_status.user.profile_use_background_image
-## 1                                              NA
-## 2                                              NA
-## 3                                              NA
-## 4                                              NA
-## 5                                              NA
-## 6                                              NA
-##   quoted_status.user.profile_image_url
-## 1                                 &lt;NA&gt;
-## 2                                 &lt;NA&gt;
-## 3                                 &lt;NA&gt;
-## 4                                 &lt;NA&gt;
-## 5                                 &lt;NA&gt;
-## 6                                 &lt;NA&gt;
-##   quoted_status.user.profile_image_url_https quoted_status.user.default_profile
-## 1                                       &lt;NA&gt;                                 NA
-## 2                                       &lt;NA&gt;                                 NA
-## 3                                       &lt;NA&gt;                                 NA
-## 4                                       &lt;NA&gt;                                 NA
-## 5                                       &lt;NA&gt;                                 NA
-## 6                                       &lt;NA&gt;                                 NA
-##   quoted_status.user.default_profile_image quoted_status.user.following
-## 1                                       NA                           NA
-## 2                                       NA                           NA
-## 3                                       NA                           NA
-## 4                                       NA                           NA
-## 5                                       NA                           NA
-## 6                                       NA                           NA
-##   quoted_status.user.follow_request_sent quoted_status.user.notifications
-## 1                                     NA                               NA
-## 2                                     NA                               NA
-## 3                                     NA                               NA
-## 4                                     NA                               NA
-## 5                                     NA                               NA
-## 6                                     NA                               NA
-##   quoted_status.user.withheld_in_countries
-## 1                                     NULL
-## 2                                     NULL
-## 3                                     NULL
-## 4                                     NULL
-## 5                                     NULL
-## 6                                     NULL
-##   quoted_status.user.profile_banner_url quoted_status.geo
-## 1                                  &lt;NA&gt;                NA
-## 2                                  &lt;NA&gt;                NA
-## 3                                  &lt;NA&gt;                NA
-## 4                                  &lt;NA&gt;                NA
-## 5                                  &lt;NA&gt;                NA
-## 6                                  &lt;NA&gt;                NA
-##   quoted_status.coordinates quoted_status.place.id quoted_status.place.url
-## 1                        NA                   &lt;NA&gt;                    &lt;NA&gt;
-## 2                        NA                   &lt;NA&gt;                    &lt;NA&gt;
-## 3                        NA                   &lt;NA&gt;                    &lt;NA&gt;
-## 4                        NA                   &lt;NA&gt;                    &lt;NA&gt;
-## 5                        NA                   &lt;NA&gt;                    &lt;NA&gt;
-## 6                        NA                   &lt;NA&gt;                    &lt;NA&gt;
-##   quoted_status.place.place_type quoted_status.place.name
-## 1                           &lt;NA&gt;                     &lt;NA&gt;
-## 2                           &lt;NA&gt;                     &lt;NA&gt;
-## 3                           &lt;NA&gt;                     &lt;NA&gt;
-## 4                           &lt;NA&gt;                     &lt;NA&gt;
-## 5                           &lt;NA&gt;                     &lt;NA&gt;
-## 6                           &lt;NA&gt;                     &lt;NA&gt;
-##   quoted_status.place.full_name quoted_status.place.country_code
-## 1                          &lt;NA&gt;                             &lt;NA&gt;
-## 2                          &lt;NA&gt;                             &lt;NA&gt;
-## 3                          &lt;NA&gt;                             &lt;NA&gt;
-## 4                          &lt;NA&gt;                             &lt;NA&gt;
-## 5                          &lt;NA&gt;                             &lt;NA&gt;
-## 6                          &lt;NA&gt;                             &lt;NA&gt;
-##   quoted_status.place.country quoted_status.place.bounding_box.type
-## 1                        &lt;NA&gt;                                  &lt;NA&gt;
-## 2                        &lt;NA&gt;                                  &lt;NA&gt;
-## 3                        &lt;NA&gt;                                  &lt;NA&gt;
-## 4                        &lt;NA&gt;                                  &lt;NA&gt;
-## 5                        &lt;NA&gt;                                  &lt;NA&gt;
-## 6                        &lt;NA&gt;                                  &lt;NA&gt;
 ##   quoted_status.place.bounding_box.coordinates quoted_status.contributors
 ## 1                                         NULL                         NA
 ## 2                                         NULL                         NA
@@ -645,17 +659,94 @@
 ## 4                                         NULL                         NA
 ## 5                                         NULL                         NA
 ## 6                                         NULL                         NA
-##   quoted_status.is_quote_status quoted_status.extended_tweet.full_text
-## 1                            NA                                   &lt;NA&gt;
-## 2                            NA                                   &lt;NA&gt;
-## 3                            NA                                   &lt;NA&gt;
-## 4                            NA                                   &lt;NA&gt;
-## 5                            NA                                   &lt;NA&gt;
-## 6                            NA                                   &lt;NA&gt;
+##   quoted_status.is_quote_status quoted_status.quote_count
+## 1                            NA                        NA
+## 2                         FALSE                        29
+## 3                         FALSE                       135
+## 4                            NA                        NA
+## 5                            NA                        NA
+## 6                            NA                        NA
+##   quoted_status.reply_count quoted_status.retweet_count
+## 1                        NA                          NA
+## 2                       148                         357
+## 3                       108                         584
+## 4                        NA                          NA
+## 5                        NA                          NA
+## 6                        NA                          NA
+##   quoted_status.favorite_count quoted_status.entities.hashtags
+## 1                           NA                            NULL
+## 2                         2240                            NULL
+## 3                          631                            NULL
+## 4                           NA                            NULL
+## 5                           NA                            NULL
+## 6                           NA                            NULL
+##                                                                                            quoted_status.entities.urls
+## 1                                                                                                                 NULL
+## 2                                                                                                                 NULL
+## 3 https://t.co/XCNEw09UjJ, https://twitter.com/i/web/status/1455537674538868752, twitter.com/i/web/status/1…, 116, 139
+## 4                                                                                                                 NULL
+## 5                                                                                                                 NULL
+## 6                                                                                                                 NULL
+##              quoted_status.entities.user_mentions
+## 1                                            NULL
+## 2 elonmusk, Elon Musk, 44196397, 44196397, 47, 56
+## 3  elonmusk, Elon Musk, 44196397, 44196397, 3, 12
+## 4                                            NULL
+## 5                                            NULL
+## 6                                            NULL
+##   quoted_status.entities.symbols
+## 1                           NULL
+## 2                           NULL
+## 3                           NULL
+## 4                           NULL
+## 5                           NULL
+## 6                           NULL
+##                                                                                                                                                                                                                                                                                                                  quoted_status.entities.media
+## 1                                                                                                                                                                                                                                                                                                                                        NULL
+## 2 1455548575119597568, 1455548575119597579, 90, 113, http://pbs.twimg.com/media/FDMlt51UYAsLgRm.jpg, https://pbs.twimg.com/media/FDMlt51UYAsLgRm.jpg, https://t.co/NKW30cHkpw, pic.twitter.com/NKW30cHkpw, https://twitter.com/Bitcoin/status/1455548587811639296/photo/1, photo, 150, 150, crop, 912, 513, fit, 680, 383, fit, 912, 513, fit
+## 3                                                                                                                                                                                                                                                                                                                                        NULL
+## 4                                                                                                                                                                                                                                                                                                                                        NULL
+## 5                                                                                                                                                                                                                                                                                                                                        NULL
+## 6                                                                                                                                                                                                                                                                                                                                        NULL
+##                                                                                                                                                                                                                                                                                                                           quoted_status.media
+## 1                                                                                                                                                                                                                                                                                                                                        NULL
+## 2 1455548575119597568, 1455548575119597579, 90, 113, http://pbs.twimg.com/media/FDMlt51UYAsLgRm.jpg, https://pbs.twimg.com/media/FDMlt51UYAsLgRm.jpg, https://t.co/NKW30cHkpw, pic.twitter.com/NKW30cHkpw, https://twitter.com/Bitcoin/status/1455548587811639296/photo/1, photo, 150, 150, crop, 912, 513, fit, 680, 383, fit, 912, 513, fit
+## 3                                                                                                                                                                                                                                                                                                                                        NULL
+## 4                                                                                                                                                                                                                                                                                                                                        NULL
+## 5                                                                                                                                                                                                                                                                                                                                        NULL
+## 6                                                                                                                                                                                                                                                                                                                                        NULL
+##   quoted_status.favorited quoted_status.retweeted
+## 1                      NA                      NA
+## 2                   FALSE                   FALSE
+## 3                   FALSE                   FALSE
+## 4                      NA                      NA
+## 5                      NA                      NA
+## 6                      NA                      NA
+##   quoted_status.possibly_sensitive quoted_status.filter_level
+## 1                               NA                       &lt;NA&gt;
+## 2                            FALSE                        low
+## 3                               NA                        low
+## 4                               NA                       &lt;NA&gt;
+## 5                               NA                       &lt;NA&gt;
+## 6                               NA                       &lt;NA&gt;
+##   quoted_status.lang
+## 1               &lt;NA&gt;
+## 2                 en
+## 3                 en
+## 4               &lt;NA&gt;
+## 5               &lt;NA&gt;
+## 6               &lt;NA&gt;
+##                                                                                                                                                                                                                                                     quoted_status.extended_tweet.full_text
+## 1                                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 2                                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 3 Hi @ElonMusk\n\nWe hope you are well and your lil one? 😍 this is your people back home. DBA is a crypto project from South Africa. 15 000 of your people invested in DBA as early investors, and the only gift you can give us this Christmas is a shoutout.  We will donate 20 000 DBA
+## 4                                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 5                                                                                                                                                                                                                                                                                     &lt;NA&gt;
+## 6                                                                                                                                                                                                                                                                                     &lt;NA&gt;
 ##   quoted_status.extended_tweet.display_text_range
 ## 1                                            NULL
 ## 2                                            NULL
-## 3                                            NULL
+## 3                                          0, 277
 ## 4                                            NULL
 ## 5                                            NULL
 ## 6                                            NULL
@@ -676,7 +767,7 @@
 ##   quoted_status.extended_tweet.entities.user_mentions
 ## 1                                                NULL
 ## 2                                                NULL
-## 3                                                NULL
+## 3      elonmusk, Elon Musk, 44196397, 44196397, 3, 12
 ## 4                                                NULL
 ## 5                                                NULL
 ## 6                                                NULL
@@ -694,83 +785,34 @@
 ## 4                                        NULL
 ## 5                                        NULL
 ## 6                                        NULL
-##   quoted_status.extended_tweet.media quoted_status.quote_count
-## 1                               NULL                        NA
-## 2                               NULL                        NA
-## 3                               NULL                        NA
-## 4                               NULL                        NA
-## 5                               NULL                        NA
-## 6                               NULL                        NA
-##   quoted_status.reply_count quoted_status.retweet_count
-## 1                        NA                          NA
-## 2                        NA                          NA
-## 3                        NA                          NA
-## 4                        NA                          NA
-## 5                        NA                          NA
-## 6                        NA                          NA
-##   quoted_status.favorite_count quoted_status.entities.hashtags
-## 1                           NA                            NULL
-## 2                           NA                            NULL
-## 3                           NA                            NULL
-## 4                           NA                            NULL
-## 5                           NA                            NULL
-## 6                           NA                            NULL
-##   quoted_status.entities.urls quoted_status.entities.user_mentions
-## 1                        NULL                                 NULL
-## 2                        NULL                                 NULL
-## 3                        NULL                                 NULL
-## 4                        NULL                                 NULL
-## 5                        NULL                                 NULL
-## 6                        NULL                                 NULL
-##   quoted_status.entities.symbols quoted_status.entities.media
-## 1                           NULL                         NULL
-## 2                           NULL                         NULL
-## 3                           NULL                         NULL
-## 4                           NULL                         NULL
-## 5                           NULL                         NULL
-## 6                           NULL                         NULL
-##   quoted_status.favorited quoted_status.retweeted
-## 1                      NA                      NA
-## 2                      NA                      NA
-## 3                      NA                      NA
-## 4                      NA                      NA
-## 5                      NA                      NA
-## 6                      NA                      NA
-##   quoted_status.possibly_sensitive quoted_status.filter_level
-## 1                               NA                       &lt;NA&gt;
-## 2                               NA                       &lt;NA&gt;
-## 3                               NA                       &lt;NA&gt;
-## 4                               NA                       &lt;NA&gt;
-## 5                               NA                       &lt;NA&gt;
-## 6                               NA                       &lt;NA&gt;
-##   quoted_status.lang quoted_status.quoted_status_id
-## 1               &lt;NA&gt;                             NA
-## 2               &lt;NA&gt;                             NA
-## 3               &lt;NA&gt;                             NA
-## 4               &lt;NA&gt;                             NA
-## 5               &lt;NA&gt;                             NA
-## 6               &lt;NA&gt;                             NA
-##   quoted_status.quoted_status_id_str quoted_status.media
-## 1                               &lt;NA&gt;                NULL
-## 2                               &lt;NA&gt;                NULL
-## 3                               &lt;NA&gt;                NULL
-## 4                               &lt;NA&gt;                NULL
-## 5                               &lt;NA&gt;                NULL
-## 6                               &lt;NA&gt;                NULL
-##   quoted_status.followers quoted_status_permalink.url
-## 1                      NA                        &lt;NA&gt;
-## 2                      NA                        &lt;NA&gt;
-## 3                      NA                        &lt;NA&gt;
-## 4                      NA                        &lt;NA&gt;
-## 5                      NA                        &lt;NA&gt;
-## 6                      NA                        &lt;NA&gt;
-##   quoted_status_permalink.expanded quoted_status_permalink.display
-## 1                             &lt;NA&gt;                            &lt;NA&gt;
-## 2                             &lt;NA&gt;                            &lt;NA&gt;
-## 3                             &lt;NA&gt;                            &lt;NA&gt;
-## 4                             &lt;NA&gt;                            &lt;NA&gt;
-## 5                             &lt;NA&gt;                            &lt;NA&gt;
-## 6                             &lt;NA&gt;                            &lt;NA&gt;</code></pre>
+##   quoted_status.extended_tweet.media quoted_status.quoted_status_id
+## 1                               NULL                             NA
+## 2                               NULL                             NA
+## 3                               NULL                             NA
+## 4                               NULL                             NA
+## 5                               NULL                             NA
+## 6                               NULL                             NA
+##   quoted_status.quoted_status_id_str quoted_status_permalink.url
+## 1                               &lt;NA&gt;                        &lt;NA&gt;
+## 2                               &lt;NA&gt;     https://t.co/T2FptIbUvN
+## 3                               &lt;NA&gt;     https://t.co/08uhGAnn3Z
+## 4                               &lt;NA&gt;                        &lt;NA&gt;
+## 5                               &lt;NA&gt;                        &lt;NA&gt;
+## 6                               &lt;NA&gt;                        &lt;NA&gt;
+##                             quoted_status_permalink.expanded
+## 1                                                       &lt;NA&gt;
+## 2     https://twitter.com/bitcoin/status/1455548587811639296
+## 3 https://twitter.com/DBACurrency/status/1455537674538868752
+## 4                                                       &lt;NA&gt;
+## 5                                                       &lt;NA&gt;
+## 6                                                       &lt;NA&gt;
+##   quoted_status_permalink.display possibly_sensitive media
+## 1                            &lt;NA&gt;                 NA  NULL
+## 2     twitter.com/bitcoin/status…                 NA  NULL
+## 3     twitter.com/DBACurrency/st…                 NA  NULL
+## 4                            &lt;NA&gt;                 NA  NULL
+## 5                            &lt;NA&gt;                 NA  NULL
+## 6                            &lt;NA&gt;                 NA  NULL</code></pre>
 <div id="select-important-variables-from-data" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> select important variables from data</h2>
 <p>There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it.</p>
@@ -860,19 +902,13 @@
 <td align="left">retweeted</td>
 </tr>
 <tr class="odd">
-<td align="left">possibly_sensitive</td>
-</tr>
-<tr class="even">
 <td align="left">filter_level</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">lang</td>
 </tr>
-<tr class="even">
-<td align="left">timestamp_ms</td>
-</tr>
 <tr class="odd">
-<td align="left">extended_entities</td>
+<td align="left">timestamp_ms</td>
 </tr>
 <tr class="even">
 <td align="left">quoted_status_id</td>
@@ -885,6 +921,12 @@
 </tr>
 <tr class="odd">
 <td align="left">quoted_status_permalink</td>
+</tr>
+<tr class="even">
+<td align="left">possibly_sensitive</td>
+</tr>
+<tr class="odd">
+<td align="left">extended_entities</td>
 </tr>
 </tbody>
 </table>
@@ -1027,22 +1069,22 @@
 <td align="left">profile_image_url_https</td>
 </tr>
 <tr class="even">
+<td align="left">profile_banner_url</td>
+</tr>
+<tr class="odd">
 <td align="left">default_profile</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">default_profile_image</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">following</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">follow_request_sent</td>
 </tr>
-<tr class="even">
-<td align="left">notifications</td>
-</tr>
 <tr class="odd">
-<td align="left">profile_banner_url</td>
+<td align="left">notifications</td>
 </tr>
 </tbody>
 </table>
@@ -1052,34 +1094,25 @@
 <div id="extract-words" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> extract words</h2>
 <p>Next, we need to tokenize the word to make analysis related to property of words in each tweet.For this task, we use the tokenize_tweets() function from the tokenizers library, since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer. Below is an example for how it tokenizes one of the tweets.</p>
-<pre><code>## [1] &quot;@cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it🔥\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk&quot;</code></pre>
+<pre><code>## [1] &quot;@AGlobalCitizen @AlexanderBruyns @PPathole @elonmusk @SpaceX We would also somehow need to create some sort of artificial magnetic field around the entire planet to make sure that any biomass we take there isn&#39;t immediately destroyed by cosmic radiation&quot;</code></pre>
 <pre><code>## [[1]]
-##  [1] &quot;@cryptocevo&quot;             &quot;why&quot;                    
-##  [3] &quot;#KISHU&quot;                  &quot;$kishu&quot;                 
-##  [5] &quot;use&quot;                     &quot;for&quot;                    
-##  [7] &quot;payments&quot;                &quot;in&quot;                     
-##  [9] &quot;websites&quot;                &quot;like&quot;                   
-## [11] &quot;travala&quot;                 &quot;and&quot;                    
-## [13] &quot;nowpayments&quot;             &quot;team&quot;                   
-## [15] &quot;accept&quot;                  &quot;it🔥&quot;                   
-## [17] &quot;streamers&quot;               &quot;can&quot;                    
-## [19] &quot;get&quot;                     &quot;$kishu&quot;                 
-## [21] &quot;donations&quot;               &quot;for&quot;                    
-## [23] &quot;their&quot;                   &quot;twitch&quot;                 
-## [25] &quot;streams&quot;                 &quot;and&quot;                    
-## [27] &quot;bloggers&quot;                &quot;for&quot;                    
-## [29] &quot;youtube&quot;                 &quot;@elonmusk&quot;              
-## [31] &quot;@czbinance&quot;              &quot;@binance&quot;               
-## [33] &quot;@HuobiGlobal&quot;            &quot;@InuKishu&quot;              
-## [35] &quot;@VitalikButerin&quot;         &quot;@chinapumpwxc&quot;          
-## [37] &quot;https://t.co/2b8bGNgoAk&quot;</code></pre>
+##  [1] &quot;@AGlobalCitizen&quot;  &quot;@AlexanderBruyns&quot; &quot;@PPathole&quot;        &quot;@elonmusk&quot;       
+##  [5] &quot;@SpaceX&quot;          &quot;we&quot;               &quot;would&quot;            &quot;also&quot;            
+##  [9] &quot;somehow&quot;          &quot;need&quot;             &quot;to&quot;               &quot;create&quot;          
+## [13] &quot;some&quot;             &quot;sort&quot;             &quot;of&quot;               &quot;artificial&quot;      
+## [17] &quot;magnetic&quot;         &quot;field&quot;            &quot;around&quot;           &quot;the&quot;             
+## [21] &quot;entire&quot;           &quot;planet&quot;           &quot;to&quot;               &quot;make&quot;            
+## [25] &quot;sure&quot;             &quot;that&quot;             &quot;any&quot;              &quot;biomass&quot;         
+## [29] &quot;we&quot;               &quot;take&quot;             &quot;there&quot;            &quot;isnt&quot;            
+## [33] &quot;immediately&quot;      &quot;destroyed&quot;        &quot;by&quot;               &quot;cosmic&quot;          
+## [37] &quot;radiation&quot;</code></pre>
 </div>
 <div id="extract-sentiments" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> extract sentiments</h2>
 <p>Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, @, website links, etc. In order to make our sentiment scores accurate, we need to make sure these special characters are not included.</p>
 <p>Below is a comparison between original text and the cleaned text.</p>
-<pre><code>## [1] &quot;@cryptocevo Why #KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it🔥\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\n@elonmusk @cz_binance @binance @HuobiGlobal @InuKishu @VitalikButerin\n@chinapumpwxc https://t.co/2b8bGNgoAk&quot;</code></pre>
-<pre><code>## [1] &quot;cryptocevo Why KISHU ?\n$KISHU use for payments in websites, like Travala and NOWPayments team accept it🔥\nStreamers can get $KISHU donations for their Twitch streams and bloggers for youtube!\n\nelonmusk cz_binance binance HuobiGlobal InuKishu VitalikButerin\nchinapumpwxc &quot;</code></pre>
+<pre><code>## [1] &quot;@AGlobalCitizen @AlexanderBruyns @PPathole @elonmusk @SpaceX We would also somehow need to create some sort of artificial magnetic field around the entire planet to make sure that any biomass we take there isn&#39;t immediately destroyed by cosmic radiation&quot;</code></pre>
+<pre><code>## [1] &quot;AGlobalCitizen AlexanderBruyns PPathole elonmusk SpaceX We would also somehow need to create some sort of artificial magnetic field around the entire planet to make sure that any biomass we take there isn&#39;t immediately destroyed by cosmic radiation&quot;</code></pre>
 <p>We get the sentiment score for each tweet using the “syuzhet” method, which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each sentence as neutral if the score =0, positive if score&gt;0, and negative if score&lt;0.</p>
 </div>
 <div id="dataset-variables-summary" class="section level2" number="3.4">
