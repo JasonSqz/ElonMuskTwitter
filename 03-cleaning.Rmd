@@ -5,11 +5,15 @@ library(dplyr)
 library(knitr)
 library(tokenizers)
 library(syuzhet)
+library(rjson)
 ```
 
 
 ```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
 json_data <- stream_in(file("C:/Users/KingO/Documents/edav_final_project/data/1028.json"))
+```
+```{r}
+head(json_data)
 ```
 
 
@@ -22,7 +26,7 @@ knitr::kable(col_names_raw,col.names = c("all variable of the raw data"))
 ```
 
 
-After careful selection, 7 columns are left in the data. Below is a table of the variable names.
+After careful selection, 8 columns are left in the data. Below is a table of the variable names.
 ```{r}
 df <- json_data[,c("created_at","id_str","text","geo","user","place","extended_tweet")]
 col_names <- colnames(df) %>% as.data.frame()
@@ -134,11 +138,12 @@ knitr::kable(cbind(col_names,description), col.names = c("variables", "descripti
 data_tranform <- function(filepath){
   #load data from path
   json_data <- stream_in(file(filepath))
+  #json_data <- read.csv(filepath)
   df <- json_data[,c("created_at","id_str","text","geo","user","place","extended_tweet")]
   
   
   # extract new variables and replace the old ones
-  user <- df[,"user"] %>% subset(select = -c(withheld_in_countries) )
+  user <- df[,"user"]%>%as.data.frame() #%>% subset(select = -c(withheld_in_countries) )
   user_new <- user[, c("id_str", "followers_count")]
   colnames(user_new) <- c("user_id", "user_follower_count")
 
@@ -158,7 +163,7 @@ data_tranform <- function(filepath){
     ))
   
   # tokenize words
-  df_new$word_tokens <- tokenizers::tokenize_tweets(df_new$original_text)
+  #df_new$word_tokens <- tokenizers::tokenize_tweets(df_new$original_text)
   #df_new$word_tokens <- tokenizers::tokenize_words(df_new$original_text)
   
   # add clean_text column
@@ -187,7 +192,7 @@ data_tranform <- function(filepath){
 
 
 
-```{r}
-# df_1025 <- data_tranform("C:/Users/KingO/Documents/edav_final_project/data/1025.json")
-# write.csv(df_1025,"C:/Users/KingO/Documents/edav_final_project/csv_data/1025.csv", row.names = FALSE)
-```
+We have one week of tweet data from 10.28 to 11.03. From combining these data set, we have a total of 484678 of data.
+
+
+
