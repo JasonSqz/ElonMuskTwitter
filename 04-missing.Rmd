@@ -128,19 +128,18 @@ mvgraph <- function(df,mode="count",abbr=waiver()){
 ```
 
 ```{r}
-df <- read_csv("1028.csv")
-df <- df %>%
-  select(-...1)
+df <- unzip("csv_data/EM_df.zip")
+EM_df <- read.csv(df)
+EM_df <- EM_df %>%
+  select(-X)
 ```
 
 ```{r}
-colnames(df)[1] <- "time"
-colnames(df)[4] <- "tweet_loc"
-colnames(df)[5] <- "user_loc"
-colnames(df)[6] <- "full_text"
-colnames(df)[7] <- "user_id"
-colnames(df)[8] <- "followers"
-mvgraph(df,mode="percent")
+EM_df
+```
+
+```{r}
+mvgraph(EM_df,mode="percent",abbr=abbreviate)
 ```
 
 As shown in the graph, the `tweet_loc` column has the most missing values which only contains 4 valid values in total. By data description, it indicates that Twitter users seldom specify details about the location tagged in the Tweet. Another largely missing data column is `user_loc` with 683 valid values. `user_loc` is a self-identified location by the user, and is has the format like 'Manhattan, NY'. We think the result is intuitive as users tend not to share private geological information. The missing value in `text` is interesting. `text` can only holds up to 140 character and if a tweet exceeds the limit, `full_text` is the feature that will capture the complete contents. We see that around half of the users write short text when post tweets related to Elon Musk.

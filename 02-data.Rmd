@@ -7,13 +7,13 @@ Our data was collected from Twitter using Tweepy API. The keywords we used are "
 After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 37 features.
 
 ```{r}
-df <- read.csv("~/Desktop/EDAV/Tweet_DF.csv")
+df <- unzip("csv_data/EM_df.zip")
+EM_df <- read.csv(df)
 ```
 
 ```{r}
 library(dplyr)
-df <- df %>%
- select(-X)
+head(EM_df)
 ```
 
 ```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
