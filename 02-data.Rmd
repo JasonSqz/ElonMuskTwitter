@@ -1,5 +1,24 @@
 # Data sources
 
+Our data was collected from Twitter using Tweepy API. The keywords we used are "Elon Musk","elonmusk","@elonmusk","tesla","Tesla". From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3th, which is a 7-day period. The data we collected were tweet objects. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. A tweet object contain not only the text of the tweet, but other valuable information worth exploring. 
+
+## Dataset overview
+
+After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 37 features.
+
+```{r}
+df <- read.csv("~/Desktop/EDAV/Tweet_DF.csv")
+```
+
+```{r}
+library(dplyr)
+df <- df %>%
+ select(-X)
+```
+
+```{r, message=FALSE, warning=FALSE,echo=FALSE, results='hide'}
+knitr::kable(colnames(df),col.names = c("All variable of the raw data"))
+```
 
 
 
