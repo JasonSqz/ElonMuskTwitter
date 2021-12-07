@@ -24,3 +24,4 @@ In the project, we collected Twitter streaming data using Tweepy API for a conti
 - Trends on real-time public opinion rate on keywords over time. Whether sentiments from mainstream media have a larger influence on it?
 
 
+For more details of this project, click the [**link here**](https://github.com/JasonSqz/ElonMuskTwitter) or copy the url https://github.com/JasonSqz/ElonMuskTwitter and open it in browser to go to our Github repository and navigate code in ``.Rmd`` files.
