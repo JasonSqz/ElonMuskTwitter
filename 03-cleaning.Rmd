@@ -47,7 +47,7 @@ knitr::kable(cbind(col_names,description), col.names = c("Features","Description
 
 Of the 7 features, `user_id` and `follower_count` are sub-features from `user`. They captures the id and the number of followers of a user respectively. `location` is a sub-feature from `place`. It is a user-identified location, which they can put anything on it. `full_text` is a sub-feature from `extended tweet`. It captures tweets that has over 140 characters. We did not keep the feature `geo` as we found out that it has a missing percentage of almost 100 percent. It will show up in the missing value section to support out decision.
 
-After selecting our basic features, we notice that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into "text". The original tweet would be put into"full_text".To make our analysis more convenient, we add a new variable called "original_text" to store the tweets 
+After selecting our basic features, we notice that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into `text`. The original tweet would be put into `full_text`.To make our analysis more convenient, we add a new variable called `original_text` to store the tweets 
 
 ```{r}
 df_final <- df_final %>%
