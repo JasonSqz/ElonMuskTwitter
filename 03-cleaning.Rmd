@@ -13,79 +13,74 @@ library(rjson)
 json_data <- stream_in(file("data/demo_df.json"))
 ```
 
-## select important variables from data
+## Feature Selection
 
-There are 35 variables in the data frame. For the purpose of our analysis, we need to feature out some unnecessary features from it.
-
-```{r}
-col_names_raw <- colnames(json_data) %>% as.data.frame()
-knitr::kable(col_names_raw,col.names = c("all variable of the raw data"))
-```
-
-After careful selection, 8 columns are left in the data. Below is a table of the variable names.
+There are 35 features in the data set and more sub-features within a feature. After careful consideration, we chose 7 features to construct our data set for analysis. The following is a table describing all selected variables.
 
 ```{r}
-df <- json_data[,c("created_at","id_str","text","geo","user","place","extended_tweet")]
-col_names <- colnames(df) %>% as.data.frame()
-knitr::kable(col_names, col.names = c("Selected variables from the raw data"))
-```
+#7 features were originally selected
+df <- json_data[,c("created_at","id_str","text","user","place","extended_tweet")]
 
-The variables "geo", "user", "place" and "extented_tweet" contain a dataframe for each tweet, and each of the dataframe contains more specific information of the variable. For example, each tweet has a user variable, which is a dataframe that contains 40 columns of information of the user, including id, name, location, number of followers and so on.
+#`user_id` and `follower_count` from `user`
+user_new <- df[, c("user")] %>% subset(select = c("id_str", "followers_count"))
+colnames(user_new) <- c("user_id", "followers_count")
 
-```{r}
-user <- df[,"user"] %>% subset(select = -c(withheld_in_countries) )
-col_names_user <- colnames(user) %>% as.data.frame()
-knitr::kable(col_names_user, col.names = c("variables of user"))
-```
-
-We select "id_str" and "followers_count" from the "user" variable. And for other variables that contain one dataframe per tweet, we only choose one variable from each of them: select "full_name" from "place", "full_text" from "extended_tweet".
-
-```{r}
-# extract new variables and replace the old ones
-user_new <- user[, c("id_str", "followers_count")]
-colnames(user_new) <- c("user_id", "user_follower_count")
-
+#`full_name` from `place` which is the name of a location
 place_new <- df[,c("place")] %>% subset(select = c(full_name))
 colnames(place_new) <- c("location")
 
+#`full_text` from `extended_tweet`
 full_text <- df[,c("extended_tweet")] %>% subset(select = c(full_text))
 colnames(full_text) <- c("full_text")
 
-df_new <- df %>% subset(select = -c(user, place, extended_tweet)) %>% cbind(user_new) %>% cbind(place_new) %>% cbind(full_text)
+#Construct the new dataframe
+df_final <- df %>% subset(select = -c(user, place, extended_tweet)) %>% cbind(user_new) %>% cbind(place_new) %>% cbind(full_text)
+
+#Generate table
+
+col_names <- colnames(df_final)
+
+description <- c("creation time of tweet", "tweet id", "truncated tweet of length<140", "user id", "number of followers of user", "location of tweet", "full text of tweet")
+
+knitr::kable(cbind(col_names,description), col.names = c("Features","Description"))
 ```
 
-If the tweet is longer than 140 characters, the tweet would be truncated to put into the "text" variable, and the original tweet would be put into the "full_text" variable. We add a new variable called "original_text" to restore the tweet and make constructing analysis more convenient.
+Of the 7 features, `user_id` and `follower_count` are sub-features from `user`. They captures the id and the number of followers of a user respectively. `location` is a sub-feature from `place`. It is a user-identified location, which they can put anything on it. `full_text` is a sub-feature from `extended tweet`. It captures tweets that has over 140 characters. We did not keep the feature `geo` as we found out that it has a missing percentage of almost 100 percent. It will show up in the missing value section to support out decision.
+
+After selecting our basic features, we notice that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into "text". The original tweet would be put into"full_text".To make our analysis more convenient, we add a new variable called "original_text" to store the tweets 
 
 ```{r}
-df_new <- df_new %>%
+df_final <- df_final %>%
   mutate(original_text = case_when(
-    is.na(df_new$full_text)==TRUE ~ df_new$text,
-    is.na(df_new$full_text)==FALSE ~ df_new$full_text
+    is.na(df_final$full_text)==TRUE ~ df_final$text,
+    is.na(df_final$full_text)==FALSE ~ df_final$full_text
     ))
 ```
 
-## extract words
+## Tokenization
 
-Next, we need to tokenize the word to make analysis related to property of words in each tweet.For this task, we use the tokenize_tweets() function from the tokenizers library, since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer. Below is an example for how it tokenizes one of the tweets.
+Next, we conduct tokenization. This a process that will help us with other natural langauge processing analysis. Since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer, we use the specific tokenize_tweets() function from the tokenizers library. Below is a demonstration for how it tokenizes one of the tweets.
 
 ```{r}
-print(df_new$original_text[1])
-print(tokenizers::tokenize_tweets(df_new$original_text[1]))
+print(df_final$original_text[1])
+print(tokenizers::tokenize_tweets(df_final$original_text[1]))
 ```
 
+We then add `word_tokens` as a feature to our dataset.
+
 ```{r}
-df_new <- df_new %>%
-  mutate(word_tokens = tokenizers::tokenize_tweets(df_new$original_text)
-         )
-   
+df_final <- df_final %>%
+  mutate(word_tokens = tokenizers::tokenize_tweets(df_final$original_text))
 ```
 
-## extract sentiments
+## Sentiment
 
-Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, \@, website links, etc. In order to make our sentiment scores accurate, we need to make sure these special characters are not included.
+Tweets have sentiments and here we try to classify a tweet as positive, negative or netural.
+
+Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, "\","@", website links, etc. Some special character might affect the accuracy of the sentiment score.
 
 ```{r}
-cleaned_text <- gsub('http\\S+\\s*',"",df_new$original_text)
+cleaned_text <- gsub('http\\S+\\s*',"",df_final$original_text)
 cleaned_text <- gsub('https\\S+\\s*',"",cleaned_text)
 cleaned_text <- gsub("#","",cleaned_text)
 cleaned_text <- gsub("@","",cleaned_text)
@@ -94,15 +89,16 @@ cleaned_text <- gsub("@","",cleaned_text)
 ```{r}
 cleaned_text <- cleaned_text %>% as.data.frame()
 colnames(cleaned_text) <- c("cleaned_text")
-df_new <- cbind(df_new, cleaned_text)
+df_final <- cbind(df_final, cleaned_text)
 ```
 
-Below is a comparison between original text and the cleaned text.
+Below is a comparison between original text and the cleaned text. Typically "@" and website links are removed. After cleaning all the tweets, they were stored in a new feature `cleaned_text` in our dataset.
 
 ```{r}
-print(df_new$original_text[1])
-print(df_new$cleaned_text[1])
+print(df_final$original_text[220])
+print(df_final$cleaned_text[220])
 ```
+
 
 ```{r}
 # too slow, abandon for now
@@ -110,31 +106,33 @@ print(df_new$cleaned_text[1])
 # df_new$emotion_word_counts <- syuzhet::get_nrc_sentiment(df_new$cleaned_text)
 ```
 
-We get the sentiment score for each tweet using the "syuzhet" method, which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each sentence as neutral if the score =0, positive if score>0, and negative if score\<0.
+Now, we determine the sentiment score for each tweet using library "syuzhet", which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each tweet into three categories: positive(score>0), netural(socre=0), and negative(score<0). The sentiment scores are stored in a new feature `sentimetn_score`.
 
 ```{r}
-df_new$sentiment_score <- syuzhet::get_sentiment(df_new$cleaned_text)
+df_final$sentiment_score <- syuzhet::get_sentiment(df_final$cleaned_text)
 ```
 
+We add `sentiment` as feature into our dataframe. It captures the sentiment category of a tweet.
 ```{r}
-df_new <- df_new %>%
+df_final <- df_final %>%
   mutate(sentiment = case_when(
-    df_new$sentiment_score>0 ~ "positive",
-    df_new$sentiment_score<0 ~ "negative",
-    df_new$sentiment_score==0 ~ "neutral")
+    df_final$sentiment_score>0 ~ "positive",
+    df_final$sentiment_score<0 ~ "negative",
+    df_final$sentiment_score==0 ~ "neutral")
          )
 ```
 
-## dataset variables summary
+## Summary of added features
 
-Below is a table decribing all the variables we have for each tweet after data processing.
+We added 5 new features into the dataset after some processing, adding to a total of 12 features. Those new features will help us better conduct analysis and visualizations. Below is a table describing all added features.
 
 ```{r}
-col_names <- colnames(df_new)
-description <- c("creation time of tweet", "tweet id", "truncated tweet of length<140", "coordinate of tweet", "user id", "number of followers of user", "location of tweet", "full text of tweet", "original text", "a list of word tokens", "text after removing special characters", "sentiment scores", "sentiment of tweet: positive, neutral or negative")
+col_names <- colnames(df_final)[8:12]
+description <- c("original text", "a list of word tokens", "text after removing special characters", "sentiment scores", "sentiment of tweet: positive, neutral, or negative")
 
 knitr::kable(cbind(col_names,description), col.names = c("variables", "descriptions"))
 ```
+
 
 ```{r}
 # function to transform .json file raw data given file path
@@ -193,4 +191,3 @@ data_tranform <- function(filepath){
 }
 ```
 
-We have one week of tweet data from 10.28 to 11.03. From combining these data set, we have a total of 484678 of data.
