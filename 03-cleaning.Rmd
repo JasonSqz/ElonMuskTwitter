@@ -106,13 +106,14 @@ print(df_final$cleaned_text[220])
 # df_new$emotion_word_counts <- syuzhet::get_nrc_sentiment(df_new$cleaned_text)
 ```
 
-Now, we determine the sentiment score for each tweet using library "syuzhet", which is a custom sentiment dictionary developed in the Nebraska Literary Lab. We then classify each tweet into three categories: positive(score>0), netural(socre=0), and negative(score<0). The sentiment scores are stored in a new feature `sentimetn_score`.
+Now, we determine the sentiment score for each tweet using library "syuzhet", which is a custom sentiment dictionary developed in the Nebraska Literary Lab.The sentiment scores are stored in a new feature `sentiment_score`.
 
 ```{r}
 df_final$sentiment_score <- syuzhet::get_sentiment(df_final$cleaned_text)
 ```
 
-We add `sentiment` as feature into our dataframe. It captures the sentiment category of a tweet.
+We then classify each tweet into three categories: positive(score>0), neutral(socre=0), and negative(score<0). We add `sentiment` as feature into our dataset to capture the sentiment category of a tweet.
+
 ```{r}
 df_final <- df_final %>%
   mutate(sentiment = case_when(
