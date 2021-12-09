@@ -2,9 +2,9 @@
 
 ## Twitter Dataset 
 
-By using Tweepy API, we collected tweets data using keywords: “Elon Musk”, “Tesla”, “@elonmusk” for half a month and decided to pick a continuous 7-day period for the final evaluation.
+We conducted analysis on the missing values before forming our final dataset. Of all the features, we first choose 8 features to consider. 7 out of the 8 features are introduced in the previous section, and the only feature that we left out is `geo`. The missing value graph will support our decision. Another thing worth mentioning is that all the added features will not be presented. Since they are dervied from `text`, and they will not contain any missing value.
 
-Here we use the data collected on 10/28/2021. There are a total of 65,965 tweets. Of all the 8 features we selected, 3 of the them have missing values. They are `tweet_loc`, `user_loc`, `full_text`. The following is a missing value graph presenting missing value distributions and patterns.
+Here we use the whole raw data set containing tweets from October 28th to Novemeber 3rd. There are a total of 471,996 tweets. The following is a missing value graph of our raw dataset. We modified the feature names a bit to make sure the graph is clean.
 
 ```{r}
 library(tidyverse)
@@ -133,11 +133,22 @@ EM_df <- EM_df %>%
   select(-X)
 ```
 
-
 ```{r}
-mvgraph(EM_df,mode="percent",abbr=abbreviate)
+EM_df <- EM_df[,c(1,2,3,4,6,7,8,9)]
 ```
 
-As shown in the graph, the `tweet_loc` column has the most missing values which only contains 4 valid values in total. By data description, it indicates that Twitter users seldom specify details about the location tagged in the Tweet. Another largely missing data column is `user_loc` with 683 valid values. `user_loc` is a self-identified location by the user, and is has the format like 'Manhattan, NY'. We think the result is intuitive as users tend not to share private geological information. The missing value in `text` is interesting. `text` can only holds up to 140 character and if a tweet exceeds the limit, `full_text` is the feature that will capture the complete contents. We see that around half of the users write short text when post tweets related to Elon Musk.
+```{r}
+colnames(EM_df)[1] <- c("time") 
+colnames(EM_df)[2] <- c("tweet_id")
+colnames(EM_df)[4] <- c("geo")
+colnames(EM_df)[5] <- c("user_id")
+colnames(EM_df)[6] <- c("No.follower")
+```
 
-Looking at the missing patterns. About half of the tweets are missing `tweet_loc` and `user_loc`, and the other half has additional missing value in `full_text`. The other two missing patterns are trivial. Overall, we are aware of the fact that most of tweet_loc and user_loc features are missing. Geological analysis might not be plausible as of the high percentage of the missing values. However, we are still interested in finding the possible correlation between the missingness and sentiment of the text, or if it is related to the length of the text.
+```{r}
+mvgraph(EM_df,mode="percent")
+```
+
+As shown in the graph, the `geo` feature has the most missing values that is close to 100%. From the documentation, `geo` is the tweet location that is tagged by the user. It indicates that Twitter users seldom specify a location for tweets. Because of the high missing percentage, we choose to remove the feature. Another largely missing data column is `user_loc` with 5241 valid values. `user_loc` is a self-identified location by the user, and is has the format like 'Manhattan, NY'. We think that we will be able to derive some geological pattern based on the limited data we have. The missing value in `text` is interesting. `text` can only holds up to 140 character and if a tweet exceeds the limit, `full_text` is the feature that will capture the complete contents. We see that around half of the users write short text when post tweets related to Elon Musk.
+
+Looking at the missing patterns. More than a half of the tweets are missing `tweet_loc` and `user_loc`, and around 46% of the tweets have additional missing value in `full_text`. The other three missing patterns are trivial. We do notice that there is a missing pattern that has missing value in every feature. We found out that it was a empty row in our dataset and we removed that row manually.

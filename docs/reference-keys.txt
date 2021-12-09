@@ -4,14 +4,11 @@ dataset-overview
 limitations
 data-transformation
 feature-selection
-extract-words
-extract-sentiments
-dataset-variables-summary
+tokenization
+sentiment
+summary-of-added-features
 missing-values
 twitter-dataset
 results
 interactive-component
 conclusion
-tokenization
-sentiment
-summary-of-added-features
