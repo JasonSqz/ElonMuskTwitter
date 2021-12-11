@@ -97,12 +97,9 @@
 <li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#geological-distribution"><i class="fa fa-check"></i><b>5.3</b> Geological Distribution</a></li>
 <li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#tweet-contents"><i class="fa fa-check"></i><b>5.4</b> Tweet Contents</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="results.html"><a href="results.html#tweet-sentiment"><i class="fa fa-check"></i><b>5.4.1</b> Tweet Sentiment</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#word-analysis"><i class="fa fa-check"></i><b>5.5</b> word analysis</a></li>
-<li class="chapter" data-level="5.6" data-path="results.html"><a href="results.html#sentiment-analysis"><i class="fa fa-check"></i><b>5.6</b> sentiment analysis</a>
-<ul>
-<li class="chapter" data-level="5.6.1" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.6.1</b> Monitoring Topics</a></li>
+<li class="chapter" data-level="5.4.1" data-path="results.html"><a href="results.html#word-frequency"><i class="fa fa-check"></i><b>5.4.1</b> Word Frequency</a></li>
+<li class="chapter" data-level="5.4.2" data-path="results.html"><a href="results.html#tweet-analysis"><i class="fa fa-check"></i><b>5.4.2</b> Tweet analysis</a></li>
+<li class="chapter" data-level="5.4.3" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.4.3</b> Monitoring Topics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
@@ -137,7 +134,7 @@
 <div id="volume-of-tweets" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Volume of tweets</h2>
 <p>We first carried out analysis on the number of tweets that we collected each day. Due to some technical issues, the durations we collected tweets each day are different. They were about 10-12 hours each day, with one excepetion on Oct 29. On that day, we collected tweets for about 5.5 hours. In order to present a consistent results through the period, we standardize the tweets by dividing the total collected hour and multiplying by 24. The following graph presents expected number of tweets each day.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>From the graph, we see that the volume each day can be as low as 70 thousands and as high as 250 thousands. There were two peaks on Oct. 29th and Nov 1st. For the first peak, we corresponded it to the drastic increase in Tesla’s stock price. For the second peak, we related to the conversation between an United Nation offical and Elon Musk. We notice from below that this conversation has 337.5 thousand likes, showing its tremendous volume of attention. Observing these patterns, we conclude that controversial events associated with Elon Musk will cause an increase in discussion on Twitter.</p>
 <center>
 <img src="data/UN_EM.png" style="width:50.0%" />
@@ -147,31 +144,27 @@
 <h2><span class="header-section-number">5.3</span> Geological Distribution</h2>
 <p>Even though we have limited data on geological information of users, we still want to make use of them to explore some patterns.
 In total we have 5293 tweets that contain a user geological information. The location is not limited to the United States, and we conducted filtering for each states.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>From the state graph, we can see that users mainly locate in four states. They are California, Texas, Florida, and New York, with 503, 336, 248, and 187 users respectively. Even though we have a fairly small sample, it still seems that users in more economically developed state tend to discuss more related to Elon Musk.</p>
 </div>
 <div id="tweet-contents" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Tweet Contents</h2>
-<div id="tweet-sentiment" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> Tweet Sentiment</h3>
 <p>Now, our analysis dive into the tweet-level. We are concerned with the contents of the tweets. Even though it is impossible for us to examine tweet by tweet, we use powerful Natural Language Processing techniques to explore patterns.</p>
-<p>We try to identify the emotion of tweets using sentiment analysis. Each tweet will be tagged a sentiment score.</p>
-</div>
-</div>
-<div id="word-analysis" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> word analysis</h2>
-<p>By inspecting the word frequency histogram and the word cloud, we can have some insight about what people were discussing inside these tweets.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-43-1.png" width="960" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
-<p>The words “doge”, “billym2k” and “dogecoin” are in the top 15 words list, and they are describing the same object-dogecoin. Dogecoin is a cryptocurrency that are created as a “joke” to make fun of the fact that everyone can copy bitcoin’s open source code and publish a new cryptocurrency. Elon Musk is a big supporter for dogecoin, calling it “people’s crypto.” It is also unsurprising that these the words like “bitcoin”, “binance” and “crypto” are frequent in the tweets since Elon Musk is a big fan of bitcoin.</p>
-<p>The username “DrEliDavid” and the word “hunger” also appeared a lot. The story began in November 1st when Dr. Eli David shared an image of a CNN Business article with the headline: “2% of Elon Musk’s wealth could solve world hunger, says director of UN food scarcity organization.” Elon Musk tweeted that he would sell Tesla stock if WFP can prove how his 6 billion dollar can solve world hunger. There were lots of online dialogue between the two sides since Musk’s request for spending to be published.</p>
-<p>The words “mars” and “spaceX” are related to his big project of sending human to Mars. The word “will” and “can” and the first and the third most frequent word in these tweets. The reason behind it could be that Elon Musk likes to tweet about the goals for his companies and he has made lots of promises about helping human future in tweeter. People like to discuss about the things he will do in the future.</p>
-<div id="eacjavevus" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="word-frequency" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Word Frequency</h3>
+<p>We first look at some most frequent words that appear across tweets. By inspecting the word frequency histogram and the word cloud, we can have some insight about what people were discussing inside these tweets.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="1152" /></p>
+<p>We can see that in the frequency graph that most of the words are related to crypto-currency. The word “will” and “can” have the most frequency. In relating to the topic of crypto-currency, we hypothesis the pattern to be Twitter users love to envision the future of crypto-currency and use “will” and “can” to express their expectations.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>The word cloud presents more words of high frequency. The words “doge”, “billym2k” and “dogecoin” are in the top 15 words list, and they are describing the same object-dogecoin. Dogecoin is a cryptocurrency that are created as a “joke” to make fun of the fact that everyone can copy bitcoin’s open source code and publish a new cryptocurrency. Elon Musk is a big supporter for dogecoin, calling it “people’s crypto.” It is also unsurprising that these the words like “bitcoin”, “binance” and “crypto” are frequent in the tweets since Elon Musk is a big fan of bitcoin.</p>
+<p>The username “DrEliDavid” and the word “hunger” also appeared a lot. The story began in Oct. 30th when Dr. Eli David shared an image of a CNN Business article with the headline: “2% of Elon Musk’s wealth could solve world hunger, says director of UN food scarcity organization.” Elon Musk tweeted that he would sell Tesla stock if WFP can prove how his 6 billion dollar can solve world hunger. There were lots of online dialogue between the two sides since Musk’s request for spending to be published. We can also see “spaceX” and “mars” as referring to his project of sending human to Mars. However,we can clearly these topics have less popularity.</p>
+<p>Another interesting finding is the use of emojis. The following is a table of top 5 emojis frequency.</p>
+<div id="ijqlfbujbv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#eacjavevus .gt_table {
+#ijqlfbujbv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -196,7 +189,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-left-color: #D3D3D3;
 }
 
-#eacjavevus .gt_heading {
+#ijqlfbujbv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -208,7 +201,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-right-color: #D3D3D3;
 }
 
-#eacjavevus .gt_title {
+#ijqlfbujbv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -218,7 +211,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-bottom-width: 0;
 }
 
-#eacjavevus .gt_subtitle {
+#ijqlfbujbv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -228,13 +221,13 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-top-width: 0;
 }
 
-#eacjavevus .gt_bottom_border {
+#ijqlfbujbv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#eacjavevus .gt_col_headings {
+#ijqlfbujbv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -249,7 +242,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-right-color: #D3D3D3;
 }
 
-#eacjavevus .gt_col_heading {
+#ijqlfbujbv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -269,7 +262,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   overflow-x: hidden;
 }
 
-#eacjavevus .gt_column_spanner_outer {
+#ijqlfbujbv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -281,15 +274,15 @@ In total we have 5293 tweets that contain a user geological information. The loc
   padding-right: 4px;
 }
 
-#eacjavevus .gt_column_spanner_outer:first-child {
+#ijqlfbujbv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#eacjavevus .gt_column_spanner_outer:last-child {
+#ijqlfbujbv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#eacjavevus .gt_column_spanner {
+#ijqlfbujbv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -301,7 +294,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   width: 100%;
 }
 
-#eacjavevus .gt_group_heading {
+#ijqlfbujbv .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -323,7 +316,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   vertical-align: middle;
 }
 
-#eacjavevus .gt_empty_group_heading {
+#ijqlfbujbv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -338,15 +331,15 @@ In total we have 5293 tweets that contain a user geological information. The loc
   vertical-align: middle;
 }
 
-#eacjavevus .gt_from_md > :first-child {
+#ijqlfbujbv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#eacjavevus .gt_from_md > :last-child {
+#ijqlfbujbv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#eacjavevus .gt_row {
+#ijqlfbujbv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -365,7 +358,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   overflow-x: hidden;
 }
 
-#eacjavevus .gt_stub {
+#ijqlfbujbv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -377,7 +370,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   padding-left: 12px;
 }
 
-#eacjavevus .gt_summary_row {
+#ijqlfbujbv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -387,7 +380,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   padding-right: 5px;
 }
 
-#eacjavevus .gt_first_summary_row {
+#ijqlfbujbv .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -397,7 +390,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-top-color: #D3D3D3;
 }
 
-#eacjavevus .gt_grand_summary_row {
+#ijqlfbujbv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -407,7 +400,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   padding-right: 5px;
 }
 
-#eacjavevus .gt_first_grand_summary_row {
+#ijqlfbujbv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -417,11 +410,11 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-top-color: #D3D3D3;
 }
 
-#eacjavevus .gt_striped {
+#ijqlfbujbv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#eacjavevus .gt_table_body {
+#ijqlfbujbv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -430,7 +423,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-bottom-color: #D3D3D3;
 }
 
-#eacjavevus .gt_footnotes {
+#ijqlfbujbv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -444,13 +437,13 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-right-color: #D3D3D3;
 }
 
-#eacjavevus .gt_footnote {
+#ijqlfbujbv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#eacjavevus .gt_sourcenotes {
+#ijqlfbujbv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -464,41 +457,41 @@ In total we have 5293 tweets that contain a user geological information. The loc
   border-right-color: #D3D3D3;
 }
 
-#eacjavevus .gt_sourcenote {
+#ijqlfbujbv .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#eacjavevus .gt_left {
+#ijqlfbujbv .gt_left {
   text-align: left;
 }
 
-#eacjavevus .gt_center {
+#ijqlfbujbv .gt_center {
   text-align: center;
 }
 
-#eacjavevus .gt_right {
+#ijqlfbujbv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#eacjavevus .gt_font_normal {
+#ijqlfbujbv .gt_font_normal {
   font-weight: normal;
 }
 
-#eacjavevus .gt_font_bold {
+#ijqlfbujbv .gt_font_bold {
   font-weight: bold;
 }
 
-#eacjavevus .gt_font_italic {
+#ijqlfbujbv .gt_font_italic {
   font-style: italic;
 }
 
-#eacjavevus .gt_super {
+#ijqlfbujbv .gt_super {
   font-size: 65%;
 }
 
-#eacjavevus .gt_footnote_marks {
+#ijqlfbujbv .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -517,7 +510,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
 <td class="gt_row gt_right">140653</td></tr>
     <tr><td class="gt_row gt_left">🔥</td>
 <td class="gt_row gt_right">62526</td></tr>
-    <tr><td class="gt_row gt_left">👇</td>
+    <tr><td class="gt_row gt_left">🖕</td>
 <td class="gt_row gt_right">24853</td></tr>
     <tr><td class="gt_row gt_left">💎</td>
 <td class="gt_row gt_right">23728</td></tr>
@@ -528,17 +521,18 @@ In total we have 5293 tweets that contain a user geological information. The loc
   
 </table>
 </div>
-<p>Rocket is the most used emoji, and it is most likely related to Elon Musk’s spaceX projects. The emojis fire and gem are very frequent, and we can know that lots of people are inspired by Elon Musk.</p>
+<p>It is very interesting that “rocket” appears to be the most frequent emoji. We are unsure if it is responding to the spaceX project, or if it is expectation on crypto-currceny: “To the moon 🚀”.</p>
 </div>
-<div id="sentiment-analysis" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> sentiment analysis</h2>
+<div id="tweet-analysis" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Tweet analysis</h3>
 <p>We have assigned a sentiment score for each tweet based on the usage of words. Below is the histogram of the distribution of sentiment scores. Most tweets have scores around 0, which means lots of these tweets are neutral. Also, There are more positive tweets than negative ones.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>If we classify tweets with negative scores as negative, tweets with positive scores as positive and tweet with 0 score as neutral, we can see more clearly that there are way more positive tweets than negative tweets.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
-<div id="monitoring-topics" class="section level3" number="5.6.1">
-<h3><span class="header-section-number">5.6.1</span> Monitoring Topics</h3>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="monitoring-topics" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Monitoring Topics</h3>
 <p>After the exploration of sentiments, we want to further know what specific topics users favor to discuss. To to this, we apply topic modeling(LDA) to find underlying topics. The <a href="lda5.html"><strong>link</strong></a> leads to an interactive LDA result.</p>
 
 </div>

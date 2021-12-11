@@ -18,9 +18,8 @@ elon-musk
 volume-of-tweets
 geological-distribution
 tweet-contents
-tweet-sentiment
-word-analysis
-sentiment-analysis
+word-frequency
+tweet-analysis
 monitoring-topics
 interactive-component
 conclusion

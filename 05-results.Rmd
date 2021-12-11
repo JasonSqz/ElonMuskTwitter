@@ -167,10 +167,11 @@ From the state graph, we can see that users mainly locate in four states. They a
 
 ## Tweet Contents
 
-### Tweet Sentiment
 Now, our analysis dive into the tweet-level. We are concerned with the contents of the tweets. Even though it is impossible for us to examine tweet by tweet, we use powerful Natural Language Processing techniques to explore patterns. 
 
-We try to identify the emotion of tweets using sentiment analysis. Each tweet will be tagged a sentiment score.
+### Word Frequency
+
+We first look at some most frequent words that appear across tweets. By inspecting the word frequency histogram and the word cloud, we can have some insight about what people were discussing inside these tweets.
 
 ```{r}
 # fix sentiment column
@@ -188,10 +189,6 @@ for (i in 1:length(df$sentiment)){
   }
 }
 ```
-
-## word analysis
-By inspecting the word frequency histogram and the word cloud, we can have some insight about what people were discussing inside these tweets.
-
 
 ```{r}
 # create corpus
@@ -216,31 +213,31 @@ words <- words %>% subset(!(word %in% remove_words))
 ```
 
 
-```{r,fig.width=10, fig.height=5}
+```{r,fig.width=12, fig.height=8}
 #word frequency histogram
 words %>%
   top_n(15) %>%
-ggplot()+
-  geom_bar(aes(x=reorder(word,-n),y=n),stat="identity")+
-  ggtitle("top 15 words of all tweets") +
-  xlab("count")+
-  ylab("word")
+  ggplot()+
+    geom_bar(aes(x=reorder(word,-n),y=n),stat="identity",fill="lightblue")+
+    ggtitle("Top 15 words of all tweets") +
+    xlab("words")+
+    ylab("count") +
+    theme_bw()
 
 ```
 
+We can see that in the frequency graph that most of the words are related to crypto-currency. The word "will"  and "can" have the most frequency. In relating to the topic of crypto-currency, we hypothesis the pattern to be Twitter users love to envision the future of crypto-currency and use "will" and "can" to express their expectations. 
 
 ```{r}
 #word cloud
 wordcloud(words = words$word, freq = words$n, min.freq = 1,max.words=100, random.order=FALSE, rot.per=0.35, colors=brewer.pal(5, "Greens"))
 ```
 
-The words "doge", "billym2k" and "dogecoin" are in the top 15 words list, and they are describing the same object-dogecoin. Dogecoin is a cryptocurrency that are created as a "joke" to make fun of the fact that everyone can copy bitcoin's open source code and publish a new cryptocurrency. Elon Musk is a big supporter for dogecoin, calling it "people's crypto." It is also unsurprising that these the words like "bitcoin", "binance" and "crypto" are frequent in the tweets since Elon Musk is a big fan of bitcoin. 
+The word cloud presents more words of high frequency. The words "doge", "billym2k" and "dogecoin" are in the top 15 words list, and they are describing the same object-dogecoin. Dogecoin is a cryptocurrency that are created as a "joke" to make fun of the fact that everyone can copy bitcoin's open source code and publish a new cryptocurrency. Elon Musk is a big supporter for dogecoin, calling it "people's crypto." It is also unsurprising that these the words like "bitcoin", "binance" and "crypto" are frequent in the tweets since Elon Musk is a big fan of bitcoin. 
 
-The username "DrEliDavid" and the word "hunger" also appeared a lot. The story began in November 1st when Dr. Eli David shared an image of a CNN Business article with the headline: “2% of Elon Musk’s wealth could solve world hunger, says director of UN food scarcity organization.” Elon Musk tweeted that he would sell Tesla stock if WFP can prove how his 6 billion dollar can solve world hunger. There were lots of online dialogue between the two sides since Musk’s request for spending to be published.
+The username "DrEliDavid" and the word "hunger" also appeared a lot. The story began in Oct. 30th when Dr. Eli David shared an image of a CNN Business article with the headline: “2% of Elon Musk’s wealth could solve world hunger, says director of UN food scarcity organization.” Elon Musk tweeted that he would sell Tesla stock if WFP can prove how his 6 billion dollar can solve world hunger. There were lots of online dialogue between the two sides since Musk’s request for spending to be published. We can also see "spaceX" and "mars" as referring to his project of sending human to Mars. However,we can clearly these topics have less popularity. 
 
-The words "mars" and "spaceX" are related to his big project of sending human to Mars. The word "will" and "can" and the first and the third  most frequent word in these tweets. The reason behind it could be that Elon Musk likes to tweet about the goals for his companies and he has made lots of promises about helping human future in tweeter. People like to discuss about the things he will do in the future.
- 
-
+Another interesting finding is the use of emojis. The following is a table of top 5 emojis frequency.
 
 ```{r}
 # emoji count
@@ -254,9 +251,9 @@ top_emoji$word[5] <- emo::ji("smile")
 colnames(top_emoji) <- c("emoji","count")
 top_emoji %>% gt() #emoji appear after knitting
 ```
-Rocket is the most used emoji, and it is most likely related to Elon Musk's spaceX projects. The emojis fire and gem are very frequent, and we can know that lots of people are inspired by Elon Musk.
+It is very interesting that "rocket" appears to be the most frequent emoji. We are unsure if it is responding to the spaceX project, or if it is expectation on crypto-currceny: "To the moon `r emo::ji("rocket")`". 
 
-## sentiment analysis
+### Tweet analysis
 We have assigned a sentiment score for each tweet based on the usage of words. Below is the histogram of the distribution of sentiment scores. Most tweets have scores around 0, which means lots of these tweets are neutral. Also, There are more positive tweets than negative ones.
 
 ```{r}
