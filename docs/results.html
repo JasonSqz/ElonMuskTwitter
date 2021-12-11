@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-08" />
+<meta name="date" content="2021-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -90,7 +90,17 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#twitter-dataset"><i class="fa fa-check"></i><b>4.1</b> Twitter Dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#elon-musk"><i class="fa fa-check"></i><b>5.1</b> Elon Musk</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#volume-of-tweets"><i class="fa fa-check"></i><b>5.2</b> Volume of tweets</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#geological-distribution"><i class="fa fa-check"></i><b>5.3</b> Geological Distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#tweet-contents"><i class="fa fa-check"></i><b>5.4</b> Tweet Contents</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="results.html"><a href="results.html#tweet-sentiment"><i class="fa fa-check"></i><b>5.4.1</b> Tweet Sentiment</a></li>
+<li class="chapter" data-level="5.4.2" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.4.2</b> Monitoring Topics</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -114,11 +124,46 @@
             <section class="normal" id="section-">
 <div id="results" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Results</h1>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div id="elon-musk" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Elon Musk</h2>
+<p>Elon Musk is very active on twitter and anything he tweets can be very influential and brings a lot of controversies. For example, his tweet about the crypto-currency “dogecoin” caused “dogecoin” price to spike. Since Twitter users have many discussions surrounding him, our analysis aims to visualize those discussions.</p>
+<p>The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem “七步诗” titled as “Humankind”.</p>
+<p><img src="data/poem.png" /></p>
+</div>
+<div id="volume-of-tweets" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Volume of tweets</h2>
+<p>We first carried out analysis on the number of tweets that we collected each day. Due to some technical issues, the durations we collected tweets each day are different. They were about 10-12 hours each day, with one excepetion on Oct 29. On that day, we collected tweets for about 5.5 hours. In order to present a consistent results through the period, we standardize the tweets by dividing the total collected hour and multiplying by 24. The following graph presents expected number of tweets each day.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>From the graph, we see that the volume each day can be as low as 70 thousands and as high as 250 thousands. There were two peaks on Oct. 29th and Nov 1st. For the first peak, we corresponded it to the drastic increase in Tesla’s stock price. For the second peak, we related to the conversation between an United Nation offical and Elon Musk. We notice from below that this conversation has 337.5 thousand likes, showing its tremendous volume of attention. Observing these patterns, we conclude that controversial events associated with Elon Musk will cause an increase in discussion on Twitter.</p>
+<center>
+<img src="data/UN_EM.png" style="width:50.0%" />
+</center>
+</div>
+<div id="geological-distribution" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Geological Distribution</h2>
+<p>Even though we have limited data on geological information of users, we still want to make use of them to explore some patterns.
+In total we have 5293 tweets that contain a user geological information. The location is not limited to the United States, and we conducted filtering for each states.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>From the state graph, we can see that users mainly locate in four states. They are California, Texas, Florida, and New York, with 503, 336, 248, and 187 users respectively. Even though we have a fairly small sample, it still seems that users in more economically developed state tend to discuss more related to Elon Musk.</p>
+</div>
+<div id="tweet-contents" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Tweet Contents</h2>
+<div id="tweet-sentiment" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Tweet Sentiment</h3>
+<p>Now, our analysis dive into the tweet-level. We are concerned with the contents of the tweets. Even though it is impossible for us to examine tweet by tweet, we use powerful Natural Language Processing techniques to explore patterns.</p>
+<p>We try to identify the emotion of tweets using sentiment analysis. Each tweet will be tagged a sentiment score.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="monitoring-topics" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Monitoring Topics</h3>
+<p>After the exploration of sentiments, we want to further know what specific topics users favor to discuss. To to this, we apply topic modeling(LDA) to find underlying topics. The <a href="lda5.html"><strong>link</strong></a> leads to an interactive LDA result.</p>
 
+</div>
+</div>
 </div>
             </section>
 

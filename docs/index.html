@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-08" />
+<meta name="date" content="2021-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -90,7 +90,12 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#twitter-dataset"><i class="fa fa-check"></i><b>4.1</b> Twitter Dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#elon-musk"><i class="fa fa-check"></i><b>5.1</b> Elon Musk</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#time-series-analysis"><i class="fa fa-check"></i><b>5.2</b> Time series analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#topic-modeling"><i class="fa fa-check"></i><b>5.3</b> Topic modeling</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -115,10 +120,23 @@
 <div id="header">
 <h1 class="title">Analyzing emotions towards Elon Musk on Twitter</h1>
 <p class="author"><em>Anni Chen, Zehui Wu, Senqi Zhang</em></p>
-<p class="date"><em>2021-12-08</em></p>
+<p class="date"><em>2021-12-10</em></p>
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>Elon Musk, a well-known entrepreneur and business magnate who founded Paypal, SpaceX and Tesla Motors, taken back the title of the world’s richest person in December 2021 with an estimated net worth of around US$265 billion. Besides all those miracles and innovations he made in his business empire, he forms a controversial figure on the Internet, especially with his appealing words on Twitter. Till Dec. 2021, he has owned 65.6M followers on Twitter as his 13th year of creating account. There is no doubt that Elon Musk is quite a social media influencer who tweets frequently everyday and expresses opinions on a variety of topics including: spaceX, crypto-currency, Tesla, etc.. Twitter users always have heated discussions surrounding his tweets and associated actions. Based on those facts, we are curious about how people react to Elon Musk’s Tweets. We want to visualize user discussions on related topics and explore underlying patterns using various techniques.</p>
+<center>
+<img src="data/elonmusk.jpeg" style="width:50.0%" />
+</center>
+<p>In this project, we collected Twitter streaming data using Tweepy API for a continuous week starting from Nov. 28th, 2021. The tweets collected contain valuable information including: tweet content, user profile, and geological identification. For our analysis, NLP techniques will be applied to calculate the sentiments and classify topics on tweet contents. We consider to carry out analysis at both tweet level and user level and hopefully the geographic and time series information can help answer the following questions:</p>
+<ul>
+<li><p>What’s the volumes of users’ tweet regarding Elon Musk over time?</p></li>
+<li><p>Is there a geological pattern for users discussing Elon Musk?</p></li>
+<li><p>For people who are influential (more followers), will there be a difference in attitude to average Twitter users?</p></li>
+<li><p>What are the most popular topics/the most frequent words in tweets about Elon Musk? What are the most frequently mentioned topics in tweets of negative or positive sentiment?</p></li>
+<li><p>For each individual topic, what is the distribution of sentiments and what are the most frequent words?</p></li>
+</ul>
+<p>For more details of this project, click the <a href="https://github.com/JasonSqz/ElonMuskTwitter"><strong>link here</strong></a> or copy the url <a href="https://github.com/JasonSqz/ElonMuskTwitter" class="uri">https://github.com/JasonSqz/ElonMuskTwitter</a> and open it in browser to go to our Github repository and navigate code in <code>.Rmd</code> files.</p>
 
 </div>
             </section>

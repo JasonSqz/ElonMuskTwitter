@@ -42,7 +42,7 @@ col_names <- colnames(df_final)
 
 description <- c("creation time of tweet", "tweet id", "truncated tweet of length<140", "user id", "number of followers of user", "location of tweet", "full text of tweet")
 
-knitr::kable(cbind(col_names,description), col.names = c("Features","Description"))
+knitr::kable(cbind(col_names,description), col.names = c("Features","Description"),caption="Feature Overview")
 ```
 
 Of the 7 features, `user_id` and `follower_count` are sub-features from `user`. They captures the id and the number of followers of a user respectively. `location` is a sub-feature from `place`. It is a user-identified location, which they can put anything on it. `full_text` is a sub-feature from `extended tweet`. It captures tweets that has over 140 characters. We did not keep the feature `geo` as we found out that it has a missing percentage of almost 100 percent. It will show up in the missing value section to support out decision.
@@ -131,7 +131,7 @@ We added 5 new features into the dataset after some processing, adding to a tota
 col_names <- colnames(df_final)[8:12]
 description <- c("original text", "a list of word tokens", "text after removing special characters", "sentiment scores", "sentiment of tweet: positive, neutral, or negative")
 
-knitr::kable(cbind(col_names,description), col.names = c("variables", "descriptions"))
+knitr::kable(cbind(col_names,description), col.names = c("variables", "descriptions"), caption = "Additional Feature Overview")
 ```
 
 

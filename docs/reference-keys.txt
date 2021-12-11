@@ -1,3 +1,7 @@
+tab:unnamed-chunk-5
+tab:unnamed-chunk-9
+tab:unnamed-chunk-19
+tab:unnamed-chunk-27
 introduction
 data-sources
 dataset-overview
@@ -10,5 +14,13 @@ summary-of-added-features
 missing-values
 twitter-dataset
 results
+elon-musk
+time-series-analysis
+topic-modeling
 interactive-component
 conclusion
+volume-of-tweets
+geological-distribution
+tweet-sentiment
+tweet-contents
+monitoring-topics

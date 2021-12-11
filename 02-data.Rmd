@@ -4,7 +4,7 @@ Our data was collected from Twitter using the Tweepy API. Since we are intereste
 
 ## Dataset overview
 
-After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 35 features. Below is a table of the features. 
+After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 36 features. Below is a table of the features. 
 
 ```{r}
 library(dplyr)
@@ -17,7 +17,9 @@ json_data <- stream_in(file("data/demo_df.json"))
 
 ```{r}
 col_names_raw <- colnames(json_data) %>% as.data.frame()
-knitr::kable(col_names_raw,col.names = c("all variable of the raw data"))
+knitr::kable(cbind(col_names_raw[1:18,],col_names_raw[19:34,]),
+             col.names = c("all variable of the raw data",""),
+             caption = "All Feature names")
 ```
 
 One thing worth mentioning is that some of features are actually dictionaries. For example, in `User`, there are actually 40 more sub features including `username`,`location`,`description`, etc.. Counting those sub features, there are over 150 features in a tweet object and we have to choose carefully from them. Details of selected features and descriptions will be elaborated in the data transformation section.  

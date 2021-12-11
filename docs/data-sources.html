@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-08" />
+<meta name="date" content="2021-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -90,7 +90,12 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#twitter-dataset"><i class="fa fa-check"></i><b>4.1</b> Twitter Dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#elon-musk"><i class="fa fa-check"></i><b>5.1</b> Elon Musk</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#time-series-analysis"><i class="fa fa-check"></i><b>5.2</b> Time series analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#topic-modeling"><i class="fa fa-check"></i><b>5.3</b> Topic modeling</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -117,118 +122,87 @@
 <p>Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk. We chose the keyword set of “Elon Musk”,“elonmusk”,“<span class="citation">@elonmusk</span>”,“tesla”,“Tesla”. From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3rd, which is a 7-day period. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. The data is collected in the form of a tweet object, and it contains not only the text of the tweet, but other valuable information worth exploring.</p>
 <div id="dataset-overview" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Dataset overview</h2>
-<p>After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 35 features. Below is a table of the features.</p>
+<p>After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 36 features. Below is a table of the features.</p>
 <table>
+<caption><span id="tab:unnamed-chunk-5">Table 2.1: </span>All Feature names</caption>
 <thead>
 <tr class="header">
 <th align="left">all variable of the raw data</th>
+<th align="left"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">created_at</td>
-</tr>
-<tr class="even">
-<td align="left">id</td>
-</tr>
-<tr class="odd">
-<td align="left">id_str</td>
-</tr>
-<tr class="even">
-<td align="left">text</td>
-</tr>
-<tr class="odd">
-<td align="left">display_text_range</td>
-</tr>
-<tr class="even">
-<td align="left">source</td>
-</tr>
-<tr class="odd">
-<td align="left">truncated</td>
-</tr>
-<tr class="even">
-<td align="left">in_reply_to_status_id</td>
-</tr>
-<tr class="odd">
-<td align="left">in_reply_to_status_id_str</td>
-</tr>
-<tr class="even">
-<td align="left">in_reply_to_user_id</td>
-</tr>
-<tr class="odd">
-<td align="left">in_reply_to_user_id_str</td>
-</tr>
-<tr class="even">
-<td align="left">in_reply_to_screen_name</td>
-</tr>
-<tr class="odd">
-<td align="left">user</td>
-</tr>
-<tr class="even">
-<td align="left">geo</td>
-</tr>
-<tr class="odd">
-<td align="left">coordinates</td>
-</tr>
-<tr class="even">
-<td align="left">place</td>
-</tr>
-<tr class="odd">
-<td align="left">contributors</td>
-</tr>
-<tr class="even">
-<td align="left">is_quote_status</td>
-</tr>
-<tr class="odd">
 <td align="left">extended_tweet</td>
 </tr>
 <tr class="even">
+<td align="left">id</td>
 <td align="left">quote_count</td>
 </tr>
 <tr class="odd">
+<td align="left">id_str</td>
 <td align="left">reply_count</td>
 </tr>
 <tr class="even">
+<td align="left">text</td>
 <td align="left">retweet_count</td>
 </tr>
 <tr class="odd">
+<td align="left">display_text_range</td>
 <td align="left">favorite_count</td>
 </tr>
 <tr class="even">
+<td align="left">source</td>
 <td align="left">entities</td>
 </tr>
 <tr class="odd">
+<td align="left">truncated</td>
 <td align="left">favorited</td>
 </tr>
 <tr class="even">
+<td align="left">in_reply_to_status_id</td>
 <td align="left">retweeted</td>
 </tr>
 <tr class="odd">
+<td align="left">in_reply_to_status_id_str</td>
 <td align="left">filter_level</td>
 </tr>
 <tr class="even">
+<td align="left">in_reply_to_user_id</td>
 <td align="left">lang</td>
 </tr>
 <tr class="odd">
+<td align="left">in_reply_to_user_id_str</td>
 <td align="left">timestamp_ms</td>
 </tr>
 <tr class="even">
+<td align="left">in_reply_to_screen_name</td>
 <td align="left">quoted_status_id</td>
 </tr>
 <tr class="odd">
+<td align="left">user</td>
 <td align="left">quoted_status_id_str</td>
 </tr>
 <tr class="even">
+<td align="left">geo</td>
 <td align="left">quoted_status</td>
 </tr>
 <tr class="odd">
+<td align="left">coordinates</td>
 <td align="left">quoted_status_permalink</td>
 </tr>
 <tr class="even">
+<td align="left">place</td>
 <td align="left">possibly_sensitive</td>
 </tr>
 <tr class="odd">
-<td align="left">extended_entities</td>
+<td align="left">contributors</td>
+<td align="left">extended_tweet</td>
+</tr>
+<tr class="even">
+<td align="left">is_quote_status</td>
+<td align="left">quote_count</td>
 </tr>
 </tbody>
 </table>
