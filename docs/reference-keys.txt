@@ -19,7 +19,7 @@ volume-of-tweets
 geological-distribution
 tweet-contents
 word-frequency
-tweet-analysis
+tweet-sentiment
 monitoring-topics
 interactive-component
 conclusion
