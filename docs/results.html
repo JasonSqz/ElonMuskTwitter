@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-10" />
+<meta name="date" content="2021-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -98,7 +98,11 @@
 <li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#tweet-contents"><i class="fa fa-check"></i><b>5.4</b> Tweet Contents</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="results.html"><a href="results.html#tweet-sentiment"><i class="fa fa-check"></i><b>5.4.1</b> Tweet Sentiment</a></li>
-<li class="chapter" data-level="5.4.2" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.4.2</b> Monitoring Topics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#word-analysis"><i class="fa fa-check"></i><b>5.5</b> word analysis</a></li>
+<li class="chapter" data-level="5.6" data-path="results.html"><a href="results.html#sentiment-analysis"><i class="fa fa-check"></i><b>5.6</b> sentiment analysis</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.6.1</b> Monitoring Topics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
@@ -152,14 +156,389 @@ In total we have 5293 tweets that contain a user geological information. The loc
 <h3><span class="header-section-number">5.4.1</span> Tweet Sentiment</h3>
 <p>Now, our analysis dive into the tweet-level. We are concerned with the contents of the tweets. Even though it is impossible for us to examine tweet by tweet, we use powerful Natural Language Processing techniques to explore patterns.</p>
 <p>We try to identify the emotion of tweets using sentiment analysis. Each tweet will be tagged a sentiment score.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
-<div id="monitoring-topics" class="section level3" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> Monitoring Topics</h3>
+</div>
+<div id="word-analysis" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> word analysis</h2>
+<p>By inspecting the word frequency histogram and the word cloud, we can have some insight about what people were discussing inside these tweets.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="960" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>The words “doge”, “billym2k” and “dogecoin” are in the top 15 words list, and they are describing the same object-dogecoin. Dogecoin is a cryptocurrency that are created as a “joke” to make fun of the fact that everyone can copy bitcoin’s open source code and publish a new cryptocurrency. Elon Musk is a big supporter for dogecoin, calling it “people’s crypto.” It is also unsurprising that these the words like “bitcoin”, “binance” and “crypto” are frequent in the tweets since Elon Musk is a big fan of bitcoin.</p>
+<p>The username “DrEliDavid” and the word “hunger” also appeared a lot. The story began in November 1st when Dr. Eli David shared an image of a CNN Business article with the headline: “2% of Elon Musk’s wealth could solve world hunger, says director of UN food scarcity organization.” Elon Musk tweeted that he would sell Tesla stock if WFP can prove how his 6 billion dollar can solve world hunger. There were lots of online dialogue between the two sides since Musk’s request for spending to be published.</p>
+<p>The words “mars” and “spaceX” are related to his big project of sending human to Mars. The word “will” and “can” and the first and the third most frequent word in these tweets. The reason behind it could be that Elon Musk likes to tweet about the goals for his companies and he has made lots of promises about helping human future in tweeter. People like to discuss about the things he will do in the future.</p>
+<div id="ocbznfwlmh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ocbznfwlmh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ocbznfwlmh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ocbznfwlmh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ocbznfwlmh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ocbznfwlmh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ocbznfwlmh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ocbznfwlmh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ocbznfwlmh .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ocbznfwlmh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ocbznfwlmh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ocbznfwlmh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ocbznfwlmh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ocbznfwlmh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ocbznfwlmh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ocbznfwlmh .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ocbznfwlmh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ocbznfwlmh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ocbznfwlmh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ocbznfwlmh .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ocbznfwlmh .gt_left {
+  text-align: left;
+}
+
+#ocbznfwlmh .gt_center {
+  text-align: center;
+}
+
+#ocbznfwlmh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ocbznfwlmh .gt_font_normal {
+  font-weight: normal;
+}
+
+#ocbznfwlmh .gt_font_bold {
+  font-weight: bold;
+}
+
+#ocbznfwlmh .gt_font_italic {
+  font-style: italic;
+}
+
+#ocbznfwlmh .gt_super {
+  font-size: 65%;
+}
+
+#ocbznfwlmh .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">emoji</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">count</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">🚀</td>
+<td class="gt_row gt_right">140653</td></tr>
+    <tr><td class="gt_row gt_left">🔥</td>
+<td class="gt_row gt_right">62526</td></tr>
+    <tr><td class="gt_row gt_left">🖖</td>
+<td class="gt_row gt_right">24853</td></tr>
+    <tr><td class="gt_row gt_left">💎</td>
+<td class="gt_row gt_right">23728</td></tr>
+    <tr><td class="gt_row gt_left">😄</td>
+<td class="gt_row gt_right">18558</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Rocket is the most used emoji, and it is most likely related to Elon Musk’s spaceX projects. The emojis fire and gem are very frequent, and we can know that lots of people are inspired by Elon Musk.</p>
+</div>
+<div id="sentiment-analysis" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> sentiment analysis</h2>
+<p>We have assigned a sentiment score for each tweet based on the usage of words. Below is the histogram of the distribution of sentiment scores. Most tweets have scores around 0, which means lots of these tweets are neutral. Also, There are more positive tweets than negative ones.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>If we classify tweets with negative scores as negative, tweets with positive scores as positive and tweet with 0 score as neutral, we can see more clearly that there are way more positive tweets than negative tweets.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div id="monitoring-topics" class="section level3" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Monitoring Topics</h3>
 <p>After the exploration of sentiments, we want to further know what specific topics users favor to discuss. To to this, we apply topic modeling(LDA) to find underlying topics. The <a href="lda5.html"><strong>link</strong></a> leads to an interactive LDA result.</p>
 
 </div>

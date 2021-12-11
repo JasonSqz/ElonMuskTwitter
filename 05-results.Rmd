@@ -10,14 +10,11 @@ library(ggplot2)
 library(tm)
 library(tidytext)
 library(wordcloud)
-<<<<<<< HEAD
 library(lubridate)
 library(scales)
 library(usmap)
-=======
-library(emo) #devtools::install_github("hadley/emo")
+library(emo) 
 library(gt)
->>>>>>> 615ec2cbafe7a7d29ce0d8681a783083b5125eb3
 ```
 
 ```{r}

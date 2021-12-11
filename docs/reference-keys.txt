@@ -24,3 +24,5 @@ geological-distribution
 tweet-sentiment
 tweet-contents
 monitoring-topics
+word-analysis
+sentiment-analysis
