@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-07" />
+<meta name="date" content="2021-12-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -81,10 +81,10 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#select-important-variables-from-data"><i class="fa fa-check"></i><b>3.1</b> select important variables from data</a></li>
-<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#extract-words"><i class="fa fa-check"></i><b>3.2</b> extract words</a></li>
-<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#extract-sentiments"><i class="fa fa-check"></i><b>3.3</b> extract sentiments</a></li>
-<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#dataset-variables-summary"><i class="fa fa-check"></i><b>3.4</b> dataset variables summary</a></li>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#feature-selection"><i class="fa fa-check"></i><b>3.1</b> Feature Selection</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#tokenization"><i class="fa fa-check"></i><b>3.2</b> Tokenization</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#sentiment"><i class="fa fa-check"></i><b>3.3</b> Sentiment</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#summary-of-added-features"><i class="fa fa-check"></i><b>3.4</b> Summary of added features</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a>
 <ul>
@@ -116,11 +116,11 @@
 <h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
 <div id="twitter-dataset" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Twitter Dataset</h2>
-<p>By using Tweepy API, we collected tweets data using keywords: “Elon Musk”, “Tesla”, “<span class="citation">@elonmusk</span>” for half a month and decided to pick a continuous 7-day period for the final evaluation.</p>
-<p>Here we use the data collected on 10/28/2021. There are a total of 65,965 tweets. Of all the 8 features we selected, 3 of the them have missing values. They are <code>tweet_loc</code>, <code>user_loc</code>, <code>full_text</code>. The following is a missing value graph presenting missing value distributions and patterns.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<p>As shown in the graph, the <code>tweet_loc</code> column has the most missing values which only contains 4 valid values in total. By data description, it indicates that Twitter users seldom specify details about the location tagged in the Tweet. Another largely missing data column is <code>user_loc</code> with 683 valid values. <code>user_loc</code> is a self-identified location by the user, and is has the format like ‘Manhattan, NY’. We think the result is intuitive as users tend not to share private geological information. The missing value in <code>text</code> is interesting. <code>text</code> can only holds up to 140 character and if a tweet exceeds the limit, <code>full_text</code> is the feature that will capture the complete contents. We see that around half of the users write short text when post tweets related to Elon Musk.</p>
-<p>Looking at the missing patterns. About half of the tweets are missing <code>tweet_loc</code> and <code>user_loc</code>, and the other half has additional missing value in <code>full_text</code>. The other two missing patterns are trivial. Overall, we are aware of the fact that most of tweet_loc and user_loc features are missing. Geological analysis might not be plausible as of the high percentage of the missing values. However, we are still interested in finding the possible correlation between the missingness and sentiment of the text, or if it is related to the length of the text.</p>
+<p>We conducted analysis on the missing values before forming our final dataset. Of all the features, we first choose 8 features to consider. 7 out of the 8 features are introduced in the previous section, and the only feature that we left out is <code>geo</code>. The missing value graph will support our decision. Another thing worth mentioning is that all the added features will not be presented. Since they are dervied from <code>text</code>, and they will not contain any missing value.</p>
+<p>Here we use the whole raw data set containing tweets from October 28th to Novemeber 3rd. There are a total of 471,996 tweets. The following is a missing value graph of our raw dataset. We modified the feature names a bit to make sure the graph is clean.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>As shown in the graph, the <code>geo</code> feature has the most missing values that is close to 100%. From the documentation, <code>geo</code> is the tweet location that is tagged by the user. It indicates that Twitter users seldom specify a location for tweets. Because of the high missing percentage, we choose to remove the feature. Another largely missing data column is <code>location</code> with 5241 valid values. <code>location</code> is a self-identified location by the user, and is has the format like ‘Manhattan, NY’. We think that we will be able to derive some geological pattern based on the limited data we have. The missing value in <code>text</code> is interesting. <code>text</code> can only holds up to 140 character and if a tweet exceeds the limit, <code>full_text</code> is the feature that will capture the complete contents. We see that around half of the users write short text when post tweets related to Elon Musk.</p>
+<p>Looking at the missing patterns. More than a half of the tweets are missing <code>geo</code> and <code>location</code>, and around 46% of the tweets have additional missing value in <code>full_text</code>. The other three missing patterns are trivial. We do notice that there is a missing pattern that has missing value in every feature. We found out that it was a empty row in our dataset and we removed that row manually.</p>
 
 </div>
 </div>

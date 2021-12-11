@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-07" />
+<meta name="date" content="2021-12-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -81,10 +81,10 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#select-important-variables-from-data"><i class="fa fa-check"></i><b>3.1</b> select important variables from data</a></li>
-<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#extract-words"><i class="fa fa-check"></i><b>3.2</b> extract words</a></li>
-<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#extract-sentiments"><i class="fa fa-check"></i><b>3.3</b> extract sentiments</a></li>
-<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#dataset-variables-summary"><i class="fa fa-check"></i><b>3.4</b> dataset variables summary</a></li>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#feature-selection"><i class="fa fa-check"></i><b>3.1</b> Feature Selection</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#tokenization"><i class="fa fa-check"></i><b>3.2</b> Tokenization</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#sentiment"><i class="fa fa-check"></i><b>3.3</b> Sentiment</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#summary-of-added-features"><i class="fa fa-check"></i><b>3.4</b> Summary of added features</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a>
 <ul>
@@ -114,7 +114,7 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
-<p>Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk. We chose the keyword set of “Elon Musk”,“elonmusk”,“<span class="citation">@elonmusk</span>”,“tesla”,“Tesla”. From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3th, which is a 7-day period. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. The data is collected in the form of a tweet object, and it contains not only the text of the tweet, but other valuable information worth exploring.</p>
+<p>Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk. We chose the keyword set of “Elon Musk”,“elonmusk”,“<span class="citation">@elonmusk</span>”,“tesla”,“Tesla”. From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3rd, which is a 7-day period. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. The data is collected in the form of a tweet object, and it contains not only the text of the tweet, but other valuable information worth exploring.</p>
 <div id="dataset-overview" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Dataset overview</h2>
 <p>After combining our dataset, we observed that a total of 471,996 tweets were collected. For a single tweet object, it contains 35 features. Below is a table of the features.</p>
@@ -232,7 +232,7 @@
 </tr>
 </tbody>
 </table>
-<p>One thing worth mentioning is that some of features are actually dictionaries. For example, in <code>User</code>, there are actually 40 more sub features including <code>username</code>,<code>location</code>,<code>description</code>, etc. Counting those sub features, there are over 150 features in a tweet object and we have to choose carefully from them. Details of selected features and descriptions will be elaborated in the data transformation section.</p>
+<p>One thing worth mentioning is that some of features are actually dictionaries. For example, in <code>User</code>, there are actually 40 more sub features including <code>username</code>,<code>location</code>,<code>description</code>, etc.. Counting those sub features, there are over 150 features in a tweet object and we have to choose carefully from them. Details of selected features and descriptions will be elaborated in the data transformation section.</p>
 </div>
 <div id="limitations" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Limitations</h2>

@@ -3,10 +3,10 @@ data-sources
 dataset-overview
 limitations
 data-transformation
-select-important-variables-from-data
-extract-words
-extract-sentiments
-dataset-variables-summary
+feature-selection
+tokenization
+sentiment
+summary-of-added-features
 missing-values
 twitter-dataset
 results
