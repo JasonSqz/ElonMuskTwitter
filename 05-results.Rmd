@@ -9,6 +9,8 @@ library(ggplot2)
 library(tm)
 library(tidytext)
 library(wordcloud)
+library(emo) #devtools::install_github("hadley/emo")
+library(gt)
 ```
 
 ```{r}
@@ -32,6 +34,8 @@ for (i in 1:length(df$sentiment)){
 }
 ```
 
+## word analysis
+By inspecting the word frequency histogram and the word cloud, we can have some insight about what people were discussing inside these tweets.
 
 ```{r}
 # tokenize words
@@ -41,7 +45,7 @@ for (i in 1:length(df$sentiment)){
 
 ```{r}
 # create corpus
-#df$cleaned_text = tolower(df$cleaned_text)
+df$cleaned_text = tolower(df$cleaned_text)
 text <- removeWords(df$cleaned_text, words = stopwords(kind = "en"))
 text <- tibble(txt=text)
 tweets_words <-  text %>%
@@ -50,20 +54,60 @@ words <- tweets_words %>% count(word, sort=TRUE)
 ```
 
 ```{r}
+#clean words corpus
+
+#separate words and emoji
+emoji <- words %>% subset(substr(word,1,3)=="000")
+words <- words %>% subset(!(substr(word,1,3)=="000"))
+
+#remove word meaningless or search words
+remove_words <- c("u", "elonmusk","tesla","fe0f","279c","elon","musk","s")
+words <- words %>% subset(!(word %in% remove_words))
+```
+
+
+```{r,fig.width=10, fig.height=5}
 #word frequency histogram
 words %>%
   top_n(15) %>%
 ggplot()+
-  geom_bar(aes(x=word,y=n),stat="identity")+
+  geom_bar(aes(x=reorder(word,-n),y=n),stat="identity")+
   ggtitle("top 15 words of all tweets") +
   xlab("count")+
   ylab("word")
+
 ```
+
 
 ```{r}
 #word cloud
-wordcloud(words = words$word, freq = words$n, min.freq = 1,max.words=200, random.order=FALSE, rot.per=0.35, colors=brewer.pal(8, "Dark2"))
+wordcloud(words = words$word, freq = words$n, min.freq = 1,max.words=100, random.order=FALSE, rot.per=0.35, colors=brewer.pal(5, "Greens"))
 ```
+
+The words "doge", "billym2k" and "dogecoin" are in the top 15 words list, and they are describing the same object-dogecoin. Dogecoin is a cryptocurrency that are created as a "joke" to make fun of the fact that everyone can copy bitcoin's open source code and publish a new cryptocurrency. Elon Musk is a big supporter for dogecoin, calling it "people's crypto." It is also unsurprising that these the words like "bitcoin", "binance" and "crypto" are frequent in the tweets since Elon Musk is a big fan of bitcoin. 
+
+The username "DrEliDavid" and the word "hunger" also appeared a lot. The story began in November 1st when Dr. Eli David shared an image of a CNN Business article with the headline: “2% of Elon Musk’s wealth could solve world hunger, says director of UN food scarcity organization.” Elon Musk tweeted that he would sell Tesla stock if WFP can prove how his 6 billion dollar can solve world hunger. There were lots of online dialogue between the two sides since Musk’s request for spending to be published.
+
+The words "mars" and "spaceX" are related to his big project of sending human to Mars. The word "will" and "can" and the first and the third  most frequent word in these tweets. The reason behind it could be that Elon Musk likes to tweet about the goals for his companies and he has made lots of promises about helping human future in tweeter. People like to discuss about the things he will do in the future.
+ 
+
+
+```{r}
+# emoji count
+top_emoji <- emoji%>%top_n(5)
+#change unicode to emoji
+top_emoji$word[1] <- emo::ji("rocket")
+top_emoji$word[2] <- emo::ji("fire")
+top_emoji$word[3] <- emo::ji("finger")
+top_emoji$word[4] <- emo::ji("gem")
+top_emoji$word[5] <- emo::ji("smile")
+colnames(top_emoji) <- c("emoji","count")
+top_emoji %>% gt() #emoji appear after knitting
+```
+Rocket is the most used emoji, and it is most likely related to Elon Musk's spaceX projects. The emojis fire and gem are very frequent, and we can know that lots of people are inspired by Elon Musk.
+
+## sentiment analysis
+We have assigned a sentiment score for each tweet based on the usage of words. Below is the histogram of the distribution of sentiment scores. Most tweets have scores around 0, which means lots of these tweets are neutral. Also, There are more positive tweets than negative ones.
 
 ```{r}
 #length of tweet histogram
@@ -80,11 +124,13 @@ wordcloud(words = words$word, freq = words$n, min.freq = 1,max.words=200, random
 df %>%
 ggplot(aes(x=as.double(sentiment_score))) + 
   geom_histogram(binwidth = 1, fill = "steelblue")+ 
-  ylab("Frequency") + 
+  ylab("count") + 
   xlab("sentiment score") +
   ggtitle("Distribution of Sentiment scores of all tweets")+
   scale_x_continuous(limits=c(-5,5))
 ```
+
+If we classify tweets with negative scores as negative, tweets with positive scores as positive and tweet with 0 score as neutral, we can see more clearly that there are way more positive tweets than negative tweets.
 
 ```{r}
 df %>%
