@@ -128,7 +128,7 @@
 <div id="elon-musk" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Elon Musk</h2>
 <p>Elon Musk is very active on twitter and anything he tweets can be very influential and brings a lot of controversies. For example, his tweet about the crypto-currency “dogecoin” caused “dogecoin” price to spike. Since Twitter users have many discussions surrounding him, our analysis aims to visualize those discussions.</p>
-<p>The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem “七步诗” titled as “Humankind”.</p>
+<p>The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem “七步诗” titled as “Humankind”, which seems to be describing dogecoin and shiba inu coin</p>
 <p><img src="data/poem.png" /></p>
 </div>
 <div id="volume-of-tweets" class="section level2" number="5.2">
@@ -529,14 +529,16 @@ In total we have 5293 tweets that contain a user geological information. The loc
 <p><img src="finalproj_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>From the graph, we can see that the overall sentiment is very positive. Over 85% of the tweets are either neutral or positive. Neutral and positive tweets have similar percentage of 33%. Elon Musk presents to be very unorthdodox on Twitter, and other users seems to identify with his style.</p>
 <p>We then explore some correlations between sentiment scores and other features. Firstly we look at if the length of tweets would have some impacts on the sentiment.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-49-1.png" width="672" />
-We can see a clear trend of increasing average sentiment as the tweet length grows. At around tweet length of 400, we see a pattern of slight decrease in average sentiment towards 0. We conclude that users are more likely to express positive emotions regarding Elon Musk as the tweet length increases. However, for tweets that are excessively long, the emotion tends to be more neutral and even negative.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>We can see a clear trend of increasing average sentiment as the tweet length grows. At around tweet length of 400, we see a pattern of slight decrease in average sentiment towards 0. We conclude that users are more likely to express positive emotions regarding Elon Musk as the tweet length increases. However, for tweets that are excessively long, the emotion tends to be more neutral and even negative.</p>
+<p>We then try to explore if there is a relationship between sentiment and number of followers.</p>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>We can see that it is a fan shaped graph. The average sentiment score for average Twitter user is generally flat and does not have much fluctuation. However, for people who are more influential (more followers), their attitudes seems to vary. We conclude that while average Twitter users are generally favorable of Elon Musk, more influential users can have varying opinions towards Elon Musk.</p>
 </div>
 <div id="monitoring-topics" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Monitoring Topics</h3>
-<p>After the exploration of sentiments, we want to further know what specific topics users favor to discuss. To to this, we apply topic modeling(LDA) to find underlying topics. The <a href="lda5.html"><strong>link</strong></a> leads to an interactive LDA result.</p>
+<p>After the exploration of words and sentiments, we want to further find out how those high frequencey vocabulary are related. To to this, we apply topic modeling(LDA). LDA is an unsupervised generative probabilistic model which, typically given the number of topics, allocates each word in a document to a specific topic. <a href="EM_lda6.html"><strong>Click here</strong></a> to see an interactive LDA result in which we select 6 topics. There is a detail description on how to read the graph in the page.</p>
+<p>From the result, we roughly extract two topics. The first and second topic in the graph overlap. Based on the keywords “tesla”, “world”, “hunger”,and “stock”, we think this is a general topic regarding the spike of Tesla stock and the conversation between Elon Musk and United Nation offical. The third, fourth, and fifth topics are close in distance. We see various crypto-currency keywords like “bitcoin”,“binance”,“eth”, etc.. Those topics are discussions focusing on crypto-currencies. For the sixth topic, even though it is far away from other topics, we still think it talks about crpypto currencies. We see keywords “buy”, “hold”, and “kishu”. Therefore, we capture two topics corresponding to the content of Elon Musk’s tweets. The first topic about Tesla and United Nation’s proposal constitute about 53% of all the discussions. The second topic about crypto-currency makes up about 47% all the discussion.</p>
 
 </div>
 </div>

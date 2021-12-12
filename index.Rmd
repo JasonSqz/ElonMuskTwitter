@@ -23,9 +23,9 @@ In this project, we collected Twitter streaming data using Tweepy API for a cont
 
 - For people who are influential (more followers), will there be a difference in attitude to average Twitter users?
 
-- What are the most popular topics/the most frequent words in tweets about Elon Musk? What are the most frequently mentioned topics in tweets of negative or positive sentiment?
+- What are the most popular topics/the most frequent words in tweets about Elon Musk?
 
-- For each individual topic, what is the distribution of sentiments and what are the most frequent words?
+- For individual topics, what is the distribution of sentiments and what are the most frequent words?
 
 
 

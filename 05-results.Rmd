@@ -78,7 +78,7 @@ tn <- as.numeric(tn)
 
 Elon Musk is very active on twitter and anything he tweets can be very influential and brings a lot of controversies. For example, his tweet about the crypto-currency "dogecoin" caused "dogecoin" price to spike. Since Twitter users have many discussions surrounding him, our analysis aims to visualize those discussions. 
 
-The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem "七步诗" titled as "Humankind".
+The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem "七步诗" titled as "Humankind", which seems to be describing dogecoin and shiba inu coin
 
 
 ![](data/poem.png)
@@ -309,37 +309,36 @@ ggplot(data=df_length,aes(x=tweet_length,y=sentiment_score)) +
     ylab("average sentiment score") +
     theme_bw()
 ```
+
 We can see a clear trend of increasing average sentiment as the tweet length grows. At around tweet length of 400, we see a pattern of slight decrease in average sentiment towards 0. We conclude that users are more likely to express positive emotions regarding Elon Musk as the tweet length increases. However, for tweets that are excessively long, the emotion tends to be more neutral and even negative.
 
-
-
-
+We then try to explore if there is a relationship between sentiment and number of followers.
 
 ```{r}
-#length of tweet histogram
-df <- df %>% mutate(length =nchar(original_text))
-ggplot(df)+
-  geom_histogram(aes(length),stat="count")+
-  xlim(0,1000)+
-  ggtitle("Distribution of length of all tweets")
-```
+df_fol <- df_senti %>%
+  mutate(user_follower_count = log(user_follower_count)) %>%
+  group_by(user_follower_count) %>%
+  summarise(across(sentiment_score,mean)) %>%
+  filter(!user_follower_count=="-Inf")
 
+```
 
 ```{r}
-#sentiment frequency histogram
-df %>%
-ggplot(aes(x=as.double(sentiment_score))) + 
-  geom_histogram(binwidth = 1, fill = "steelblue")+ 
-  ylab("count") + 
-  xlab("sentiment score") +
-  ggtitle("Distribution of Sentiment scores of all tweets")+
-  scale_x_continuous(limits=c(-5,5))
+ggplot(data=df_fol,aes(x=user_follower_count,y=sentiment_score)) +
+    geom_point(color="lightblue3",alpha=0.4) + 
+    ggtitle("Correlation between number of followers and average sentiment score") +
+    xlab("log(Number of followers)") +
+    ylab("average sentiment score") +
+    theme_bw()
 ```
 
+We can see that it is a fan shaped graph. The average sentiment score for average Twitter user is generally flat and does not have much fluctuation. However, for people who are more influential (more followers), their attitudes seems to vary. We conclude that while average Twitter users are generally favorable of Elon Musk, more influential users can have varying opinions towards Elon Musk.
 
 ### Monitoring Topics
 
-After the exploration of sentiments, we want to further know what specific topics users favor to discuss. To to this, we apply topic modeling(LDA) to find underlying topics. The [**link**](lda5.html) leads to an interactive LDA result. 
+After the exploration of words and sentiments, we want to further find out how those high frequencey vocabulary are related. To to this, we apply topic modeling(LDA). LDA is an unsupervised generative probabilistic model which, typically given the number of topics, allocates each word in a document to a specific topic. [**Click here**](EM_lda6.html) to see an interactive LDA result in which we select 6 topics. There is a detail description on how to read the graph in the page.
+
+From the result, we roughly extract two topics. The first and second topic in the graph overlap. Based on the keywords "tesla", "world", "hunger",and "stock", we think this is a general topic regarding the spike of Tesla stock and the conversation between Elon Musk and United Nation offical. The third, fourth, and fifth topics are close in distance. We see various crypto-currency keywords like "bitcoin","binance","eth", etc.. Those topics are discussions focusing on crypto-currencies. For the sixth topic, even though it is far away from other topics, we still think it talks about crpypto currencies. We see keywords "buy", "hold", and "kishu". Therefore, we capture two topics corresponding to the content of Elon Musk's tweets. The first topic about Tesla and United Nation's proposal constitute about 53% of all the discussions. The second topic about crypto-currency makes up about 47% all the discussion. 
 
 
 
