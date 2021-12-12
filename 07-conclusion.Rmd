@@ -1,2 +1,14 @@
 # Conclusion
 
+After applying various techniques like data pre-processing and NLP, we gained more insights to Elon Musk and his controversial reputation on Twitter. Hopefully the analysis we made and the plot we designed can give a concise answer to the questions we proposed in the very beginning.
+
+Despite all these findings we mentioned in the result part above, there still exist limitations. For the data collection part, since we are not eligible to get the official complete data-set from Twitter, what we used were data with time discontinuity. From the time series perspective, this may introduce bias to our analysis. So the conclusions we reached till now are restricted to the specific time-slots. In future improvement, if we can collect a better dataset with complete ``created_at`` feature for a longer time period, a more precise analysis can be carried out using the same framework. 
+
+In addition to data, because of the time limitation and project requirements on data visualization, we only make use of several features mostly related to time and text. For further analysis, more emphasis can be put on User Profile level to reveal the commonality under users' positive/negative comments, or more profoundly, users' personal attitude towards Elon Musk and his field of work. Also with the development of NLP technique in recent days, perhaps our model on sentiment analysis will be more accurate with better pre-processing.
+
+
+
+<center>
+![](data/twitter king.jpg){width=80%}
+
+</center>
