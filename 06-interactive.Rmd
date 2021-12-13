@@ -10,24 +10,24 @@ The interactive part of our project was built with D3 on Observable, which is th
 
 ## Instruction for using the map
 
-The plot is initialized with the sentiment analysis we get after NLP process with no default follower group and comment search specified. The y-axis gives the sentiment score of each comment with color blue reflecting positive attitudes and red reflecting negative.
+The plot is initialized with the sentiment score we get after NLP process with no default follower group and comment search specified. The y-axis gives the sentiment score of each comment with color blue reflecting positive and red reflecting negative attitudes.
 
-- User can hover the mouse over a circle to see user id, comments he make, and sentiment score in detail.
+- User can hover the mouse over a circle to see user id, tweet contents, and sentiment score in detail.
 
-- User can search for exact words in the text comments made by Twitter users. Such like entering ``Tesla`` in the search bar and click go will gives several data circles in the plot with more positive than negative.
+- User can search for exact words in the tweet content posted by Twitter users. For example, entering ``Tesla`` in the search bar and click go will give several data circles in the plot with more positive than negative.
 
-- User can filter the comments based on the number of followers of the user. This function can be used together with the ``search`` function introduced above to plot a customized distribution of comments.
+- User can filter the comments based on the number of followers of the user. This function can be used together with the ``search`` function introduced above to present a customized distribution of comments.
 
 
 Notes:
 
-- The x-axis indicate the date value which is not exactly continuous because our data-sets are crawled and collected mostly during evening of a day.
+- The x-axis indicates the date value which is not  continuous because our datasets are not crawled and collected 24 hours each day.
 
-- The score and sentiment results are completely based on the previous NLP process so there're still possibility of misclassification.
+- The score and sentiment results are completely based on the previous NLP process so there are still possibility of misclassification.
 
-- Because of the density of the circle in the plot, move your mouse slowly to the low right part of the exact circle and wait for the tooltip.
+- Considering the density of the circles in the plot, move your mouse slowly to the low right part of the exact circle and wait for the tooltip.
 
-- To reset the plot, please left the search bar empty and choose ``all`` for the filter, then click ``Go``, and you will get a defult plot like this:
+- To reset the plot, please left the search bar empty and choose ``all`` for the filter, then click ``Go``, and you will get a default plot like this:
 
 <center>
 ![](data/Interactive_plot.png){width=200%} 

@@ -340,5 +340,72 @@ After the exploration of words and sentiments, we want to further find out how t
 
 From the result, we roughly extract two topics. The first and second topic in the graph overlap. Based on the keywords "tesla", "world", "hunger",and "stock", we think this is a general topic regarding the spike of Tesla stock and the conversation between Elon Musk and United Nation offical. The third, fourth, and fifth topics are close in distance. We see various crypto-currency keywords like "bitcoin", "binance", "eth", etc.. Those topics are discussions focusing on crypto-currencies. For the sixth topic, even though it is far away from other topics, we still think it talks about crpypto currencies. We see keywords "buy", "hold", and "kishu". Therefore, we capture two topics corresponding to the content of Elon Musk's tweets. The first topic about Tesla and United Nation's proposal constitute about 53% of all the discussions. The second topic about crypto-currency makes up about 47% all the discussion. 
 
+```{r}
+#filter based on keywords
+
+t1_df <- df %>% 
+  filter(grepl("doge|bitcoin|crypto|binance|shiba|btc",original_text))
+
+t2_df <- df %>%
+  filter(grepl("world|hunger|stock|car",original_text))
+```
+
+```{r}
+t1_senti <- t1_df %>%
+  mutate(sentiment_score = as.numeric(sentiment_score)) %>%
+  mutate(sentiment = case_when(
+    sentiment_score > 1.2 ~ "very positive",
+    sentiment_score <= 1.2 & sentiment_score > 0.2 ~ "positive",
+    sentiment_score <= 0.2 & sentiment_score >= -0.2 ~ "neutral",
+    sentiment_score >= -1.2 & sentiment_score < -0.2 ~ "negative",
+    sentiment_score < -1.2  ~ "very negative"))
+
+t2_senti <- t2_df %>%
+  mutate(sentiment_score = as.numeric(sentiment_score)) %>%
+  mutate(sentiment = case_when(
+    sentiment_score > 1.2 ~ "very positive",
+    sentiment_score <= 1.2 & sentiment_score > 0.2 ~ "positive",
+    sentiment_score <= 0.2 & sentiment_score >= -0.2 ~ "neutral",
+    sentiment_score >= -1.2 & sentiment_score < -0.2 ~ "negative",
+    sentiment_score < -1.2  ~ "very negative"))
+```
+
+```{r}
+t1 <- t1_senti %>% 
+  group_by(sentiment) %>% 
+  count() %>% 
+  mutate(perc = n/nrow(t1_senti))
+
+t2 <- t2_senti %>% 
+  filter(!is.na(sentiment)) %>%
+  group_by(sentiment) %>% 
+  count() %>% 
+  mutate(perc = n/nrow(t2_senti))
+```
+
+```{r}
+t1 <- t1[c(4,1,2,3,5),]
+t2 <- t2[c(4,1,2,3,5),]
+```
+
+```{r}
+t <- c(t1$perc,t2$perc)
+
+t_final <- data.frame(topic = rep(c("Crypto","Elon Musk"),each=5),
+                      sentiment = rep(c("very negative","negative","neutral","positive","very positive"),times=2),
+                      score = t)
+```
+
+Identifying these two topics, we filtered out tweets using keywords belonging to the categories. The sentiment comparision between the two topics is shown below. As "Crypto" is straightforward, "Elon Musk" refers to the combined topic of Tesla stock and the hunger crisis event. 
+```{r}
+ggplot(t_final,aes(fill=fct_relevel(sentiment,rev(l)),x=topic,y=score)) +
+  geom_bar(position="fill",stat="identity") + 
+  scale_fill_brewer(name = "Sentiment",palette=9) +
+  ggtitle("Sentiment comparison between two topics") +
+  ylab("percentage") +
+  theme_bw()
+```
+
+From the graph we can see that sentiment on "Crypto" is exceedingly more positive than topic "Elon Musk". Topic "Elon Musk" has about 24% of negative sentiments while "Crypto" has only about 10%. We conclude that people are more favoring Elon Musk's role in the crypto currency field.
 
 

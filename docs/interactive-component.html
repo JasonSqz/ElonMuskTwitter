@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-12" />
+<meta name="date" content="2021-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,18 +140,18 @@
 </div>
 <div id="instruction-for-using-the-map" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Instruction for using the map</h2>
-<p>The plot is initialized with the sentiment analysis we get after NLP process with no default follower group and comment search specified. The y-axis gives the sentiment score of each comment with color blue reflecting positive attitudes and red reflecting negative.</p>
+<p>The plot is initialized with the sentiment score we get after NLP process with no default follower group and comment search specified. The y-axis gives the sentiment score of each comment with color blue reflecting positive and red reflecting negative attitudes.</p>
 <ul>
-<li><p>User can hover the mouse over a circle to see user id, comments he make, and sentiment score in detail.</p></li>
-<li><p>User can search for exact words in the text comments made by Twitter users. Such like entering <code>Tesla</code> in the search bar and click go will gives several data circles in the plot with more positive than negative.</p></li>
-<li><p>User can filter the comments based on the number of followers of the user. This function can be used together with the <code>search</code> function introduced above to plot a customized distribution of comments.</p></li>
+<li><p>User can hover the mouse over a circle to see user id, tweet contents, and sentiment score in detail.</p></li>
+<li><p>User can search for exact words in the tweet content posted by Twitter users. For example, entering <code>Tesla</code> in the search bar and click go will give several data circles in the plot with more positive than negative.</p></li>
+<li><p>User can filter the comments based on the number of followers of the user. This function can be used together with the <code>search</code> function introduced above to present a customized distribution of comments.</p></li>
 </ul>
 <p>Notes:</p>
 <ul>
-<li><p>The x-axis indicate the date value which is not exactly continuous because our data-sets are crawled and collected mostly during evening of a day.</p></li>
-<li><p>The score and sentiment results are completely based on the previous NLP process so there’re still possibility of misclassification.</p></li>
-<li><p>Because of the density of the circle in the plot, move your mouse slowly to the low right part of the exact circle and wait for the tooltip.</p></li>
-<li><p>To reset the plot, please left the search bar empty and choose <code>all</code> for the filter, then click <code>Go</code>, and you will get a defult plot like this:</p></li>
+<li><p>The x-axis indicates the date value which is not continuous because our datasets are not crawled and collected 24 hours each day.</p></li>
+<li><p>The score and sentiment results are completely based on the previous NLP process so there are still possibility of misclassification.</p></li>
+<li><p>Considering the density of the circles in the plot, move your mouse slowly to the low right part of the exact circle and wait for the tooltip.</p></li>
+<li><p>To reset the plot, please left the search bar empty and choose <code>all</code> for the filter, then click <code>Go</code>, and you will get a default plot like this:</p></li>
 </ul>
 <center>
 <img src="data/Interactive_plot.png" style="width:200.0%" />
