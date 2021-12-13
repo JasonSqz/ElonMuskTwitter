@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-11" />
+<meta name="date" content="2021-12-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -102,7 +102,12 @@
 <li class="chapter" data-level="5.4.3" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.4.3</b> Monitoring Topics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
+<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="interactive-component.html"><a href="interactive-component.html#link-to-the-interactive-plot"><i class="fa fa-check"></i><b>6.1</b> Link to the interactive plot</a></li>
+<li class="chapter" data-level="6.2" data-path="interactive-component.html"><a href="interactive-component.html#descriptions"><i class="fa fa-check"></i><b>6.2</b> Descriptions</a></li>
+<li class="chapter" data-level="6.3" data-path="interactive-component.html"><a href="interactive-component.html#instruction-for-using-the-map"><i class="fa fa-check"></i><b>6.3</b> Instruction for using the map</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -125,7 +130,38 @@
             <section class="normal" id="section-">
 <div id="interactive-component" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Interactive component</h1>
+<div id="link-to-the-interactive-plot" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Link to the interactive plot</h2>
+<p>Click <a href="https://observablehq.com/d/637d7936589cafb0"><strong>link here</strong></a> or copy the url: <a href="https://observablehq.com/d/637d7936589cafb0" class="uri">https://observablehq.com/d/637d7936589cafb0</a></p>
+</div>
+<div id="descriptions" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Descriptions</h2>
+<p>The interactive part of our project was built with D3 on Observable, which is the official web tool for creating and sharing D3 code. We randomly select 1/100 of the original data-set which was collected from 10/28/2021 to 11/04/2021 within several specific time-slots. Based on the LLN, the newly organized data-set with features <code>user_id</code>,<code>created_at</code>,<code>follower_count</code>,<code>sentiment_score</code>,<code>text</code>,<code>sentiment</code> can still reflect the true distribution of our sentiment analysis. You can find the data <a href="https://github.com/JasonSqz/ElonMuskTwitter/tree/main/data"><strong>here</strong></a> under the <code>data</code> folder of our repo.</p>
+</div>
+<div id="instruction-for-using-the-map" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Instruction for using the map</h2>
+<p>The plot is initialized with the sentiment analysis we get after NLP process with no default follower group and comment search specified. The y-axis gives the sentiment score of each comment with color blue reflecting positive attitudes and red reflecting negative.</p>
+<ul>
+<li><p>User can hover the mouse over a circle to see user id, comments he make, and sentiment score in detail.</p></li>
+<li><p>User can search for exact words in the text comments made by Twitter users. Such like entering <code>Tesla</code> in the search bar and click go will gives several data circles in the plot with more positive than negative.</p></li>
+<li><p>User can filter the comments based on the number of followers of the user. This function can be used together with the <code>search</code> function introduced above to plot a customized distribution of comments.</p></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li><p>The x-axis indicate the date value which is not exactly continuous because our data-sets are crawled and collected mostly during evening of a day.</p></li>
+<li><p>The score and sentiment results are completely based on the previous NLP process so there’re still possibility of misclassification.</p></li>
+<li><p>Because of the density of the circle in the plot, move your mouse slowly to the low right part of the exact circle and wait for the tooltip.</p></li>
+<li><p>To reset the plot, please left the search bar empty and choose <code>all</code> for the filter, then click <code>Go</code>, and you will get a defult plot like this:</p></li>
+</ul>
+<center>
+<img src="data/Interactive_plot.png" style="width:200.0%" />
+</center>
+<p>References:</p>
+<ul>
+<li>Obeservable: Search Sentiment Analysis of Billboard Top 100 Songs 2000-2018. <a href="https://observablehq.com/@vizbiz/search-sentiment-analysis-of-billboard-top-100-songs-2000-2" class="uri">https://observablehq.com/@vizbiz/search-sentiment-analysis-of-billboard-top-100-songs-2000-2</a></li>
+</ul>
 
+</div>
 </div>
             </section>
 

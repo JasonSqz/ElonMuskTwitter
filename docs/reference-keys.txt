@@ -22,4 +22,7 @@ word-frequency
 tweet-sentiment
 monitoring-topics
 interactive-component
+link-to-the-interactive-plot
+descriptions
+instruction-for-using-the-map
 conclusion

@@ -78,7 +78,7 @@ tn <- as.numeric(tn)
 
 Elon Musk is very active on twitter and anything he tweets can be very influential and brings a lot of controversies. For example, his tweet about the crypto-currency "dogecoin" caused "dogecoin" price to spike. Since Twitter users have many discussions surrounding him, our analysis aims to visualize those discussions. 
 
-The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem "七步诗" titled as "Humankind", which seems to be describing dogecoin and shiba inu coin
+The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem "七步诗" titled as "Humankind", which seems to be describing dogecoin and shiba inu coin.
 
 
 ![](data/poem.png)
@@ -336,7 +336,7 @@ We can see that it is a fan shaped graph. The average sentiment score for averag
 
 ### Monitoring Topics
 
-After the exploration of words and sentiments, we want to further find out how those high frequencey vocabulary are related. To to this, we apply topic modeling(LDA). LDA is an unsupervised generative probabilistic model which, typically given the number of topics, allocates each word in a document to a specific topic. [**Click here**](EM_lda6.html) to see an interactive LDA result in which we select 6 topics. There is a detail description on how to read the graph in the page.
+After the exploration of words and sentiments, we want to further find out how those high frequencey vocabulary are related. To to this, we apply topic modeling(LDA). LDA is an unsupervised generative probabilistic model which, typically given the number of topics, allocates each word in a document to a specific topic. [**Click here to see an interactive LDA result in which we select 6 topics**](EM_lda6.html). There is a detail description on how to read the graph in the page.
 
 From the result, we roughly extract two topics. The first and second topic in the graph overlap. Based on the keywords "tesla", "world", "hunger",and "stock", we think this is a general topic regarding the spike of Tesla stock and the conversation between Elon Musk and United Nation offical. The third, fourth, and fifth topics are close in distance. We see various crypto-currency keywords like "bitcoin","binance","eth", etc.. Those topics are discussions focusing on crypto-currencies. For the sixth topic, even though it is far away from other topics, we still think it talks about crpypto currencies. We see keywords "buy", "hold", and "kishu". Therefore, we capture two topics corresponding to the content of Elon Musk's tweets. The first topic about Tesla and United Nation's proposal constitute about 53% of all the discussions. The second topic about crypto-currency makes up about 47% all the discussion. 
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Anni Chen, Zehui Wu, Senqi Zhang" />
 
 
-<meta name="date" content="2021-12-11" />
+<meta name="date" content="2021-12-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -102,7 +102,12 @@
 <li class="chapter" data-level="5.4.3" data-path="results.html"><a href="results.html#monitoring-topics"><i class="fa fa-check"></i><b>5.4.3</b> Monitoring Topics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
+<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="interactive-component.html"><a href="interactive-component.html#link-to-the-interactive-plot"><i class="fa fa-check"></i><b>6.1</b> Link to the interactive plot</a></li>
+<li class="chapter" data-level="6.2" data-path="interactive-component.html"><a href="interactive-component.html#descriptions"><i class="fa fa-check"></i><b>6.2</b> Descriptions</a></li>
+<li class="chapter" data-level="6.3" data-path="interactive-component.html"><a href="interactive-component.html#instruction-for-using-the-map"><i class="fa fa-check"></i><b>6.3</b> Instruction for using the map</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -128,7 +133,7 @@
 <div id="elon-musk" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Elon Musk</h2>
 <p>Elon Musk is very active on twitter and anything he tweets can be very influential and brings a lot of controversies. For example, his tweet about the crypto-currency “dogecoin” caused “dogecoin” price to spike. Since Twitter users have many discussions surrounding him, our analysis aims to visualize those discussions.</p>
-<p>The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem “七步诗” titled as “Humankind”, which seems to be describing dogecoin and shiba inu coin</p>
+<p>The period of which we collected our data was very interesting. It was shortly after Tesla flied in stock market and Elon Musk became the richest man in the world. He was also asked by the United Nation to donate 4% of his growing wealth to solve a hunger crisis. Just shortly after that, on Nov. 1st, he posted a Chinese poem “七步诗” titled as “Humankind”, which seems to be describing dogecoin and shiba inu coin.</p>
 <p><img src="data/poem.png" /></p>
 </div>
 <div id="volume-of-tweets" class="section level2" number="5.2">
@@ -537,7 +542,7 @@ In total we have 5293 tweets that contain a user geological information. The loc
 </div>
 <div id="monitoring-topics" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Monitoring Topics</h3>
-<p>After the exploration of words and sentiments, we want to further find out how those high frequencey vocabulary are related. To to this, we apply topic modeling(LDA). LDA is an unsupervised generative probabilistic model which, typically given the number of topics, allocates each word in a document to a specific topic. <a href="EM_lda6.html"><strong>Click here</strong></a> to see an interactive LDA result in which we select 6 topics. There is a detail description on how to read the graph in the page.</p>
+<p>After the exploration of words and sentiments, we want to further find out how those high frequencey vocabulary are related. To to this, we apply topic modeling(LDA). LDA is an unsupervised generative probabilistic model which, typically given the number of topics, allocates each word in a document to a specific topic. <a href="EM_lda6.html"><strong>Click here to see an interactive LDA result in which we select 6 topics</strong></a>. There is a detail description on how to read the graph in the page.</p>
 <p>From the result, we roughly extract two topics. The first and second topic in the graph overlap. Based on the keywords “tesla”, “world”, “hunger”,and “stock”, we think this is a general topic regarding the spike of Tesla stock and the conversation between Elon Musk and United Nation offical. The third, fourth, and fifth topics are close in distance. We see various crypto-currency keywords like “bitcoin”,“binance”,“eth”, etc.. Those topics are discussions focusing on crypto-currencies. For the sixth topic, even though it is far away from other topics, we still think it talks about crpypto currencies. We see keywords “buy”, “hold”, and “kishu”. Therefore, we capture two topics corresponding to the content of Elon Musk’s tweets. The first topic about Tesla and United Nation’s proposal constitute about 53% of all the discussions. The second topic about crypto-currency makes up about 47% all the discussion.</p>
 
 </div>
