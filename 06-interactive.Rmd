@@ -6,7 +6,7 @@ Click [**link here**](https://observablehq.com/d/637d7936589cafb0) or copy the u
 
 ## Descriptions
 
-The interactive part of our project was built with D3 on Observable, which is the official web tool for creating and sharing D3 code. We randomly select 1/100 of the original data-set which was collected from 10/28/2021 to 11/04/2021 within several specific time-slots. Based on the LLN, the newly organized data-set with features ``user_id``,``created_at``,``follower_count``,``sentiment_score``,``text``,``sentiment`` can still reflect the true distribution of our sentiment analysis. You can find the data [**here**](https://github.com/JasonSqz/ElonMuskTwitter/tree/main/data) under the ``data`` folder of our repo.
+The interactive part of our project was built with D3 on Observable, which is the official web tool for creating and sharing D3 code. We randomly select 1/100 of the original data-set which was collected from 10/28/2021 to 11/04/2021 within several specific time-slots. Based on the LLN, the newly organized data-set with features `user_id`, `created_at`, `follower_count`, `sentiment_score`, `original_text`, `sentiment` can still reflect the true distribution of the sentiment. You can find the data [**here**](https://github.com/JasonSqz/ElonMuskTwitter/tree/main/data) under the ``data`` folder of our repo.
 
 ## Instruction for using the map
 
@@ -30,10 +30,11 @@ Notes:
 - To reset the plot, please left the search bar empty and choose ``all`` for the filter, then click ``Go``, and you will get a defult plot like this:
 
 <center>
-![](data/Interactive_plot.png){width=200%}
-</center>
+![](data/Interactive_plot.png){width=200%} 
+</center> \
 
 
-References: 
+
+Reference: 
 
 - Obeservable: Search Sentiment Analysis of Billboard Top 100 Songs 2000-2018. https://observablehq.com/@vizbiz/search-sentiment-analysis-of-billboard-top-100-songs-2000-2
