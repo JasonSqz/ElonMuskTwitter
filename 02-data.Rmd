@@ -1,6 +1,6 @@
 # Data sources
 
-Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk. We chose the keyword set of "Elon Musk","elonmusk","@elonmusk","tesla","Tesla". From October 28th to Novemeber 5th, we collected data 9 days in a row. For the purpose of this study, we choose to use data from October 28th to Novemeber 3rd, which is a 7-day period. During the period when our program was running, we capture every real-time tweets that contain any of the above keywords. The data is collected in the form of a tweet object, and it contains not only the text of the tweet, but other valuable information worth exploring. 
+Our data was collected from Twitter using the Tweepy API. Since we are interested in Elon Musk, we chose the keyword set of `Elon Musk`, `elonmusk`, `@elonmusk`, `tesla`, `Tesla`. From October 28th to November 3rd, we collected data 7 days in a row. During the period when our program was running, we captured every real-time tweets that contain any of the above keywords. The data was collected in the form of a tweet object, and it contained not only the text of the tweet, but other valuable information worth exploring. 
 
 ## Dataset overview
 

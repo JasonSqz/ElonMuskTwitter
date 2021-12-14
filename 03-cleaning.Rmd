@@ -45,9 +45,9 @@ description <- c("creation time of tweet", "tweet id", "truncated tweet of lengt
 knitr::kable(cbind(col_names,description), col.names = c("Features","Description"),caption="Feature Overview")
 ```
 
-Of the 7 features, `user_id` and `follower_count` are sub-features from `user`. They captures the id and the number of followers of a user respectively. `location` is a sub-feature from `place`. It is a user-identified location, which they can put anything on it. `full_text` is a sub-feature from `extended tweet`. It captures tweets that has over 140 characters. We did not keep the feature `geo` as we found out that it has a missing percentage of almost 100 percent. It will show up in the missing value section to support out decision.
+Of the 7 features, `user_id` and `follower_count` are sub-features from `user`. They captures the id and the number of followers of a user respectively. `location` is a sub-feature from `place`. It is a user-identified location, which they can put anything on it. `full_text` is a sub-feature from `extended tweet`. It captures tweets that has over 140 characters. We did not keep the feature `geo` as we found out that it has a missing percentage of almost 100%. It will show up in the missing value section to support out decision.
 
-After selecting our basic features, we notice that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into `text`. The original tweet would be put into `full_text`.To make our analysis more convenient, we add a new variable called `original_text` to store the tweets 
+After selecting our basic features, we noticed that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into `text`. The original tweet would be put into `full_text`. To make our analysis more convenient, we add a new variable called `original_text` to store the tweets.
 
 ```{r}
 df_final <- df_final %>%
@@ -59,7 +59,7 @@ df_final <- df_final %>%
 
 ## Tokenization
 
-Next, we conduct tokenization. This a process that will help us with other natural langauge processing analysis. Since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer, we use the specific tokenize_tweets() function from the tokenizers library. Below is a demonstration for how it tokenizes one of the tweets.
+Next, we conduct tokenization. This a process that will help us with other natural language processing analysis. Since there are some special characters like hashtags and usernames that might otherwise be stripped away using other tokenizer, we use the specific tokenize_tweets() function from the tokenizers library. Below is a demonstration for how it tokenizes one of the tweets.
 
 ```{r}
 print(df_final$original_text[1])
@@ -77,7 +77,7 @@ df_final <- df_final %>%
 
 Tweets have sentiments and here we try to classify a tweet as positive, negative or netural.
 
-Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, "\","@", website links, etc. Some special character might affect the accuracy of the sentiment score.
+Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, `\`,`@`, website links, etc. Some special character might affect the accuracy of the sentiment score.
 
 ```{r}
 cleaned_text <- gsub('http\\S+\\s*',"",df_final$original_text)
@@ -92,7 +92,7 @@ colnames(cleaned_text) <- c("cleaned_text")
 df_final <- cbind(df_final, cleaned_text)
 ```
 
-Below is a comparison between original text and the cleaned text. Typically "@" and website links are removed. After cleaning all the tweets, they were stored in a new feature `cleaned_text` in our dataset.
+Below is a comparison between original text and the cleaned text. Typically `@` and website links are removed. After cleaning all the tweets, they were stored in a new feature `cleaned_text` in our dataset.
 
 ```{r}
 print(df_final$original_text[220])
@@ -125,7 +125,7 @@ df_final <- df_final %>%
 
 ## Summary of added features
 
-We added 5 new features into the dataset after some processing, adding to a total of 12 features. Those new features will help us better conduct analysis and visualizations. Below is a table describing all added features.
+We added 5 new features into the dataset after some processing, summing to a total of 12 features. Those new features will help us better conduct analysis and visualizations. Below is a table describing all added features.
 
 ```{r}
 col_names <- colnames(df_final)[8:12]

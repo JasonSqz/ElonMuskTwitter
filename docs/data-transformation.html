@@ -172,12 +172,12 @@
 </tr>
 </tbody>
 </table>
-<p>Of the 7 features, <code>user_id</code> and <code>follower_count</code> are sub-features from <code>user</code>. They captures the id and the number of followers of a user respectively. <code>location</code> is a sub-feature from <code>place</code>. It is a user-identified location, which they can put anything on it. <code>full_text</code> is a sub-feature from <code>extended tweet</code>. It captures tweets that has over 140 characters. We did not keep the feature <code>geo</code> as we found out that it has a missing percentage of almost 100 percent. It will show up in the missing value section to support out decision.</p>
-<p>After selecting our basic features, we notice that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into <code>text</code>. The original tweet would be put into <code>full_text</code>.To make our analysis more convenient, we add a new variable called <code>original_text</code> to store the tweets</p>
+<p>Of the 7 features, <code>user_id</code> and <code>follower_count</code> are sub-features from <code>user</code>. They captures the id and the number of followers of a user respectively. <code>location</code> is a sub-feature from <code>place</code>. It is a user-identified location, which they can put anything on it. <code>full_text</code> is a sub-feature from <code>extended tweet</code>. It captures tweets that has over 140 characters. We did not keep the feature <code>geo</code> as we found out that it has a missing percentage of almost 100%. It will show up in the missing value section to support out decision.</p>
+<p>After selecting our basic features, we noticed that texts are stored in two different features. If the tweet is longer than 140 characters, the tweet would be truncated and put into <code>text</code>. The original tweet would be put into <code>full_text</code>. To make our analysis more convenient, we add a new variable called <code>original_text</code> to store the tweets.</p>
 </div>
 <div id="tokenization" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Tokenization</h2>
-<p>Next, we conduct tokenization. This a process that will help us with other natural langauge processing analysis. Since there are some special characters like hashtag and usernames that might otherwise be stripped away using other tokenizer, we use the specific tokenize_tweets() function from the tokenizers library. Below is a demonstration for how it tokenizes one of the tweets.</p>
+<p>Next, we conduct tokenization. This a process that will help us with other natural language processing analysis. Since there are some special characters like hashtags and usernames that might otherwise be stripped away using other tokenizer, we use the specific tokenize_tweets() function from the tokenizers library. Below is a demonstration for how it tokenizes one of the tweets.</p>
 <pre><code>## [1] &quot;@AGlobalCitizen @AlexanderBruyns @PPathole @elonmusk @SpaceX We would also somehow need to create some sort of artificial magnetic field around the entire planet to make sure that any biomass we take there isn&#39;t immediately destroyed by cosmic radiation&quot;</code></pre>
 <pre><code>## [[1]]
 ##  [1] &quot;@AGlobalCitizen&quot;  &quot;@AlexanderBruyns&quot; &quot;@PPathole&quot;        &quot;@elonmusk&quot;       
@@ -195,8 +195,8 @@
 <div id="sentiment" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Sentiment</h2>
 <p>Tweets have sentiments and here we try to classify a tweet as positive, negative or netural.</p>
-<p>Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, “",”@", website links, etc. Some special character might affect the accuracy of the sentiment score.</p>
-<p>Below is a comparison between original text and the cleaned text. Typically “@” and website links are removed. After cleaning all the tweets, they were stored in a new feature <code>cleaned_text</code> in our dataset.</p>
+<p>Before extracting sentiments from the tweets, we need to firstly clean the text such that it does not contain any special characters such as hashtags, <code>\</code>,<code>@</code>, website links, etc. Some special character might affect the accuracy of the sentiment score.</p>
+<p>Below is a comparison between original text and the cleaned text. Typically <code>@</code> and website links are removed. After cleaning all the tweets, they were stored in a new feature <code>cleaned_text</code> in our dataset.</p>
 <pre><code>## [1] &quot;@elonmusk @ElemonGame Great ❤️❤️❤️ @Corsair will help @Elemongame the first blockchain game ever owns hundred millions users. This is far beyond my imagination. To the Moon and Mars. @ElemonGame @CORSAIR #Elemon #Corsair love ❤️❤️❤️🚀🚀🚀 https://t.co/iakL1e8brw&quot;</code></pre>
 <pre><code>## [1] &quot;elonmusk ElemonGame Great ❤️❤️❤️ Corsair will help Elemongame the first blockchain game ever owns hundred millions users. This is far beyond my imagination. To the Moon and Mars. ElemonGame CORSAIR Elemon Corsair love ❤️❤️❤️🚀🚀🚀 &quot;</code></pre>
 <p>Now, we determine the sentiment score for each tweet using library “syuzhet”, which is a custom sentiment dictionary developed in the Nebraska Literary Lab.The sentiment scores are stored in a new feature <code>sentiment_score</code>.</p>
@@ -204,7 +204,7 @@
 </div>
 <div id="summary-of-added-features" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Summary of added features</h2>
-<p>We added 5 new features into the dataset after some processing, adding to a total of 12 features. Those new features will help us better conduct analysis and visualizations. Below is a table describing all added features.</p>
+<p>We added 5 new features into the dataset after some processing, summing to a total of 12 features. Those new features will help us better conduct analysis and visualizations. Below is a table describing all added features.</p>
 <table>
 <caption><span id="tab:unnamed-chunk-19">Table 3.2: </span>Additional Feature Overview</caption>
 <thead>
